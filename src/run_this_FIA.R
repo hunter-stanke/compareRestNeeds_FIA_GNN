@@ -50,8 +50,15 @@ fuzzy_plot_intersection(dirGIS = here('data/GIS/'),
                         dirResults = here('results/FIA/'),
                         cores = 10)
 
+## Assign FIA plots to structural classes
+classify_plot_structure(dirFIA = here::here('data/FIA/'),
+                        dirFVS = here::here('data/FVS/'),
+                        dirRefCon = here::here('data/refCon/'),
+                        dirResults = here::here('results/'), 
+                        mapStems = FALSE,
+                        cores = 10)
 
-## Predict tree crown width 
+
 
 ## ESTIMATE LAND AREA ----------------------------------------------------------
 

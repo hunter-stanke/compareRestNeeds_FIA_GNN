@@ -1,6 +1,6 @@
 ## Function to check package dependencies and throw an informative error if need be
 check_dependencies <- function() {
-  requiredPackages <- c('rFIA', 'stars', 'yaImpute', 'here')
+  requiredPackages <- c('rFIA', 'stars', 'yaImpute', 'here', 'randomForest', 'tibble', 'gower')
   missing <- !c(requiredPackages %in% installed.packages())
   missing <- requiredPackages[missing]
   if (length(missing) > 0) {
