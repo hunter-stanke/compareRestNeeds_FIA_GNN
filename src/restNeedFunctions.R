@@ -56,13 +56,10 @@ transferArea <- function(strata, rr){
 ## within NRV reference conditions based on the rules set provided in
 ## 'restRules'
 ## This could be done much more elegantly, but who cares
-restArea <- function(x, stratArea, strataID, restRules){
-  
-  ## Quote the grpCol name
-  strataID <- enquo(strataID)
+restArea <- function(x, stratArea, restRules){
   
   ## Strata area info
-  strata <- dplyr::filter(stratArea, !!strataID == x)
+  strata <- dplyr::filter(stratArea, strataID == x)
   
   ## Restoration ruleset for the BPS
   rr <- dplyr::filter(restRules, BpS_Code %in% strata$BpS_Code)
@@ -74,8 +71,7 @@ restArea <- function(x, stratArea, strataID, restRules){
   
   
   ## Add the landscape unit ID  
-  luName <- quo_name(strataID)
-  out$transfer[[luName]] <- x
+  out$transfer[['strataID']] <- x
   
   ## Save the tracked transfers
   return(list(transfer = out$transfer, strata = out$strata))

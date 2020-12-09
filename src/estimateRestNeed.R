@@ -42,7 +42,7 @@ refCon <- read.csv('./refCon/R6RefCon.txt') %>%
   select(BpS_Code = LF_BpS_Code, SCLASS = Sclass, avg = Avg_, low = Minus_2_SD, high = Plus_2_SD) %>%
   distinct()
 
-## "Order of operations" for transfering land area between S-classes
+## "Order of operations" for transferring land area between S-classes
 rules <- read.csv('./refCon/restorationRules.csv') %>%
   select(BpS_Code = LF_BpS_Code, Order:PassiveOnly)
 
