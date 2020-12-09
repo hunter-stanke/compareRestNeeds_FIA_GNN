@@ -29,7 +29,7 @@
 classify_plot_structure <- function(dirFIA = here::here('data/FIA/'),
                                     dirFVS = here::here('data/FVS/'),
                                     dirRefCon = here::here('data/refCon/'),
-                                    dirResults = here::here('results/'), 
+                                    dirResults = here::here('results/FIA/'), 
                                     mapStems = FALSE,
                                     cores = 1){
   
@@ -41,7 +41,7 @@ classify_plot_structure <- function(dirFIA = here::here('data/FIA/'),
                        nCores = cores)
   
   ## Which plots are associated with a current area inventory?
-  keepPlts <- read.csv(paste0(dirResults, 'FIA/fiaPlts.csv'))
+  keepPlts <- read.csv(paste0(dirResults, 'prep/fiaPlts.csv'))
   
   ## Predict crown area of live trees from FVS allometrics
   tree <- predictCrownWidth(pnw, dirFVS, keepPlts, mapStems)
@@ -86,8 +86,10 @@ classify_plot_structure <- function(dirFIA = here::here('data/FIA/'),
   
   ## Save the results
   write.csv(sclassPlt, 
-            paste0(dirResults,'FIA/plt_sclass.csv'),
+            paste0(dirResults,'prep/plt_sclass.csv'),
             row.names = FALSE)
+  
+  cat('S-class assignments complete ...\n')
 }
 
 
@@ -260,9 +262,9 @@ makeGNNvars <- function(tree) {
 classifyPlots <- function(gnnVars, dirRefCon, dirResults, cores) {
   
   ## Plot attributes for strata assignments and PVT
-  pltAtt <- read.csv(paste0(dirResults, 'FIA/fiaPlts.csv')) %>%
+  pltAtt <- read.csv(paste0(dirResults, 'prep/fiaPlts.csv')) %>%
     select(PLT_CN, pltID, PLOT_STATUS_CD) %>%
-    left_join(read.csv(paste0(dirResults, 'FIA/fiaPlts_attributes.csv')),
+    left_join(read.csv(paste0(dirResults, 'prep/fiaPlts_attributes.csv')),
               by = 'pltID')
   
   ## Get TPH thresholds for large size classes, thresholds vary by pvt
@@ -389,7 +391,7 @@ predictMissing <- function(dirFIA, dirResults, pltSC, cores) {
   ## Drop all NA BPS_LLID, estimate QMD, join sclass when available
   pltTPA <- pltTPA %>%
     dplyr::filter(PLOT_STATUS_CD == 1) %>%
-    dplyr::left_join(read.csv(paste0(dirResults, 'FIA/fiaPlts_attributes.csv')), by = 'pltID') %>%
+    dplyr::left_join(read.csv(paste0(dirResults, 'prep/fiaPlts_attributes.csv')), by = 'pltID') %>%
     dplyr::select(PLT_CN, BpS_Code, BPS_LLID, TPA, BAA) %>%
     ## Average Tree size,  QMD
     dplyr::mutate(QMD = sqrt(BAA / TPA * 4 / pi) * 12,
@@ -488,6 +490,7 @@ predictMissing <- function(dirFIA, dirResults, pltSC, cores) {
   preds <- dplyr::bind_rows(predList) %>%
     dplyr::select(PLT_CN, sclass.pred) %>%
     dplyr::mutate(sclass.pred = factor(sclass.pred))
+  
   
   return(preds)
   
