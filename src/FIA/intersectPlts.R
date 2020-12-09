@@ -27,11 +27,18 @@
 ## dirGIS (character):     directory where project GIS files are stored
 ## dirResults (character): directory where project results are stored
 ## cores (numeric) :       number of physical cores to use
-intersect_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
-                                   dirResults = here::here('results/'),
-                                   cores = 1) {
+fuzzy_plot_intersection <- function(dirGIS = here::here('data/GIS/'),
+                                    dirResults = here::here('results/FIA/'),
+                                    cores = 1) {
   
-  ## Attributes of our plot buffers
+  ## Produce rasterized, circular buffers around FIA plot locations (1km & 3km)
+  rasterize_plot_buffers(dirGIS, dirResults, bufferRadius = 1000)
+  rasterize_plot_buffers(dirGIS, dirResults, bufferRadius = 3000)
+  
+  ## Encouraging messages are fun
+  cat('Plot buffers produced ...\n')
+  
+  ## Read their attributes
   pltAtt1 <- read.csv(paste0(dirGIS, 'attributes/plts_1km.csv'))
   pltAtt3 <- read.csv(paste0(dirGIS, 'attributes/plts_3km.csv'))
   
@@ -56,18 +63,31 @@ intersect_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
     split(.$id)
   
   ## Process the chunks with function below - spatial intersection happens here
-  out <- parallell::mclapply(X = names(index), FUN = processChunk, index,
-                             xstart, ystart, xmax, ymax, chunkSize,
-                             dir = dirGIS, mc.cores = cores)
+  if (Sys.info()['sysname'] == 'Windows'){
+    cl <- makeCluster(nCores)
+    clusterEvalQ(cl, {
+      library(dplyr)
+      library(stars)})
+    out <- parLapply(cl, X = names(index), fun = processChunk, index,
+                     start, ystart, xmax, ymax, chunkSize, dir = dirGIS)
+    stopCluster(cl) # Kill the cluster
+    
+  } else { # Multicore systems
+    out <- parallel::mclapply(X = names(index), FUN = processChunk, index,
+                              xstart, ystart, xmax, ymax, chunkSize,
+                              dir = dirGIS, mc.cores = cores)
+  }
+
   
   ## Merge the results of each chunk
   out <- unlist(out, recursive = FALSE)
-  chunks1 <- rbindlist(out[names(out) == 't1'])
-  chunks3 <- rbindlist(out[names(out) == 't3'])
+  chunks1 <- data.table::rbindlist(out[names(out) == 't1'])
+  chunks3 <- data.table::rbindlist(out[names(out) == 't3'])
   
   
   ## Summarize everything, if anything is available at 1km, use it
   plt1 <- chunks1 %>%
+    as.data.frame() %>%
     ## These are the non-forest
     dplyr::filter(!is.na(strat)) %>%
     ## Select the most abundant group by plot, i.e., the mode
@@ -83,6 +103,7 @@ intersect_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
   
   ## If nothing shows up in 1km, try 3, otherwise out of sample
   plt3 <- chunks3 %>%
+    as.data.frame() %>%
     ## Add on pltID
     dplyr::left_join(pltAtt3, by = c('plt3' = 'OBJECTID')) %>%
     ## Only those not in the 1km buffer
@@ -108,6 +129,7 @@ intersect_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
   write.csv(plt, paste0(dirResults, 'fiaPlts_attributes.csv'), row.names = F)
   
   
+  cat('Fuzzy spatial intersection complete ...\n')
 }
 
 
@@ -164,12 +186,12 @@ processChunk <- function(iter, index, xstart, ystart,
       dplyr::filter(!is.na(plt1)) %>%
       dplyr::group_by(plt1, mapzone, huc8, huc10, strat) %>%
       dplyr::summarise(n = dplyr::n()) %>%
-      as.data.table()
+      data.table::as.data.table()
     totals3 <- dat %>%
-      dplry::filter(!is.na(plt3)) %>%
+      dplyr::filter(!is.na(plt3)) %>%
       dplyr::group_by(plt3, mapzone, huc8, huc10, strat) %>%
       dplyr::summarise(n = dplyr::n()) %>%
-      as.data.table()
+      data.table::as.data.table()
   })
   
   
@@ -182,7 +204,7 @@ processChunk <- function(iter, index, xstart, ystart,
 joinAttributes <- function(plt, dirGIS) {
   
   ## Read raster attribute tables and select columns of interest
-  strataAtt <- read.csv(paste0(dirGIS, 'attributes/BPS_LLID_attributes.csv'),
+  strataAtt <- read.csv(paste0(dirGIS, 'attributes/BPS_LLID.csv'),
                         stringsAsFactors = FALSE) %>%
     dplyr::select(OBJECTID, BPS_LLID)
   
@@ -212,6 +234,7 @@ joinAttributes <- function(plt, dirGIS) {
     dplyr::mutate(BPS = stringr::str_split(BPS_LLID, '_', simplify = TRUE)[,1],
                   PVT = stringr::str_split(BPS_LLID, '_', simplify = TRUE)[,2],
                   BpS_Code = paste(BPS, PVT, sep = "_")) %>%
+    dplyr::select(-c('PVT')) %>%
     dplyr::left_join(bpsAtt, by = c('BpS_Code')) %>%
     dplyr::select(pltID, dplyr::everything())
   

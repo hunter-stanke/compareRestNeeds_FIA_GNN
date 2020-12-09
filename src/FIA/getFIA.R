@@ -26,7 +26,7 @@ download_FIA <- function(states, dirFIA, force = FALSE) {
   if (force == FALSE) {
     
     ## Check for the plot tables
-    getThese <- !c(paste0(states, '_PLOT.csv') %in% list.files(dir))
+    getThese <- !c(paste0(states, '_PLOT.csv') %in% list.files(dirFIA))
     
     ## Subset the states we need to download
     states <- states[getThese]

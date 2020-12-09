@@ -29,14 +29,15 @@
 ## dirResults (character): directory where project results are stored
 ## bufferRadius (numeric): size of buffer to be generated, i.e, radius in meters
 rasterize_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
-                                   dirResults = here::here('results/'),
+                                   dirResults = here::here('results/FIA/'),
                                    bufferRadius = 1000) {
   
   ## Read our plot data
   plt <- read.csv(paste0(dirResults, 'fiaPlts.csv')) %>%
     dplyr::filter(PLOT_STATUS_CD == 1) %>% # Forested conditions only
     dplyr::select(pltID, LAT, LON) %>% # slim down the width
-    dplyr::distinct() # drop remeasurements, as spatial info is constant
+    dplyr::distinct() %>% # drop remeasurements, as spatial info is constant
+    dplyr::mutate(OBJECTID = 1:nrow(.))
   
   ## using the strata raster as a template for plot buffer rasters
   ref <- stars::read_stars(paste0(dirGIS, '/BPS_LLID/BPS_LLID.tif'), proxy = F)
@@ -51,7 +52,7 @@ rasterize_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
   
   ## Make the buffers
   pltBuffer <- sf::st_buffer(pltSF, dist = bufferRadius)
-  
+
   ## rasterize the buffers
   buffR <- stars::st_rasterize(dplyr::select(pltBuffer, OBJECTID), 
                                template = ref)
@@ -60,11 +61,11 @@ rasterize_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
   outdir <- paste0(dirGIS, 'plts_', bufferRadius / 1000, 'km/')
   dir.create(file.path(outdir), showWarnings = FALSE) # make the directory
   stars::write_stars(buffR, 
-                     paste0(outdir, 'plts_', bufferRadius / 1000, 'km.csv'),
+                     paste0(outdir, 'plts_', bufferRadius / 1000, 'km.tif'),
                      driver = 'GTiff')
   
   ## Save the "attribute table"
-  write.csv(dplry::select(as.data.frame(pltBuffer), OBJECTID, pltID), # drop geometry
+  write.csv(dplyr::select(as.data.frame(pltBuffer), OBJECTID, pltID), # drop geometry
             paste0(dirGIS, 'attributes/plts_', bufferRadius / 1000, 'km.csv'),
             row.names = FALSE)
 }

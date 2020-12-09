@@ -24,10 +24,6 @@
 library(here)
 library(dplyr)
 
-## Check that we're in the right location, this should be the location
-## where the FIA_GNN_RNA folder is unzipped on your machine
-cat('Working directory:', here())
-
 ## Loading our functions that will be called below 
 sapply(list.files(here('src/FIA/'), full.names = TRUE), source)
 
@@ -46,9 +42,16 @@ download_FIA(states = c('OR', 'WA'),
 
 ## Select the FIA plots associated with all 'current area' inventories
 select_FIA_area_plots(dirFIA = here('data/FIA/'),
-                      dirResults = here('results/'))
+                      dirResults = here('results/FIA/'),
+                      cores = 10)
+
+## Do a 'fuzzy' spatial intersection of plot locations with auxiliary rasters
+fuzzy_plot_intersection(dirGIS = here('data/GIS/'),
+                        dirResults = here('results/FIA/'),
+                        cores = 10)
 
 
+## Predict tree crown width 
 
 ## ESTIMATE LAND AREA ----------------------------------------------------------
 
