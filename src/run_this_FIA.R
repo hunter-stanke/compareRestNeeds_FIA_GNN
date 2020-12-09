@@ -78,3 +78,8 @@ estimate_sclass_area(dirFIA = here::here('data/FIA/'),
 
 
 ## ESTIMATE RESTORATION NEED ---------------------------------------------------
+
+## Estimate total and % forest area by S-class within classified domains (strata)
+estimate_rest_need(dirResults = here::here('results/FIA/'),
+                   dirRefCon = here::here('data/refCon/'),
+                   cores = cores)
