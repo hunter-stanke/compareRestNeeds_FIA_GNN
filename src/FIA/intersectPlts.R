@@ -126,7 +126,7 @@ fuzzy_plot_intersection <- function(dirGIS = here::here('data/GIS/'),
   plt <- joinAttributes(plt, dirGIS)
   
   ## Save results
-  write.csv(plt, paste0(dirResults, 'fiaPlts_attributes.csv'), row.names = F)
+  write.csv(plt, paste0(dirResults, 'prep/fiaPlts_attributes.csv'), row.names = F)
   
   
   cat('Fuzzy spatial intersection complete ...\n')

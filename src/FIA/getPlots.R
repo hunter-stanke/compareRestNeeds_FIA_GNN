@@ -34,7 +34,7 @@ select_FIA_area_plots <- function(dirFIA = here::here('data/FIA/'),
   
   
   ## Save results
-  write.csv(plt, paste0(dirResults, 'fiaPlts.csv'), row.names = FALSE)
+  write.csv(plt, paste0(dirResults, 'prep/fiaPlts.csv'), row.names = FALSE)
   
   ## Return message in run_this
   cat('FIA data subset complete ...\n')

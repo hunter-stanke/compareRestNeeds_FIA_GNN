@@ -33,7 +33,7 @@ rasterize_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
                                    bufferRadius = 1000) {
   
   ## Read our plot data
-  plt <- read.csv(paste0(dirResults, 'fiaPlts.csv')) %>%
+  plt <- read.csv(paste0(dirResults, 'prep/fiaPlts.csv')) %>%
     dplyr::filter(PLOT_STATUS_CD == 1) %>% # Forested conditions only
     dplyr::select(pltID, LAT, LON) %>% # slim down the width
     dplyr::distinct() %>% # drop remeasurements, as spatial info is constant
