@@ -23,19 +23,20 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
                                 cores = 1) {
   
   ## Reference conditions - NRV +/- 2 SD
-  refCon <- read.csv(paste0(dirRefCon, 'R6RefCon.txt')) %>%
+  refCon <- read.csv(paste0(dirRefCon, '/R6RefCon.txt')) %>%
     dplyr::select(BpS_Code = LF_BpS_Code, SCLASS = Sclass, avg = Avg_, low = Minus_2_SD, high = Plus_2_SD) %>%
     dplyr::distinct()
   
   ## "Order of operations" for transferring land area between S-classes
-  rules <- read.csv(paste0(dirRefCon, 'restorationRules.csv')) %>%
+  rules <- read.csv(paste0(dirRefCon, '/restorationRules.csv')) %>%
     dplyr::select(BpS_Code = LF_BpS_Code, Order:PassiveOnly)
   
   
   ## Now process results for each of our 'strata' and estimation types
   
   ## Annual BPS
-  processStrata(dat = read.csv(paste0(dirResults, 'sclass/BPS_annual.csv')),
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/BPS_annual.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
@@ -45,7 +46,8 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
                 YEAR, BpS_Code)
   
   ## Annual BPS  MAPZONE
-  processStrata(dat = read.csv(paste0(dirResults, 'sclass/BPS_MAPZONE_annual.csv')),
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/BPS_MAPZONE_annual.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
@@ -55,7 +57,8 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
                 YEAR, BpS_Code, MAP_ZONE)
   
   ## Annual BPS LLID
-  processStrata(dat = read.csv(paste0(dirResults, 'sclass/BPS_LLID_annual.csv')),
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/BPS_LLID_annual.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
@@ -65,7 +68,8 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
                 YEAR, BpS_Code, BPS_LLID)
   
   ## TI BPS
-  processStrata(dat = read.csv(paste0(dirResults, 'sclass/BPS_ti.csv')),
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/BPS_ti.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
@@ -75,7 +79,8 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
                 YEAR, BpS_Code)
   
   ## Annual BPS  MAPZONE
-  processStrata(dat = read.csv(paste0(dirResults, 'sclass/BPS_MAPZONE_ti.csv')),
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/BPS_MAPZONE_ti.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
@@ -85,7 +90,8 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
                 YEAR, BpS_Code, MAP_ZONE)
   
   ## Annual BPS LLID
-  processStrata(dat = read.csv(paste0(dirResults, 'sclass/BPS_LLID_ti.csv')),
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/BPS_LLID_ti.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
@@ -101,7 +107,7 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
 }
 
 # A helper function for above
-processStrata <- function(dat, refcon, rules, sclass, bps, prefix, cores, ...){
+processStrata <- function(dirResults, dat, refcon, rules, sclass, bps, prefix, cores, ...){
   
   ## ID all the columns we need to define strata
   strata <- dplyr::enquos(...)
@@ -126,12 +132,13 @@ processStrata <- function(dat, refcon, rules, sclass, bps, prefix, cores, ...){
     dplyr::filter(AREA_STRATA > 0) %>%    
     dplyr::ungroup() %>%
     ## Join reference conditions
-    dplyr::left_join(refCon, by = c('BpS_Code', 'SCLASS')) %>%
+    dplyr::left_join(refcon, by = c('BpS_Code', 'SCLASS')) %>%
     dplyr::mutate(dplyr::across(c(avg:high), .fns = function(x, total) {x * .01 * total}, total = .$AREA_STRATA)) 
   
 
   ## An iterator that identifies each "strata"
   x <- unique(dat$strataID)
+  
   
   ## Run the algorithm in parallel, overkill for large units
   if (Sys.info()['sysname'] == 'Windows'){
@@ -156,8 +163,8 @@ processStrata <- function(dat, refcon, rules, sclass, bps, prefix, cores, ...){
 
   
   ## Save it all
-  write.csv(transfer, paste0(dirResults,'restNeed/', prefix, '_transfers.csv'), row.names = FALSE)
-  write.csv(strata_new, paste0(dirResults,'restNeed/', prefix, '_postRest.csv'), row.names = FALSE)
+  write.csv(transfer, paste0(dirResults,'/restNeed/', prefix, '_transfers.csv'), row.names = FALSE)
+  write.csv(strata_new, paste0(dirResults,'/restNeed/', prefix, '_postRest.csv'), row.names = FALSE)
   
   suppressMessages({
     ## Make a cleaner dataset that shows prop need by type
@@ -176,7 +183,7 @@ processStrata <- function(dat, refcon, rules, sclass, bps, prefix, cores, ...){
       dplyr::select(-c(strataID))
   })
 
-  write.csv(rn, paste0(dirResults,'restNeed/', prefix, '_restNeed.csv'), row.names = FALSE)
+  write.csv(rn, paste0(dirResults,'/restNeed/', prefix, '_restNeed.csv'), row.names = FALSE)
   
 }
 
@@ -242,6 +249,9 @@ transferArea <- function(strata, rr){
 ## 'restRules'
 ## This could be done much more elegantly, but who cares
 restArea <- function(x, stratArea, restRules){
+  
+  ## This is dumb, but so is Windows. Can't find functions from global
+  source(here::here('src/FIA/estimateRestNeed.R')) # Loading functions to pass to cluster
   
   ## Strata area info
   strata <- dplyr::filter(stratArea, strataID == x)

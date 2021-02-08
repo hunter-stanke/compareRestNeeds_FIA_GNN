@@ -1,0 +1,149 @@
+ID,PVTCode,PVTName,RegionCode,Size_TH
+1,OBM_fsw,Subalpine woodland,OBM,12
+2,OBM_fmh,Mountain hemlock - Cold/Dry,OBM,12
+3,OBM_fcd,Subalpine fir - Cold/Dry,OBM,12
+4,OBM_fcm,Grand fir - Cool/moist,OBM,15
+5,OBM_fdg,Grand fir - Warm/Dry,OBM,15
+6,OBM_fmz,Mixed Conifer - Cold/dry,OBM,12
+7,OBM_fdd,Douglas-fir - Dry,OBM,15
+8,OBM_fdp,"Ponderosa pine - Dry, with juniper",OBM,8
+9,OBM_fxp,Ponderosa pine - Xeric,OBM,8
+10,OCR_fsi,Pacific silver fir - Intermediate,OCR,0
+11,OCR_fsw,Pacific silver fir - Warm,OCR,0
+12,OCR_fcw,White fir - Cool,OCR,0
+13,OCR_fiw,White fir - Intermediate,OCR,0
+14,OCR_fvw,White fir - Moist,OCR,0
+15,OCR_fvg,Grand fir - Valley,OCR,0
+16,OCR_fhc,Western hemlock - Coastal,OCR,0
+17,OCR_fwi,Western hemlock - Intermediate,OCR,0
+18,OCR_fwn,Western hemlock - Moist (Coastal),OCR,0
+19,OCR_fww,Western hemlock - Wet,OCR,0
+20,OCR_fwc,Western hemlock - Cold,OCR,0
+21,OCR_fwx,Western hemlock - Hyperdry,OCR,0
+22,OCR_fdm,Douglas-fir - Moist,OCR,0
+23,OCR_fdw,Douglas-fir - White oak,OCR,0
+24,OCR_fto,Tan oak - Moist,OCR,0
+25,OCR_ftm,Tan oak - Douglas-fir - Moist,OCR,0
+26,OCR_ftd,Tan oak - Douglas-fir - Dry,OCR,0
+27,OCR_fss,Sitka spruce,OCR,0
+28,OEC_fal,Subalpine parkland,OEC,12
+29,OEC_fmh,Mountain hemlock - Cold/Dry,OEC,12
+30,OEC_fmi,Mountain hemlock - Intermediate,OEC,20
+31,OEC_frf,Shasta red fir - Dry,OEC,20
+32,OEC_fsi,Pacific silver fir - Intermediate,OEC,20
+33,OEC_fsw,Pacific silver fir - Warm,OEC,20
+34,OEC_fmz,Mixed Conifer - Cold/dry,OEC,12
+35,OEC_fmm,Mixed Conifer - Moist,OEC,20
+36,OEC_fmd,Mixed Conifer - Dry,OEC,15
+37,OEC_fmx,Mixed Conifer - Dry (Pumice soils),OEC,15
+38,OEC_fwi,Western hemlock - Intermediate,OEC,20
+39,OEC_fww,Western hemlock - Wet,OEC,20
+40,OEC_fwc,Western hemlock - Cold,OEC,20
+41,OEC_fld,Lodgepole pine - Dry,OEC,8
+42,OEC_flw,Lodgepole pine - Wet,OEC,8
+43,OEC_fpd,"Ponderosa pine - Dry, with juniper",OEC,8
+44,OEC_fpl,Ponderosa pine - Lodgepole pine,OEC,10
+45,OEC_fxp,Ponderosa pine - Xeric,OEC,8
+46,OEC_fop,Oregon white oak - Ponderosa pine,OEC,8
+47,OSE_fmd,Mixed Conifer - Dry,OSE,15
+48,OSE_fmx,Mixed Conifer - Dry (Pumice soils),OSE,15
+49,OSE_fpd,"Ponderosa pine - Dry, with juniper",OSE,8
+50,OSE_fxp,Ponderosa pine - Xeric,OSE,8
+51,OSW_fal,Subalpine parkland,OSW,12
+52,OSW_fmh,Mountain hemlock - Cold/Dry,OSW,12
+53,OSW_frm,Shasta red fir - Moist,OSW,20
+54,OSW_fsi,Pacific silver fir - Intermediate,OSW,0
+55,OSW_fcw,White fir - Cool,OSW,0
+56,OSW_fiw,White fir - Intermediate,OSW,0
+57,OSW_fvw,White fir - Moist,OSW,0
+58,OSW_fhc,Western hemlock - Coastal,OSW,0
+59,OSW_fwi,Western hemlock - Intermediate,OSW,0
+60,OSW_fwm,Western hemlock - Moist,OSW,0
+61,OSW_fwx,Western hemlock - Hyperdry,OSW,0
+62,OSW_fdm,Douglas-fir - Moist,OSW,0
+63,OSW_fdd,Douglas-fir - Dry,OSW,0
+64,OSW_ftm,Tan oak - Douglas-fir - Moist,OSW,0
+65,OSW_ftd,Tan oak - Douglas-fir - Dry,OSW,20
+66,OSW_fpd,Ponderosa pine - Dry,OSW,8
+67,OSW_fwo,Oregon white oak,OSW,8
+68,OSW_fuc,Ultramafic,OSW,8
+69,OSW_fss,Sitka spruce,OSW,0
+70,OWC_fal,Subalpine parkland,OWC,12
+71,OWC_fmh,Mountain hemlock - Cold/Dry,OWC,12
+72,OWC_fmi,Mountain hemlock - Intermediate,OWC,0
+73,OWC_fmc,Mountain hemlock - Cold/Dry (Coastal/W.Cascades),OWC,12
+74,OWC_frm,Shasta red fir - Moist,OWC,0
+75,OWC_fsi,Pacific silver fir - Intermediate,OWC,0
+76,OWC_fsw,Pacific silver fir - Warm,OWC,0
+77,OWC_fcw,White fir - Cool,OWC,0
+78,OWC_fiw,White fir - Intermediate,OWC,0
+79,OWC_fvg,Grand fir - Valley,OWC,0
+80,OWC_fwi,Western hemlock - Intermediate,OWC,0
+81,OWC_fwm,Western hemlock - Moist,OWC,0
+82,OWC_fww,Western hemlock - Wet,OWC,0
+83,OWC_fwc,Western hemlock - Cold,OWC,0
+84,OWC_fwx,Western hemlock - Hyperdry,OWC,0
+85,OWC_fdm,Douglas-fir - Moist,OWC,0
+86,OWC_fdw,Douglas-fir - White oak,OWC,0
+87,OWC_fdx,Douglas-fir - Xeric,OWC,0
+88,WCB_fmh,Mountain hemlock - Cold/Dry,WCB,12
+89,WCB_fcd,Subalpine fir - Cold/Dry,WCB,12
+90,WCB_fcm,Grand fir - Cool/moist,WCB,15
+91,WCB_fdg,Grand fir - Warm/Dry,WCB,15
+92,WCB_fmm,Mixed Conifer - Moist,WCB,20
+93,WCB_fmd,Mixed Conifer - Dry,WCB,15
+94,WCB_fdd,Douglas-fir - Dry,WCB,15
+95,WCB_fpd,Ponderosa pine - Dry,WCB,8
+96,WCB_fxp,Ponderosa pine - Xeric,WCB,8
+97,WCB_fop,Oregon white oak - Ponderosa pine,WCB,8
+98,WCR_fal,Subalpine parkland,WCR,12
+99,WCR_fmt,Mountain hemlock - Wet,WCR,0
+100,WCR_fmc,Mountain hemlock - Cold/Dry (Coastal/W.Cascades),WCR,12
+101,WCR_faf,Subalpine fir,WCR,12
+102,WCR_fst,Pacific silver fir - Wet,WCR,0
+103,WCR_fsi,Pacific silver fir - Intermediate,WCR,0
+104,WCR_fdg,Grand fir - Valley,WCR,0
+105,WCR_fwi,Western hemlock - Intermediate,WCR,0
+106,WCR_fwn,Western hemlock - Moist (Coastal),WCR,0
+107,WCR_fww,Western hemlock - Wet,WCR,0
+108,WCR_fwc,Western hemlock - Cold,WCR,0
+109,WCR_fss,Sitka spruce,WCR,0
+110,WEC_fal,Subalpine parkland,WEC,12
+111,WEC_fmh,Mountain hemlock - Cold/Dry,WEC,12
+112,WEC_fsi,Pacific silver fir - Intermediate,WEC,20
+113,WEC_fmm,Mixed Conifer - Moist,WEC,20
+114,WEC_fmd,Mixed Conifer - Dry,WEC,15
+115,WEC_fpd,Ponderosa pine - Dry,WEC,8
+116,WEC_fop,Oregon white oak - Ponderosa pine,WEC,8
+117,WNC_fal,Subalpine parkland,WNC,12
+118,WNC_fmt,Mountain hemlock - Wet,WNC,0
+119,WNC_fmi,Mountain hemlock - Intermediate,WNC,0
+120,WNC_fmc,Mountain hemlock - Cold/Dry (Coastal/W.Cascades),WNC,12
+121,WNC_faf,Subalpine fir,WNC,12
+122,WNC_fst,Pacific silver fir - Wet,WNC,0
+123,WNC_fsi,Pacific silver fir - Intermediate,WNC,0
+124,WNC_fdg,Grand fir - Valley,WNC,0
+125,WNC_fwi,Western hemlock - Intermediate,WNC,0
+126,WNC_fwm,Western hemlock - Moist,WNC,0
+127,WNC_fww,Western hemlock - Wet,WNC,0
+128,WNC_fwc,Western hemlock - Cold,WNC,0
+129,WNE_fal,Subalpine parkland,WNE,12
+130,WNE_faf,Subalpine fir,WNE,12
+131,WNE_fcd,Subalpine fir - Cold/Dry,WNE,12
+132,WNE_fcm,Grand fir - Cool/moist,WNE,15
+133,WNE_frn,Western red cedar/Western hemlock - Moist,WNE,20
+134,WNE_fdd,Douglas-fir - Dry,WNE,15
+135,WNE_fpd,Ponderosa pine - Dry,WNE,8
+136,WWC_fal,Subalpine parkland,WWC,12
+137,WWC_fmt,Mountain hemlock - Wet,WWC,0
+138,WWC_fmi,Mountain hemlock - Intermediate,WWC,0
+139,WWC_fmc,Mountain hemlock - Cold/Dry (Coastal/W.Cascades),WWC,12
+140,WWC_faf,Subalpine fir,WWC,12
+141,WWC_fst,Pacific silver fir - Wet,WWC,0
+142,WWC_fsi,Pacific silver fir - Intermediate,WWC,0
+143,WWC_fdg,Grand fir - Valley,WWC,0
+144,WWC_fwi,Western hemlock - Intermediate,WWC,0
+145,WWC_fwm,Western hemlock - Moist,WWC,0
+146,WWC_fww,Western hemlock - Wet,WWC,0
+147,WWC_fwc,Western hemlock - Cold,WWC,0
+148,WWC_fss,Sitka spruce,WWC,0

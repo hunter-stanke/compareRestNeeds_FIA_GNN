@@ -1,0 +1,190 @@
+"BpS_Code","Order","Donate","Receive","Primary","Secondary","ActiveOnly","ActivePassive","PassiveOnly","REST_ACRES"
+"Na0210290_fdw",1,"B","C","Thin / low fire","None",1,0,0,1463.73672670021
+"Na0210290_fdw",2,"E","D","Thin / low fire","None",1,0,0,4327.66200530594
+"Na0210290_fdw",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,1378.23652405524
+"Na0210290_fdw",6,"B","A","Regen / high fire","None",1,0,0,0.741756554339531
+"Na0210290_fwo",2,"E","D","Thin / low fire","None",1,0,0,4721.81623205499
+"Na0210290_fwo",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,130675.152611446
+"Na0210290_fwo",18,"A","D","Grow w/ fire","Grow w/ fire",0,0,1,321.374212991039
+"Na0210350_fvg",2,"E","D","Thin / low fire","None",1,0,0,40.358202525743
+"Na0210350_fvg",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,427.486874089548
+"Na0210350_fvg",19,"A","D","Grow w/ fire","Grow w/ fire",0,0,1,134.377987767598
+"Na0710270_fdd",1,"B","C","Thin / low fire","None",1,0,0,34062.0060105714
+"Na0710270_fdd",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,557192.173928133
+"Na0710270_fdd",13,"B","E","Grow w/o fire","None",0,0,1,242191.148684117
+"Na0710412_fmc",1,"B","A","Regen / high fire","None",1,0,0,662.64088466247
+"Na0710412_fmc",4,"E","A","Regen / high fire","None",1,0,0,308.149558076457
+"Na0710412_fmc",6,"E","C","Overstory removal","None",1,0,0,1909.96134336834
+"Na0710412_fmh",1,"B","A","Regen / high fire","None",1,0,0,88811.7434597189
+"Na0710412_fmh",5,"D","C","Overstory removal","None",1,0,0,26671.4752329047
+"Na0710412_fmh",7,"B","C","Thin / low fire","None",1,0,0,94184.2000561246
+"Na0710412_fmi",1,"B","A","Regen / high fire","None",1,0,0,2041.24481660053
+"Na0710412_fmi",5,"D","C","Overstory removal","None",1,0,0,1919.75619627513
+"Na0710412_fmi",7,"B","C","Thin / low fire","None",1,0,0,1738.19983152045
+"Na1010471_frn",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,50186.9430115587
+"Na1010471_frn",6,"B","A","Regen / high fire","None",1,0,0,44983.2333761817
+"Na1010471_frn",13,"B","E","Grow w/o fire","None",0,0,1,98204.0412329441
+"Na1010471_frn",20,"C","E","Grow w/o fire","Grow w/o fire",0,0,1,109523.30472819
+"R1RFWF_fcw",1,"B","C","Thin / low fire","None",1,0,0,6500.55520636472
+"R1RFWF_fcw",2,"E","D","Thin / low fire","None",1,0,0,13393.6175378632
+"R1RFWF_fcw",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,4395.22920221761
+"R1RFWF_fcw",6,"B","A","Regen / high fire","None",1,0,0,13761.8470344919
+"R1RFWF_frm",1,"B","C","Thin / low fire","None",1,0,0,55.1330038901718
+"R1RFWF_frm",2,"E","D","Thin / low fire","None",1,0,0,454.37586024702
+"R1RFWF_frm",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,39.3726415006943
+"R1RFWF_frm",6,"B","A","Regen / high fire","None",1,0,0,416.441588761963
+"RaABAMlw_fsi",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,22193.7375850245
+"RaABAMlw_fsi",6,"B","A","Regen / high fire","None",1,0,0,27777.9462868846
+"RaABAMlw_fsi",13,"B","E","Grow w/o fire","None",0,0,1,59626.7785396644
+"RaABAMlw_fsi",14,"C","E","Grow w/o fire","None",0,0,1,26374.3875185005
+"RaABAMlw_fsw",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,914.852207716161
+"RaABAMlw_fsw",6,"B","A","Regen / high fire","None",1,0,0,710.554798856332
+"RaABAMlw_fsw",13,"B","E","Grow w/o fire","None",0,0,1,1715.69774722488
+"RaABAMlw_fsw",14,"C","E","Grow w/o fire","None",0,0,1,1365.71729368548
+"RaABAMlw_fwc",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,150.507911778007
+"RaABAMlw_fwc",6,"B","A","Regen / high fire","None",1,0,0,277.342055981548
+"RaABAMlw_fwc",13,"B","E","Grow w/o fire","None",0,0,1,1515.97081505794
+"RaABAMlw_fwc",14,"C","E","Grow w/o fire","None",0,0,1,489.963736755959
+"RaABLA_faf",1,"B","A","Regen / high fire","None",1,0,0,1478.64562000413
+"RaABLA_faf",10,"B","E","Grow w/o fire","None",0,0,1,1948.39552858569
+"RaABLA_faf",14,"C","D","Grow w/ fire","None",0,0,1,73.3222072590686
+"RaABLA_faf",18,"B","D","Thin / low fire","Grow w/ fire",0,1,0,173.385110062564
+"RaDFHEdy_fwi",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,41399.0426213391
+"RaDFHEdy_fwi",13,"B","E","Grow w/o fire","None",0,0,1,69454.6221581473
+"RaDFHEdy_fwi",14,"C","E","Grow w/o fire","None",0,0,1,24037.6202566597
+"RaDFHEdy_fwi",20,"A","E","Grow w/o fire","Grow w/o fire",0,0,1,20442.8728343152
+"RaDFHEdy_fwx",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,8814.02433224916
+"RaDFHEdy_fwx",6,"B","A","Regen / high fire","None",1,0,0,924.157215618794
+"RaDFHEdy_fwx",13,"B","E","Grow w/o fire","None",0,0,1,14314.5747658156
+"RaDFHEdy_fwx",14,"C","E","Grow w/o fire","None",0,0,1,6756.37557834505
+"RaDFHEwt_fdm",10,"B","E","Grow w/o fire","None",0,0,1,4849.61378858056
+"RaDFHEwt_fdm",11,"C","E","Grow w/o fire","None",0,0,1,1536.66817272757
+"RaDFHEwt_fdm",19,"A","E","Grow w/o fire","Grow w/o fire",0,0,1,23.9430144859721
+"RaDFHEwt_fhc",10,"B","E","Grow w/o fire","None",0,0,1,9542.07012909344
+"RaDFHEwt_fhc",11,"C","E","Grow w/o fire","None",0,0,1,3798.88045968341
+"RaDFHEwt_fhc",19,"A","E","Grow w/o fire","Grow w/o fire",0,0,1,2457.28065901379
+"RaDFHEwt_fwc",2,"C","A","Regen / high fire","None",1,0,0,0.007248822469805
+"RaDFHEwt_fwc",11,"C","E","Grow w/o fire","None",0,0,1,0.158918866759425
+"RaDFHEwt_fwc",14,"C","D","Grow w/ fire","None",0,0,1,0.00507334234808
+"RaDFHEwt_fwc",15,"C","B","Regen / high fire","Grow w/o fire",0,1,0,0.03271156859671
+"RaDFHEwt_fwm",10,"B","E","Grow w/o fire","None",0,0,1,69156.2499768812
+"RaDFHEwt_fwm",11,"C","E","Grow w/o fire","None",0,0,1,35043.3091718216
+"RaDFHEwt_fwm",19,"A","E","Grow w/o fire","Grow w/o fire",0,0,1,26254.8791440618
+"RaDFHEwt_fwn",10,"B","E","Grow w/o fire","None",0,0,1,34812.4472764801
+"RaDFHEwt_fwn",11,"C","E","Grow w/o fire","None",0,0,1,21250.7718426016
+"RaDFHEwt_fwn",12,"D","E","Grow w/o fire","None",0,0,1,2192.91260579262
+"RaDFHEwt_fwn",19,"A","E","Grow w/o fire","Grow w/o fire",0,0,1,40282.846228817
+"RaDFHEwt_fww",10,"B","E","Grow w/o fire","None",0,0,1,6628.28914470024
+"RaDFHEwt_fww",11,"C","E","Grow w/o fire","None",0,0,1,5859.89442631324
+"RaDFHEwt_fww",12,"D","E","Grow w/o fire","None",0,0,1,385.221066762891
+"RaDFHEwt_fww",19,"A","E","Grow w/o fire","Grow w/o fire",0,0,1,6549.5096815431
+"RaDFWV_fwx",2,"E","D","Thin / low fire","None",1,0,0,5337.56612509157
+"RaDFWV_fwx",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,3213.30708543803
+"RaMCONdy_fdd",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,1662164.72660202
+"RaMCONdy_fdd",6,"B","A","Regen / high fire","None",1,0,0,120387.160839082
+"RaMCONdy_fdd",13,"B","E","Grow w/o fire","None",0,0,1,169451.106725273
+"RaMCONdy_fdg",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,391297.268709098
+"RaMCONdy_fdg",6,"B","A","Regen / high fire","None",1,0,0,35757.40236614
+"RaMCONdy_fdx",1,"B","C","Thin / low fire","None",1,0,0,571.118121109575
+"RaMCONdy_fdx",2,"E","D","Thin / low fire","None",1,0,0,361.098345358896
+"RaMCONdy_fdx",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,1167.8393935534
+"RaMCONdy_fdx",6,"B","A","Regen / high fire","None",1,0,0,123.382268542829
+"RaMCONdy_fmd",1,"B","C","Thin / low fire","None",1,0,0,31597.5647030019
+"RaMCONdy_fmd",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,773636.237554911
+"RaMCONdy_fmx",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,221829.048439724
+"RaMCONdy_fmx",13,"B","E","Grow w/o fire","None",0,0,1,7976.98533533814
+"RaMCONms_fcm",7,"C","A","Regen / high fire","None",1,0,0,75744.1227718985
+"RaMCONms_fcm",11,"C","D","Grow w/ fire","None",0,0,1,75595.7850792381
+"RaMCONms_fcm",15,"C","E","Grow w/o fire","Grow w/o fire",0,0,1,110473.185644807
+"RaMCONms_fcm",16,"C","B","Regen / high fire","Grow w/o fire",0,1,0,248865.951409006
+"RaMCONms_fmm",7,"C","A","Regen / high fire","None",1,0,0,90283.2375977402
+"RaMCONms_fmm",11,"C","D","Grow w/ fire","None",0,0,1,103639.981145311
+"RaMCONms_fmm",16,"C","B","Regen / high fire","Grow w/o fire",0,1,0,6985.11364472681
+"RaMCONsw_fdm",1,"B","C","Thin / low fire","None",1,0,0,8294.06054762711
+"RaMCONsw_fdm",2,"E","D","Thin / low fire","None",1,0,0,4065.52905093137
+"RaMCONsw_fdm",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,115702.533806975
+"RaMCONsw_fdm",6,"B","A","Regen / high fire","None",1,0,0,6302.56810947834
+"RaMCONsw_fiw",2,"E","D","Thin / low fire","None",1,0,0,108904.858802749
+"RaMCONsw_fiw",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,404772.477527449
+"RaMCONsw_fiw",6,"B","A","Regen / high fire","None",1,0,0,74201.1257279938
+"RaMCONsw_fvw",1,"B","C","Thin / low fire","None",1,0,0,1467.24906890381
+"RaMCONsw_fvw",2,"E","D","Thin / low fire","None",1,0,0,4503.08572779272
+"RaMCONsw_fvw",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,46713.9087542659
+"RaMCONsw_fvw",6,"B","A","Regen / high fire","None",1,0,0,3672.72147766709
+"RaMEVG_ftd",1,"B","C","Thin / low fire","None",1,0,0,125506.082007106
+"RaMEVG_ftd",2,"E","D","Thin / low fire","None",1,0,0,54614.5409001465
+"RaMEVG_ftd",5,"E","C","Overstory removal","None",1,0,0,46048.8311174028
+"RaMEVG_ftd",9,"E","A","Regen / high fire","None",1,0,0,9072.71797993358
+"RaMEVG_fuc",1,"B","C","Thin / low fire","None",1,0,0,5603.02083574207
+"RaMEVG_fuc",2,"E","D","Thin / low fire","None",1,0,0,4572.29710223548
+"RaMEVG_fuc",5,"E","C","Overstory removal","None",1,0,0,5704.76817680151
+"RaMEVG_fuc",10,"A","C","Grow w/ fire","None",0,0,1,22126.0771929573
+"RaOAPI_fop",1,"B","C","Thin / low fire","None",1,0,0,7466.76200999048
+"RaOAPI_fop",2,"E","D","Thin / low fire","None",1,0,0,26644.9307618665
+"RaOAPI_fop",6,"B","A","Regen / high fire","None",1,0,0,8240.17074926296
+"RaPICOpu_fld",1,"B","A","Regen / high fire","None",1,0,0,14451.0415003141
+"RaPICOpu_fld",6,"E","C","Overstory removal","None",1,0,0,1230.28947195389
+"RaPICOpu_fld",7,"B","C","Thin / low fire","None",1,0,0,5890.32552959185
+"RaPICOpu_fld",15,"B","D","Regen / high fire","Grow w/o fire",0,1,0,18731.4739959998
+"RaPICOpu_flp",1,"B","A","Regen / high fire","None",1,0,0,4590.81986174768
+"RaPICOpu_flp",6,"E","C","Overstory removal","None",1,0,0,3554.24234857707
+"RaPICOpu_flp",7,"B","C","Thin / low fire","None",1,0,0,6629.83466135879
+"RaPICOpu_flp",8,"E","D","Thin / low fire","None",1,0,0,2.27373675443232e-13
+"RaPICOpu_flp",15,"B","D","Regen / high fire","Grow w/o fire",0,1,0,2179.28955141422
+"RaPICOpu_flw",1,"B","A","Regen / high fire","None",1,0,0,4868.43633238376
+"RaPICOpu_flw",6,"E","C","Overstory removal","None",1,0,0,4350.3539597244
+"RaPICOpu_flw",7,"B","C","Thin / low fire","None",1,0,0,4205.99828553049
+"RaPICOpu_flw",15,"B","D","Regen / high fire","Grow w/o fire",0,1,0,2983.80454079729
+"RaPIJEsp_fjp",1,"B","C","Thin / low fire","None",1,0,0,8778.85736275406
+"RaPIJEsp_fjp",2,"E","D","Thin / low fire","None",1,0,0,13240.99042757
+"RaPIJEsp_fjp",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,8291.3774050527
+"RaPIJEsp_fjp",18,"A","D","Grow w/ fire","Grow w/ fire",0,0,1,6418.4403707773
+"RaPIPOm_fdp",1,"B","C","Thin / low fire","None",1,0,0,146375.499227194
+"RaPIPOm_fdp",2,"E","D","Thin / low fire","None",1,0,0,214066.138488228
+"RaPIPOm_fdp",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,98099.3892741415
+"RaPIPOm_fpd",1,"B","C","Thin / low fire","None",1,0,0,126167.229803027
+"RaPIPOm_fpd",2,"E","D","Thin / low fire","None",1,0,0,105880.131096943
+"RaPIPOm_fpd",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,78057.2450844326
+"RaPIPOm_fpd",18,"A","D","Grow w/ fire","Grow w/ fire",0,0,1,10320.4330957156
+"RaPIPOm_fpl",1,"B","C","Thin / low fire","None",1,0,0,140796.890377744
+"RaPIPOm_fpl",2,"E","D","Thin / low fire","None",1,0,0,134633.619595455
+"RaPIPOm_fpl",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,179550.99130729
+"RaPIPOxe_fpd",1,"B","C","Thin / low fire","None",1,0,0,3878.40766146457
+"RaPIPOxe_fpd",2,"E","D","Thin / low fire","None",1,0,0,39291.3160477671
+"RaPIPOxe_fpd",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,220420.573391579
+"RaPIPOxe_fpd",6,"B","A","Regen / high fire","None",1,0,0,58629.5655235549
+"RaPIPOxe_fxp",2,"E","D","Thin / low fire","None",1,0,0,41071.8826118099
+"RaPIPOxe_fxp",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,367206.370545888
+"RaPIPOxe_fxp",6,"B","A","Regen / high fire","None",1,0,0,1.45519152283669e-11
+"RaPIPOxe_fxp",7,"C","A","Regen / high fire","None",1,0,0,26590.94397477
+"RaPIPOxe_fxp",11,"C","D","Grow w/ fire","None",0,0,1,9627.5586826778
+"RaREFI_fcw",1,"B","C","Thin / low fire","None",1,0,0,2768.82064976837
+"RaREFI_fcw",2,"E","D","Thin / low fire","None",1,0,0,6076.34759697891
+"RaREFI_fcw",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,36762.4690455844
+"RaREFI_frf",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,11018.7703253055
+"RaREFI_frf",6,"B","A","Regen / high fire","None",1,0,0,1012.47354451644
+"RaREFI_frf",13,"B","E","Grow w/o fire","None",0,0,1,9787.42215972432
+"RaREFI_frm",1,"B","C","Thin / low fire","None",1,0,0,6132.71634334731
+"RaREFI_frm",2,"E","D","Thin / low fire","None",1,0,0,9198.9735271112
+"RaREFI_frm",3,"B","D","Thin / low fire","Grow w/ fire",0,1,0,7409.84727263054
+"RaREFI_frm",6,"B","A","Regen / high fire","None",1,0,0,3299.25786743939
+"RaSAWD_fal",1,"B","C","Thin / low fire","None",1,0,0,106555.659309178
+"RaSAWD_fal",3,"A","C","Grow w/ fire","None",0,0,1,124710.99783405
+"RaSAWD_fsw",1,"B","C","Thin / low fire","None",1,0,0,14943.4757035931
+"RaSAWD_fsw",3,"A","C","Grow w/ fire","None",0,0,1,4355.81011231977
+"RaSPFI_fcd",1,"A","B","Regen / high fire","None",1,0,0,66073.7432424177
+"RaSPFI_fcd",4,"C","B","Regen / high fire","None",1,0,0,152395.199156645
+"RaSPFI_fcd",13,"C","D","Grow w/o fire","None",0,0,1,97653.079001829
+"RaSPFI_fmz",4,"C","B","Regen / high fire","None",1,0,0,33863.4329176829
+"RaSPFI_fmz",14,"C","E","Grow w/o fire","None",0,0,1,3872.88792355958
+"RaSSHE_fss",7,"A","C","Grow w/o fire","None",0,0,1,3.77466341187895
+"RaSSHE_fss",8,"B","E","Grow w/o fire","None",0,0,1,18438.1767882435
+"RaSSHE_fss",18,"A","D","Grow w/o fire","Thin / low fire",0,1,0,70.4872633603754
+"RaSSHE_fss",19,"A","E","Grow w/o fire","Grow w/o fire",0,0,1,4079.86150187755
+"RaTAOAco_ftm",1,"B","C","Thin / low fire","None",1,0,0,161139.822249464
+"RaTAOAco_ftm",2,"E","D","Thin / low fire","None",1,0,0,114311.618071808
+"RaTAOAco_ftm",5,"E","C","Overstory removal","None",1,0,0,57575.8300242797
+"RaTAOAco_fto",1,"B","C","Thin / low fire","None",1,0,0,3377.82281774437
+"RaTAOAco_fto",2,"E","D","Thin / low fire","None",1,0,0,3827.40805890342
+"RaTAOAco_fto",5,"E","C","Overstory removal","None",1,0,0,2571.07933653144
+"RaTAOAco_fto",10,"A","C","Grow w/ fire","None",0,0,1,3697.1692622369

@@ -10,7 +10,7 @@
 ##
 ##
 ## Created:       8 December 2020 - Hunter Stanke
-## Last modified: 9 December 2020 - Hunter Stanke
+## Last modified: 15 January 2020 - Hunter Stanke
 ##
 ##==============================================================================
 ##==============================================================================
@@ -74,12 +74,26 @@ estimate_sclass_area(dirFIA = here::here('data/FIA/'),
                      dirResults = here::here('results/FIA/'),
                      cores = cores)
 
+## Annual change in total and % forest area by S-class within classified domains 
+estimate_sclass_area_change(dirFIA = here::here('data/FIA/'),
+                            dirResults = here::here('results/FIA/'),
+                            cores = cores)
 
 
 
 ## ESTIMATE RESTORATION NEED ---------------------------------------------------
 
-## Estimate total and % forest area by S-class within classified domains (strata)
-estimate_rest_need(dirResults = here::here('results/FIA/'),
-                   dirRefCon = here::here('data/refCon/'),
-                   cores = cores)
+## Estimate total and % land area in need of structural restoration
+estimate_rest_needs(dirResults = here::here('results/FIA/'),
+                    dirRefCon = here::here('data/refCon/'),
+                    cores = cores)
+
+
+## Estimate total and % land area in need of structural restoration
+estimate_rest_needs_change(dirResults = here::here('results/FIA/'),
+                           dirRefCon = here::here('data/refCon/'),
+                           cores = cores)
+
+
+
+

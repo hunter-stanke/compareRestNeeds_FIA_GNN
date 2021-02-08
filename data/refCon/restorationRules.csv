@@ -1,0 +1,1193 @@
+LF_BpS_Code,FRG,Order,Donate,Receive,Primary,Secondary,ActiveOnly,ActivePassive,PassiveOnly
+Na0210290_fdw,1,1,B,C,Thin / low fire,None,1,0,0
+Na0210290_fdw,1,2,E,D,Thin / low fire,None,1,0,0
+Na0210290_fdw,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0210290_fdw,1,4,D,C,Overstory removal,None,1,0,0
+Na0210290_fdw,1,5,E,C,Overstory removal,None,1,0,0
+Na0210290_fdw,1,6,B,A,Regen / high fire,None,1,0,0
+Na0210290_fdw,1,7,C,A,Regen / high fire,None,1,0,0
+Na0210290_fdw,1,8,D,A,Regen / high fire,None,1,0,0
+Na0210290_fdw,1,9,E,A,Regen / high fire,None,1,0,0
+Na0210290_fdw,1,10,A,C,Grow w/ fire,None,0,0,1
+Na0210290_fdw,1,11,C,D,Grow w/ fire,None,0,0,1
+Na0210290_fdw,1,12,A,B,Grow w/o fire,None,0,0,1
+Na0210290_fdw,1,13,B,E,Grow w/o fire,None,0,0,1
+Na0210290_fdw,1,14,C,B,Grow w/o fire,None,0,0,1
+Na0210290_fdw,1,15,D,E,Grow w/o fire,None,0,0,1
+Na0210290_fdw,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0210290_fdw,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0210290_fdw,1,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na0210290_fdw,1,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0210290_fdw,1,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0210290_fwo,1,1,B,C,Thin / low fire,None,1,0,0
+Na0210290_fwo,1,2,E,D,Thin / low fire,None,1,0,0
+Na0210290_fwo,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0210290_fwo,1,4,D,C,Overstory removal,None,1,0,0
+Na0210290_fwo,1,5,E,C,Overstory removal,None,1,0,0
+Na0210290_fwo,1,6,B,A,Regen / high fire,None,1,0,0
+Na0210290_fwo,1,7,C,A,Regen / high fire,None,1,0,0
+Na0210290_fwo,1,8,D,A,Regen / high fire,None,1,0,0
+Na0210290_fwo,1,9,E,A,Regen / high fire,None,1,0,0
+Na0210290_fwo,1,10,A,C,Grow w/ fire,None,0,0,1
+Na0210290_fwo,1,11,C,D,Grow w/ fire,None,0,0,1
+Na0210290_fwo,1,12,A,B,Grow w/o fire,None,0,0,1
+Na0210290_fwo,1,13,B,E,Grow w/o fire,None,0,0,1
+Na0210290_fwo,1,14,C,B,Grow w/o fire,None,0,0,1
+Na0210290_fwo,1,15,D,E,Grow w/o fire,None,0,0,1
+Na0210290_fwo,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0210290_fwo,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0210290_fwo,1,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na0210290_fwo,1,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0210290_fwo,1,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0210350_fvg,3,1,B,C,Thin / low fire,None,1,0,0
+Na0210350_fvg,3,2,E,D,Thin / low fire,None,1,0,0
+Na0210350_fvg,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0210350_fvg,3,4,D,C,Overstory removal,None,1,0,0
+Na0210350_fvg,3,5,E,C,Overstory removal,None,1,0,0
+Na0210350_fvg,3,6,B,A,Regen / high fire,None,1,0,0
+Na0210350_fvg,3,7,C,A,Regen / high fire,None,1,0,0
+Na0210350_fvg,3,8,D,A,Regen / high fire,None,1,0,0
+Na0210350_fvg,3,9,E,A,Regen / high fire,None,1,0,0
+Na0210350_fvg,3,10,A,C,Grow w/ fire,None,0,0,1
+Na0210350_fvg,3,11,C,D,Grow w/ fire,None,0,0,1
+Na0210350_fvg,3,12,A,B,Grow w/o fire,None,0,0,1
+Na0210350_fvg,3,13,B,E,Grow w/o fire,None,0,0,1
+Na0210350_fvg,3,14,C,E,Grow w/o fire,None,0,0,1
+Na0210350_fvg,3,15,D,E,Grow w/o fire,None,0,0,1
+Na0210350_fvg,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0210350_fvg,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0210350_fvg,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0210350_fvg,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na0210350_fvg,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710270_fdd,1,1,B,C,Thin / low fire,None,1,0,0
+Na0710270_fdd,1,2,E,D,Thin / low fire,None,1,0,0
+Na0710270_fdd,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0710270_fdd,1,4,D,C,Overstory removal,None,1,0,0
+Na0710270_fdd,1,5,E,C,Overstory removal,None,1,0,0
+Na0710270_fdd,1,6,B,A,Regen / high fire,None,1,0,0
+Na0710270_fdd,1,7,C,A,Regen / high fire,None,1,0,0
+Na0710270_fdd,1,8,D,A,Regen / high fire,None,1,0,0
+Na0710270_fdd,1,9,E,A,Regen / high fire,None,1,0,0
+Na0710270_fdd,1,10,A,C,Grow w/ fire,None,0,0,1
+Na0710270_fdd,1,11,C,D,Grow w/ fire,None,0,0,1
+Na0710270_fdd,1,12,A,B,Grow w/o fire,None,0,0,1
+Na0710270_fdd,1,13,B,E,Grow w/o fire,None,0,0,1
+Na0710270_fdd,1,14,C,B,Grow w/o fire,None,0,0,1
+Na0710270_fdd,1,15,D,E,Grow w/o fire,None,0,0,1
+Na0710270_fdd,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710270_fdd,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710270_fdd,1,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na0710270_fdd,1,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710270_fdd,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710411_fmt,5,1,B,A,Regen / high fire,None,1,0,0
+Na0710411_fmt,5,2,C,A,Regen / high fire,None,1,0,0
+Na0710411_fmt,5,3,D,A,Regen / high fire,None,1,0,0
+Na0710411_fmt,5,4,E,A,Regen / high fire,None,1,0,0
+Na0710411_fmt,5,5,D,C,Overstory removal,None,1,0,0
+Na0710411_fmt,5,6,E,C,Overstory removal,None,1,0,0
+Na0710411_fmt,5,7,B,C,Thin / low fire,None,1,0,0
+Na0710411_fmt,5,8,E,D,Thin / low fire,None,1,0,0
+Na0710411_fmt,5,9,A,B,Grow w/o fire,None,0,0,1
+Na0710411_fmt,5,10,B,E,Grow w/o fire,None,0,0,1
+Na0710411_fmt,5,11,C,B,Grow w/o fire,None,0,0,1
+Na0710411_fmt,5,12,D,E,Grow w/o fire,None,0,0,1
+Na0710411_fmt,5,13,A,C,Grow w/ fire,None,0,0,1
+Na0710411_fmt,5,14,C,D,Grow w/ fire,None,0,0,1
+Na0710411_fmt,5,15,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710411_fmt,5,16,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710411_fmt,5,17,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0710411_fmt,5,18,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710411_fmt,5,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710411_fmt,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na0710412_fmc,5,1,B,A,Regen / high fire,None,1,0,0
+Na0710412_fmc,5,2,C,A,Regen / high fire,None,1,0,0
+Na0710412_fmc,5,3,D,A,Regen / high fire,None,1,0,0
+Na0710412_fmc,5,4,E,A,Regen / high fire,None,1,0,0
+Na0710412_fmc,5,5,D,C,Overstory removal,None,1,0,0
+Na0710412_fmc,5,6,E,C,Overstory removal,None,1,0,0
+Na0710412_fmc,5,7,B,C,Thin / low fire,None,1,0,0
+Na0710412_fmc,5,8,E,D,Thin / low fire,None,1,0,0
+Na0710412_fmc,5,9,A,B,Grow w/o fire,None,0,0,1
+Na0710412_fmc,5,10,B,E,Grow w/o fire,None,0,0,1
+Na0710412_fmc,5,11,D,E,Grow w/o fire,None,0,0,1
+Na0710412_fmc,5,12,A,C,Grow w/ fire,None,0,0,1
+Na0710412_fmc,5,13,C,D,Grow w/ fire,None,0,0,1
+Na0710412_fmc,5,14,C,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmc,5,15,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmc,5,16,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmc,5,17,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0710412_fmc,5,18,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710412_fmc,5,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710412_fmc,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na0710412_fmh,5,1,B,A,Regen / high fire,None,1,0,0
+Na0710412_fmh,5,2,C,A,Regen / high fire,None,1,0,0
+Na0710412_fmh,5,3,D,A,Regen / high fire,None,1,0,0
+Na0710412_fmh,5,4,E,A,Regen / high fire,None,1,0,0
+Na0710412_fmh,5,5,D,C,Overstory removal,None,1,0,0
+Na0710412_fmh,5,6,E,C,Overstory removal,None,1,0,0
+Na0710412_fmh,5,7,B,C,Thin / low fire,None,1,0,0
+Na0710412_fmh,5,8,E,D,Thin / low fire,None,1,0,0
+Na0710412_fmh,5,9,A,B,Grow w/o fire,None,0,0,1
+Na0710412_fmh,5,10,B,E,Grow w/o fire,None,0,0,1
+Na0710412_fmh,5,11,D,E,Grow w/o fire,None,0,0,1
+Na0710412_fmh,5,12,A,C,Grow w/ fire,None,0,0,1
+Na0710412_fmh,5,13,C,D,Grow w/ fire,None,0,0,1
+Na0710412_fmh,5,14,C,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmh,5,15,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmh,5,16,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmh,5,17,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0710412_fmh,5,18,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710412_fmh,5,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710412_fmh,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na0710412_fmi,5,1,B,A,Regen / high fire,None,1,0,0
+Na0710412_fmi,5,2,C,A,Regen / high fire,None,1,0,0
+Na0710412_fmi,5,3,D,A,Regen / high fire,None,1,0,0
+Na0710412_fmi,5,4,E,A,Regen / high fire,None,1,0,0
+Na0710412_fmi,5,5,D,C,Overstory removal,None,1,0,0
+Na0710412_fmi,5,6,E,C,Overstory removal,None,1,0,0
+Na0710412_fmi,5,7,B,C,Thin / low fire,None,1,0,0
+Na0710412_fmi,5,8,E,D,Thin / low fire,None,1,0,0
+Na0710412_fmi,5,9,A,B,Grow w/o fire,None,0,0,1
+Na0710412_fmi,5,10,B,E,Grow w/o fire,None,0,0,1
+Na0710412_fmi,5,11,D,E,Grow w/o fire,None,0,0,1
+Na0710412_fmi,5,12,A,C,Grow w/ fire,None,0,0,1
+Na0710412_fmi,5,13,C,D,Grow w/ fire,None,0,0,1
+Na0710412_fmi,5,14,C,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmi,5,15,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmi,5,16,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na0710412_fmi,5,17,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na0710412_fmi,5,18,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710412_fmi,5,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na0710412_fmi,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na1010471_frn,3,1,B,C,Thin / low fire,None,1,0,0
+Na1010471_frn,3,2,E,D,Thin / low fire,None,1,0,0
+Na1010471_frn,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+Na1010471_frn,3,4,D,C,Overstory removal,None,1,0,0
+Na1010471_frn,3,5,E,C,Overstory removal,None,1,0,0
+Na1010471_frn,3,6,B,A,Regen / high fire,None,1,0,0
+Na1010471_frn,3,7,C,A,Regen / high fire,None,1,0,0
+Na1010471_frn,3,8,D,A,Regen / high fire,None,1,0,0
+Na1010471_frn,3,9,E,A,Regen / high fire,None,1,0,0
+Na1010471_frn,3,10,A,C,Grow w/ fire,None,0,0,1
+Na1010471_frn,3,11,C,D,Grow w/ fire,None,0,0,1
+Na1010471_frn,3,12,A,B,Grow w/o fire,None,0,0,1
+Na1010471_frn,3,13,B,E,Grow w/o fire,None,0,0,1
+Na1010471_frn,3,14,C,B,Grow w/o fire,None,0,0,1
+Na1010471_frn,3,15,D,E,Grow w/o fire,None,0,0,1
+Na1010471_frn,3,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+Na1010471_frn,3,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+Na1010471_frn,3,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+Na1010471_frn,3,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+Na1010471_frn,3,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+R1RFWF_fcw,3,1,B,C,Thin / low fire,None,1,0,0
+R1RFWF_fcw,3,2,E,D,Thin / low fire,None,1,0,0
+R1RFWF_fcw,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+R1RFWF_fcw,3,4,D,C,Overstory removal,None,1,0,0
+R1RFWF_fcw,3,5,E,C,Overstory removal,None,1,0,0
+R1RFWF_fcw,3,6,B,A,Regen / high fire,None,1,0,0
+R1RFWF_fcw,3,7,C,A,Regen / high fire,None,1,0,0
+R1RFWF_fcw,3,8,D,A,Regen / high fire,None,1,0,0
+R1RFWF_fcw,3,9,E,A,Regen / high fire,None,1,0,0
+R1RFWF_fcw,3,10,A,C,Grow w/ fire,None,0,0,1
+R1RFWF_fcw,3,11,C,D,Grow w/ fire,None,0,0,1
+R1RFWF_fcw,3,12,A,B,Grow w/o fire,None,0,0,1
+R1RFWF_fcw,3,13,B,E,Grow w/o fire,None,0,0,1
+R1RFWF_fcw,3,14,C,B,Grow w/o fire,None,0,0,1
+R1RFWF_fcw,3,15,D,E,Grow w/o fire,None,0,0,1
+R1RFWF_fcw,3,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+R1RFWF_fcw,3,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+R1RFWF_fcw,3,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+R1RFWF_fcw,3,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+R1RFWF_fcw,3,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+R1RFWF_frm,3,1,B,C,Thin / low fire,None,1,0,0
+R1RFWF_frm,3,2,E,D,Thin / low fire,None,1,0,0
+R1RFWF_frm,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+R1RFWF_frm,3,4,D,C,Overstory removal,None,1,0,0
+R1RFWF_frm,3,5,E,C,Overstory removal,None,1,0,0
+R1RFWF_frm,3,6,B,A,Regen / high fire,None,1,0,0
+R1RFWF_frm,3,7,C,A,Regen / high fire,None,1,0,0
+R1RFWF_frm,3,8,D,A,Regen / high fire,None,1,0,0
+R1RFWF_frm,3,9,E,A,Regen / high fire,None,1,0,0
+R1RFWF_frm,3,10,A,C,Grow w/ fire,None,0,0,1
+R1RFWF_frm,3,11,C,D,Grow w/ fire,None,0,0,1
+R1RFWF_frm,3,12,A,B,Grow w/o fire,None,0,0,1
+R1RFWF_frm,3,13,B,E,Grow w/o fire,None,0,0,1
+R1RFWF_frm,3,14,C,B,Grow w/o fire,None,0,0,1
+R1RFWF_frm,3,15,D,E,Grow w/o fire,None,0,0,1
+R1RFWF_frm,3,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+R1RFWF_frm,3,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+R1RFWF_frm,3,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+R1RFWF_frm,3,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+R1RFWF_frm,3,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABAMlw_fsi,3,1,B,C,Thin / low fire,None,1,0,0
+RaABAMlw_fsi,3,2,E,D,Thin / low fire,None,1,0,0
+RaABAMlw_fsi,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaABAMlw_fsi,3,4,D,C,Overstory removal,None,1,0,0
+RaABAMlw_fsi,3,5,E,C,Overstory removal,None,1,0,0
+RaABAMlw_fsi,3,6,B,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsi,3,7,C,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsi,3,8,D,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsi,3,9,E,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsi,3,10,A,C,Grow w/ fire,None,0,0,1
+RaABAMlw_fsi,3,11,C,D,Grow w/ fire,None,0,0,1
+RaABAMlw_fsi,3,12,A,B,Grow w/o fire,None,0,0,1
+RaABAMlw_fsi,3,13,B,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fsi,3,14,C,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fsi,3,15,D,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fsi,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fsi,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fsi,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fsi,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaABAMlw_fsi,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABAMlw_fsw,3,1,B,C,Thin / low fire,None,1,0,0
+RaABAMlw_fsw,3,2,E,D,Thin / low fire,None,1,0,0
+RaABAMlw_fsw,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaABAMlw_fsw,3,4,D,C,Overstory removal,None,1,0,0
+RaABAMlw_fsw,3,5,E,C,Overstory removal,None,1,0,0
+RaABAMlw_fsw,3,6,B,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsw,3,7,C,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsw,3,8,D,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsw,3,9,E,A,Regen / high fire,None,1,0,0
+RaABAMlw_fsw,3,10,A,C,Grow w/ fire,None,0,0,1
+RaABAMlw_fsw,3,11,C,D,Grow w/ fire,None,0,0,1
+RaABAMlw_fsw,3,12,A,B,Grow w/o fire,None,0,0,1
+RaABAMlw_fsw,3,13,B,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fsw,3,14,C,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fsw,3,15,D,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fsw,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fsw,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fsw,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fsw,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaABAMlw_fsw,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABAMlw_fwc,3,1,B,C,Thin / low fire,None,1,0,0
+RaABAMlw_fwc,3,2,E,D,Thin / low fire,None,1,0,0
+RaABAMlw_fwc,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaABAMlw_fwc,3,4,D,C,Overstory removal,None,1,0,0
+RaABAMlw_fwc,3,5,E,C,Overstory removal,None,1,0,0
+RaABAMlw_fwc,3,6,B,A,Regen / high fire,None,1,0,0
+RaABAMlw_fwc,3,7,C,A,Regen / high fire,None,1,0,0
+RaABAMlw_fwc,3,8,D,A,Regen / high fire,None,1,0,0
+RaABAMlw_fwc,3,9,E,A,Regen / high fire,None,1,0,0
+RaABAMlw_fwc,3,10,A,C,Grow w/ fire,None,0,0,1
+RaABAMlw_fwc,3,11,C,D,Grow w/ fire,None,0,0,1
+RaABAMlw_fwc,3,12,A,B,Grow w/o fire,None,0,0,1
+RaABAMlw_fwc,3,13,B,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fwc,3,14,C,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fwc,3,15,D,E,Grow w/o fire,None,0,0,1
+RaABAMlw_fwc,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fwc,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fwc,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMlw_fwc,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaABAMlw_fwc,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABAMup_fsi,5,1,B,A,Regen / high fire,None,1,0,0
+RaABAMup_fsi,5,2,C,A,Regen / high fire,None,1,0,0
+RaABAMup_fsi,5,3,D,A,Regen / high fire,None,1,0,0
+RaABAMup_fsi,5,4,E,A,Regen / high fire,None,1,0,0
+RaABAMup_fsi,5,5,D,C,Overstory removal,None,1,0,0
+RaABAMup_fsi,5,6,E,C,Overstory removal,None,1,0,0
+RaABAMup_fsi,5,7,B,C,Thin / low fire,None,1,0,0
+RaABAMup_fsi,5,8,E,D,Thin / low fire,None,1,0,0
+RaABAMup_fsi,5,9,A,B,Grow w/o fire,None,0,0,1
+RaABAMup_fsi,5,10,B,E,Grow w/o fire,None,0,0,1
+RaABAMup_fsi,5,11,C,E,Grow w/o fire,None,0,0,1
+RaABAMup_fsi,5,12,D,E,Grow w/o fire,None,0,0,1
+RaABAMup_fsi,5,13,A,C,Grow w/ fire,None,0,0,1
+RaABAMup_fsi,5,14,C,D,Grow w/ fire,None,0,0,1
+RaABAMup_fsi,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fsi,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fsi,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fsi,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaABAMup_fsi,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABAMup_fsi,5,20,A,D,Grow w/o fire,Grow w/ fire,0,0,1
+RaABAMup_fst,5,1,B,A,Regen / high fire,None,1,0,0
+RaABAMup_fst,5,2,C,A,Regen / high fire,None,1,0,0
+RaABAMup_fst,5,3,D,A,Regen / high fire,None,1,0,0
+RaABAMup_fst,5,4,E,A,Regen / high fire,None,1,0,0
+RaABAMup_fst,5,5,D,C,Overstory removal,None,1,0,0
+RaABAMup_fst,5,6,E,C,Overstory removal,None,1,0,0
+RaABAMup_fst,5,7,B,C,Thin / low fire,None,1,0,0
+RaABAMup_fst,5,8,E,D,Thin / low fire,None,1,0,0
+RaABAMup_fst,5,9,A,B,Grow w/o fire,None,0,0,1
+RaABAMup_fst,5,10,B,E,Grow w/o fire,None,0,0,1
+RaABAMup_fst,5,11,C,E,Grow w/o fire,None,0,0,1
+RaABAMup_fst,5,12,D,E,Grow w/o fire,None,0,0,1
+RaABAMup_fst,5,13,A,C,Grow w/ fire,None,0,0,1
+RaABAMup_fst,5,14,C,D,Grow w/ fire,None,0,0,1
+RaABAMup_fst,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fst,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fst,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fst,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaABAMup_fst,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABAMup_fst,5,20,A,D,Grow w/o fire,Grow w/ fire,0,0,1
+RaABAMup_fsw,5,1,B,A,Regen / high fire,None,1,0,0
+RaABAMup_fsw,5,2,C,A,Regen / high fire,None,1,0,0
+RaABAMup_fsw,5,3,D,A,Regen / high fire,None,1,0,0
+RaABAMup_fsw,5,4,E,A,Regen / high fire,None,1,0,0
+RaABAMup_fsw,5,5,D,C,Overstory removal,None,1,0,0
+RaABAMup_fsw,5,6,E,C,Overstory removal,None,1,0,0
+RaABAMup_fsw,5,7,B,C,Thin / low fire,None,1,0,0
+RaABAMup_fsw,5,8,E,D,Thin / low fire,None,1,0,0
+RaABAMup_fsw,5,9,A,B,Grow w/o fire,None,0,0,1
+RaABAMup_fsw,5,10,B,E,Grow w/o fire,None,0,0,1
+RaABAMup_fsw,5,11,C,E,Grow w/o fire,None,0,0,1
+RaABAMup_fsw,5,12,D,E,Grow w/o fire,None,0,0,1
+RaABAMup_fsw,5,13,A,C,Grow w/ fire,None,0,0,1
+RaABAMup_fsw,5,14,C,D,Grow w/ fire,None,0,0,1
+RaABAMup_fsw,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fsw,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fsw,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABAMup_fsw,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaABAMup_fsw,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABAMup_fsw,5,20,A,D,Grow w/o fire,Grow w/ fire,0,0,1
+RaABLA_faf,4,1,B,A,Regen / high fire,None,1,0,0
+RaABLA_faf,4,2,C,A,Regen / high fire,None,1,0,0
+RaABLA_faf,4,3,D,A,Regen / high fire,None,1,0,0
+RaABLA_faf,4,4,E,A,Regen / high fire,None,1,0,0
+RaABLA_faf,4,5,D,C,Overstory removal,None,1,0,0
+RaABLA_faf,4,6,E,C,Overstory removal,None,1,0,0
+RaABLA_faf,4,7,B,C,Thin / low fire,None,1,0,0
+RaABLA_faf,4,8,E,D,Thin / low fire,None,1,0,0
+RaABLA_faf,4,9,A,B,Grow w/o fire,None,0,0,1
+RaABLA_faf,4,10,B,E,Grow w/o fire,None,0,0,1
+RaABLA_faf,4,11,C,E,Grow w/o fire,None,0,0,1
+RaABLA_faf,4,12,D,E,Grow w/o fire,None,0,0,1
+RaABLA_faf,4,13,A,C,Grow w/ fire,None,0,0,1
+RaABLA_faf,4,14,C,D,Grow w/ fire,None,0,0,1
+RaABLA_faf,4,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABLA_faf,4,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABLA_faf,4,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaABLA_faf,4,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaABLA_faf,4,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaABLA_faf,4,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEdy_fdg,3,1,B,C,Thin / low fire,None,1,0,0
+RaDFHEdy_fdg,3,2,E,D,Thin / low fire,None,1,0,0
+RaDFHEdy_fdg,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEdy_fdg,3,4,D,C,Overstory removal,None,1,0,0
+RaDFHEdy_fdg,3,5,E,C,Overstory removal,None,1,0,0
+RaDFHEdy_fdg,3,6,B,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fdg,3,7,C,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fdg,3,8,D,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fdg,3,9,E,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fdg,3,10,A,C,Grow w/ fire,None,0,0,1
+RaDFHEdy_fdg,3,11,C,D,Grow w/ fire,None,0,0,1
+RaDFHEdy_fdg,3,12,A,B,Grow w/o fire,None,0,0,1
+RaDFHEdy_fdg,3,13,B,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fdg,3,14,C,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fdg,3,15,D,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fdg,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fdg,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fdg,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fdg,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEdy_fdg,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEdy_fwi,3,1,B,C,Thin / low fire,None,1,0,0
+RaDFHEdy_fwi,3,2,E,D,Thin / low fire,None,1,0,0
+RaDFHEdy_fwi,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEdy_fwi,3,4,D,C,Overstory removal,None,1,0,0
+RaDFHEdy_fwi,3,5,E,C,Overstory removal,None,1,0,0
+RaDFHEdy_fwi,3,6,B,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwi,3,7,C,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwi,3,8,D,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwi,3,9,E,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwi,3,10,A,C,Grow w/ fire,None,0,0,1
+RaDFHEdy_fwi,3,11,C,D,Grow w/ fire,None,0,0,1
+RaDFHEdy_fwi,3,12,A,B,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwi,3,13,B,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwi,3,14,C,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwi,3,15,D,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwi,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fwi,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fwi,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fwi,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEdy_fwi,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEdy_fwx,3,1,B,C,Thin / low fire,None,1,0,0
+RaDFHEdy_fwx,3,2,E,D,Thin / low fire,None,1,0,0
+RaDFHEdy_fwx,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEdy_fwx,3,4,D,C,Overstory removal,None,1,0,0
+RaDFHEdy_fwx,3,5,E,C,Overstory removal,None,1,0,0
+RaDFHEdy_fwx,3,6,B,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwx,3,7,C,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwx,3,8,D,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwx,3,9,E,A,Regen / high fire,None,1,0,0
+RaDFHEdy_fwx,3,10,A,C,Grow w/ fire,None,0,0,1
+RaDFHEdy_fwx,3,11,C,D,Grow w/ fire,None,0,0,1
+RaDFHEdy_fwx,3,12,A,B,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwx,3,13,B,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwx,3,14,C,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwx,3,15,D,E,Grow w/o fire,None,0,0,1
+RaDFHEdy_fwx,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fwx,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fwx,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEdy_fwx,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEdy_fwx,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEwt_fdm,5,1,B,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fdm,5,2,C,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fdm,5,3,D,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fdm,5,4,E,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fdm,5,5,D,C,Overstory removal,None,1,0,0
+RaDFHEwt_fdm,5,6,E,C,Overstory removal,None,1,0,0
+RaDFHEwt_fdm,5,7,B,C,Thin / low fire,None,1,0,0
+RaDFHEwt_fdm,5,8,E,D,Thin / low fire,None,1,0,0
+RaDFHEwt_fdm,5,9,A,B,Grow w/o fire,None,0,0,1
+RaDFHEwt_fdm,5,10,B,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fdm,5,11,C,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fdm,5,12,D,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fdm,5,13,A,C,Grow w/ fire,None,0,0,1
+RaDFHEwt_fdm,5,14,C,D,Grow w/ fire,None,0,0,1
+RaDFHEwt_fdm,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fdm,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fdm,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fdm,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEwt_fdm,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEwt_fdm,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEwt_fhc,5,1,B,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fhc,5,2,C,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fhc,5,3,D,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fhc,5,4,E,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fhc,5,5,D,C,Overstory removal,None,1,0,0
+RaDFHEwt_fhc,5,6,E,C,Overstory removal,None,1,0,0
+RaDFHEwt_fhc,5,7,B,C,Thin / low fire,None,1,0,0
+RaDFHEwt_fhc,5,8,E,D,Thin / low fire,None,1,0,0
+RaDFHEwt_fhc,5,9,A,B,Grow w/o fire,None,0,0,1
+RaDFHEwt_fhc,5,10,B,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fhc,5,11,C,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fhc,5,12,D,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fhc,5,13,A,C,Grow w/ fire,None,0,0,1
+RaDFHEwt_fhc,5,14,C,D,Grow w/ fire,None,0,0,1
+RaDFHEwt_fhc,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fhc,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fhc,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fhc,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEwt_fhc,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEwt_fhc,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEwt_fwc,5,1,B,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwc,5,2,C,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwc,5,3,D,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwc,5,4,E,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwc,5,5,D,C,Overstory removal,None,1,0,0
+RaDFHEwt_fwc,5,6,E,C,Overstory removal,None,1,0,0
+RaDFHEwt_fwc,5,7,B,C,Thin / low fire,None,1,0,0
+RaDFHEwt_fwc,5,8,E,D,Thin / low fire,None,1,0,0
+RaDFHEwt_fwc,5,9,A,B,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwc,5,10,B,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwc,5,11,C,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwc,5,12,D,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwc,5,13,A,C,Grow w/ fire,None,0,0,1
+RaDFHEwt_fwc,5,14,C,D,Grow w/ fire,None,0,0,1
+RaDFHEwt_fwc,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwc,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwc,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwc,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEwt_fwc,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEwt_fwc,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEwt_fwm,5,1,B,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwm,5,2,C,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwm,5,3,D,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwm,5,4,E,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwm,5,5,D,C,Overstory removal,None,1,0,0
+RaDFHEwt_fwm,5,6,E,C,Overstory removal,None,1,0,0
+RaDFHEwt_fwm,5,7,B,C,Thin / low fire,None,1,0,0
+RaDFHEwt_fwm,5,8,E,D,Thin / low fire,None,1,0,0
+RaDFHEwt_fwm,5,9,A,B,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwm,5,10,B,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwm,5,11,C,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwm,5,12,D,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwm,5,13,A,C,Grow w/ fire,None,0,0,1
+RaDFHEwt_fwm,5,14,C,D,Grow w/ fire,None,0,0,1
+RaDFHEwt_fwm,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwm,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwm,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwm,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEwt_fwm,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEwt_fwm,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEwt_fwn,5,1,B,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwn,5,2,C,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwn,5,3,D,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwn,5,4,E,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fwn,5,5,D,C,Overstory removal,None,1,0,0
+RaDFHEwt_fwn,5,6,E,C,Overstory removal,None,1,0,0
+RaDFHEwt_fwn,5,7,B,C,Thin / low fire,None,1,0,0
+RaDFHEwt_fwn,5,8,E,D,Thin / low fire,None,1,0,0
+RaDFHEwt_fwn,5,9,A,B,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwn,5,10,B,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwn,5,11,C,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwn,5,12,D,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fwn,5,13,A,C,Grow w/ fire,None,0,0,1
+RaDFHEwt_fwn,5,14,C,D,Grow w/ fire,None,0,0,1
+RaDFHEwt_fwn,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwn,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwn,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fwn,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEwt_fwn,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEwt_fwn,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFHEwt_fww,5,1,B,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fww,5,2,C,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fww,5,3,D,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fww,5,4,E,A,Regen / high fire,None,1,0,0
+RaDFHEwt_fww,5,5,D,C,Overstory removal,None,1,0,0
+RaDFHEwt_fww,5,6,E,C,Overstory removal,None,1,0,0
+RaDFHEwt_fww,5,7,B,C,Thin / low fire,None,1,0,0
+RaDFHEwt_fww,5,8,E,D,Thin / low fire,None,1,0,0
+RaDFHEwt_fww,5,9,A,B,Grow w/o fire,None,0,0,1
+RaDFHEwt_fww,5,10,B,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fww,5,11,C,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fww,5,12,D,E,Grow w/o fire,None,0,0,1
+RaDFHEwt_fww,5,13,A,C,Grow w/ fire,None,0,0,1
+RaDFHEwt_fww,5,14,C,D,Grow w/ fire,None,0,0,1
+RaDFHEwt_fww,5,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fww,5,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fww,5,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFHEwt_fww,5,18,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFHEwt_fww,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFHEwt_fww,5,20,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFWV_fwx,1,1,B,C,Thin / low fire,None,1,0,0
+RaDFWV_fwx,1,2,E,D,Thin / low fire,None,1,0,0
+RaDFWV_fwx,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaDFWV_fwx,1,4,D,C,Overstory removal,None,1,0,0
+RaDFWV_fwx,1,5,E,C,Overstory removal,None,1,0,0
+RaDFWV_fwx,1,6,B,A,Regen / high fire,None,1,0,0
+RaDFWV_fwx,1,7,C,A,Regen / high fire,None,1,0,0
+RaDFWV_fwx,1,8,D,A,Regen / high fire,None,1,0,0
+RaDFWV_fwx,1,9,E,A,Regen / high fire,None,1,0,0
+RaDFWV_fwx,1,10,A,C,Grow w/ fire,None,0,0,1
+RaDFWV_fwx,1,10,C,D,Grow w/ fire,None,0,0,1
+RaDFWV_fwx,1,12,A,B,Grow w/o fire,None,0,0,1
+RaDFWV_fwx,1,13,B,E,Grow w/o fire,None,0,0,1
+RaDFWV_fwx,1,14,D,E,Grow w/o fire,None,0,0,1
+RaDFWV_fwx,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaDFWV_fwx,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFWV_fwx,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFWV_fwx,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaDFWV_fwx,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaDFWV_fwx,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fdd,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONdy_fdd,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONdy_fdd,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONdy_fdd,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONdy_fdd,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONdy_fdd,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdd,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdd,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdd,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdd,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONdy_fdd,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONdy_fdd,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONdy_fdd,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fdd,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fdd,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fdd,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdd,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdd,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdd,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONdy_fdd,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fdg,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONdy_fdg,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONdy_fdg,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONdy_fdg,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONdy_fdg,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONdy_fdg,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdg,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdg,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdg,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdg,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONdy_fdg,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONdy_fdg,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONdy_fdg,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fdg,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fdg,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fdg,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdg,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdg,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdg,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONdy_fdg,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fdx,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONdy_fdx,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONdy_fdx,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONdy_fdx,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONdy_fdx,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONdy_fdx,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdx,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdx,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdx,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONdy_fdx,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONdy_fdx,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONdy_fdx,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONdy_fdx,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fdx,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fdx,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fdx,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdx,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdx,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fdx,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONdy_fdx,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fmd,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONdy_fmd,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONdy_fmd,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONdy_fmd,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONdy_fmd,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONdy_fmd,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmd,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmd,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmd,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmd,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONdy_fmd,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONdy_fmd,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONdy_fmd,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fmd,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fmd,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fmd,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fmd,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fmd,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fmd,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONdy_fmd,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fmx,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONdy_fmx,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONdy_fmx,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONdy_fmx,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONdy_fmx,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONdy_fmx,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmx,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmx,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmx,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONdy_fmx,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONdy_fmx,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONdy_fmx,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONdy_fmx,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fmx,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONdy_fmx,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONdy_fmx,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fmx,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fmx,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONdy_fmx,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONdy_fmx,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONms_fcm,3,1,B,C,Thin / low fire,None,1,0,0
+RaMCONms_fcm,3,2,E,D,Thin / low fire,None,1,0,0
+RaMCONms_fcm,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONms_fcm,3,4,D,C,Overstory removal,None,1,0,0
+RaMCONms_fcm,3,5,E,C,Overstory removal,None,1,0,0
+RaMCONms_fcm,3,6,B,A,Regen / high fire,None,1,0,0
+RaMCONms_fcm,3,7,C,A,Regen / high fire,None,1,0,0
+RaMCONms_fcm,3,8,D,A,Regen / high fire,None,1,0,0
+RaMCONms_fcm,3,9,E,A,Regen / high fire,None,1,0,0
+RaMCONms_fcm,3,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONms_fcm,3,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONms_fcm,3,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONms_fcm,3,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONms_fcm,3,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONms_fcm,3,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONms_fcm,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONms_fcm,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONms_fcm,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONms_fcm,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONms_fcm,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONms_fmm,3,1,B,C,Thin / low fire,None,1,0,0
+RaMCONms_fmm,3,2,E,D,Thin / low fire,None,1,0,0
+RaMCONms_fmm,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONms_fmm,3,4,D,C,Overstory removal,None,1,0,0
+RaMCONms_fmm,3,5,E,C,Overstory removal,None,1,0,0
+RaMCONms_fmm,3,6,B,A,Regen / high fire,None,1,0,0
+RaMCONms_fmm,3,7,C,A,Regen / high fire,None,1,0,0
+RaMCONms_fmm,3,8,D,A,Regen / high fire,None,1,0,0
+RaMCONms_fmm,3,9,E,A,Regen / high fire,None,1,0,0
+RaMCONms_fmm,3,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONms_fmm,3,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONms_fmm,3,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONms_fmm,3,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONms_fmm,3,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONms_fmm,3,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONms_fmm,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONms_fmm,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONms_fmm,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONms_fmm,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONms_fmm,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONsw_fdm,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONsw_fdm,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONsw_fdm,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONsw_fdm,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONsw_fdm,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONsw_fdm,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONsw_fdm,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONsw_fdm,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONsw_fdm,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONsw_fdm,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONsw_fdm,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONsw_fdm,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONsw_fdm,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONsw_fdm,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONsw_fdm,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONsw_fdm,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fdm,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fdm,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fdm,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONsw_fdm,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONsw_fiw,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONsw_fiw,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONsw_fiw,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONsw_fiw,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONsw_fiw,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONsw_fiw,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONsw_fiw,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONsw_fiw,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONsw_fiw,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONsw_fiw,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONsw_fiw,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONsw_fiw,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONsw_fiw,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONsw_fiw,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONsw_fiw,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONsw_fiw,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fiw,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fiw,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fiw,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONsw_fiw,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONsw_fvw,1,1,B,C,Thin / low fire,None,1,0,0
+RaMCONsw_fvw,1,2,E,D,Thin / low fire,None,1,0,0
+RaMCONsw_fvw,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMCONsw_fvw,1,4,D,C,Overstory removal,None,1,0,0
+RaMCONsw_fvw,1,5,E,C,Overstory removal,None,1,0,0
+RaMCONsw_fvw,1,6,B,A,Regen / high fire,None,1,0,0
+RaMCONsw_fvw,1,7,C,A,Regen / high fire,None,1,0,0
+RaMCONsw_fvw,1,8,D,A,Regen / high fire,None,1,0,0
+RaMCONsw_fvw,1,9,E,A,Regen / high fire,None,1,0,0
+RaMCONsw_fvw,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMCONsw_fvw,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMCONsw_fvw,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMCONsw_fvw,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMCONsw_fvw,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMCONsw_fvw,1,15,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMCONsw_fvw,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fvw,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fvw,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMCONsw_fvw,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMCONsw_fvw,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMEVG_ftd,1,1,B,C,Thin / low fire,None,1,0,0
+RaMEVG_ftd,1,2,E,D,Thin / low fire,None,1,0,0
+RaMEVG_ftd,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMEVG_ftd,1,4,D,C,Overstory removal,None,1,0,0
+RaMEVG_ftd,1,5,E,C,Overstory removal,None,1,0,0
+RaMEVG_ftd,1,6,B,A,Regen / high fire,None,1,0,0
+RaMEVG_ftd,1,7,C,A,Regen / high fire,None,1,0,0
+RaMEVG_ftd,1,8,D,A,Regen / high fire,None,1,0,0
+RaMEVG_ftd,1,9,E,A,Regen / high fire,None,1,0,0
+RaMEVG_ftd,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMEVG_ftd,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMEVG_ftd,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMEVG_ftd,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMEVG_ftd,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMEVG_ftd,1,15,C,B,Grow w/o fire,None,0,0,1
+RaMEVG_ftd,1,16,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMEVG_ftd,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMEVG_ftd,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMEVG_ftd,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMEVG_ftd,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMEVG_fuc,1,1,B,C,Thin / low fire,None,1,0,0
+RaMEVG_fuc,1,2,E,D,Thin / low fire,None,1,0,0
+RaMEVG_fuc,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaMEVG_fuc,1,4,D,C,Overstory removal,None,1,0,0
+RaMEVG_fuc,1,5,E,C,Overstory removal,None,1,0,0
+RaMEVG_fuc,1,6,B,A,Regen / high fire,None,1,0,0
+RaMEVG_fuc,1,7,C,A,Regen / high fire,None,1,0,0
+RaMEVG_fuc,1,8,D,A,Regen / high fire,None,1,0,0
+RaMEVG_fuc,1,9,E,A,Regen / high fire,None,1,0,0
+RaMEVG_fuc,1,10,A,C,Grow w/ fire,None,0,0,1
+RaMEVG_fuc,1,11,C,D,Grow w/ fire,None,0,0,1
+RaMEVG_fuc,1,12,A,B,Grow w/o fire,None,0,0,1
+RaMEVG_fuc,1,13,B,E,Grow w/o fire,None,0,0,1
+RaMEVG_fuc,1,14,D,E,Grow w/o fire,None,0,0,1
+RaMEVG_fuc,1,15,C,B,Grow w/o fire,None,0,0,1
+RaMEVG_fuc,1,16,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaMEVG_fuc,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMEVG_fuc,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaMEVG_fuc,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaMEVG_fuc,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaOAPI_fop,1,1,B,C,Thin / low fire,None,1,0,0
+RaOAPI_fop,1,2,E,D,Thin / low fire,None,1,0,0
+RaOAPI_fop,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaOAPI_fop,1,4,D,C,Overstory removal,None,1,0,0
+RaOAPI_fop,1,5,E,C,Overstory removal,None,1,0,0
+RaOAPI_fop,1,6,B,A,Regen / high fire,None,1,0,0
+RaOAPI_fop,1,7,C,A,Regen / high fire,None,1,0,0
+RaOAPI_fop,1,8,D,A,Regen / high fire,None,1,0,0
+RaOAPI_fop,1,9,E,A,Regen / high fire,None,1,0,0
+RaOAPI_fop,1,10,A,C,Grow w/ fire,None,0,0,1
+RaOAPI_fop,1,11,C,D,Grow w/ fire,None,0,0,1
+RaOAPI_fop,1,12,A,B,Grow w/o fire,None,0,0,1
+RaOAPI_fop,1,13,B,E,Grow w/o fire,None,0,0,1
+RaOAPI_fop,1,14,C,E,Grow w/o fire,None,0,0,1
+RaOAPI_fop,1,15,D,E,Grow w/o fire,None,0,0,1
+RaOAPI_fop,1,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaOAPI_fop,1,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaOAPI_fop,1,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaOAPI_fop,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaOAPI_fop,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPICOpu_fld,4,1,B,A,Regen / high fire,None,1,0,0
+RaPICOpu_fld,4,2,C,A,Regen / high fire,None,1,0,0
+RaPICOpu_fld,4,3,D,A,Regen / high fire,None,1,0,0
+RaPICOpu_fld,4,4,E,A,Regen / high fire,None,1,0,0
+RaPICOpu_fld,4,5,D,C,Overstory removal,None,1,0,0
+RaPICOpu_fld,4,6,E,C,Overstory removal,None,1,0,0
+RaPICOpu_fld,4,7,B,C,Thin / low fire,None,1,0,0
+RaPICOpu_fld,4,8,E,D,Thin / low fire,None,1,0,0
+RaPICOpu_fld,4,9,A,B,Grow w/o fire,None,0,0,1
+RaPICOpu_fld,4,10,B,E,Grow w/o fire,None,0,0,1
+RaPICOpu_fld,4,11,C,B,Grow w/o fire,None,0,0,1
+RaPICOpu_fld,4,12,D,E,Grow w/o fire,None,0,0,1
+RaPICOpu_fld,4,13,A,C,Grow w/ fire,None,0,0,1
+RaPICOpu_fld,4,14,A,D,Grow w/ fire,None,0,0,1
+RaPICOpu_fld,4,15,B,D,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_fld,4,16,C,D,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_fld,4,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_fld,4,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_fld,4,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPICOpu_fld,4,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPICOpu_flp,4,1,B,A,Regen / high fire,None,1,0,0
+RaPICOpu_flp,4,2,C,A,Regen / high fire,None,1,0,0
+RaPICOpu_flp,4,3,D,A,Regen / high fire,None,1,0,0
+RaPICOpu_flp,4,4,E,A,Regen / high fire,None,1,0,0
+RaPICOpu_flp,4,5,D,C,Overstory removal,None,1,0,0
+RaPICOpu_flp,4,6,E,C,Overstory removal,None,1,0,0
+RaPICOpu_flp,4,7,B,C,Thin / low fire,None,1,0,0
+RaPICOpu_flp,4,8,E,D,Thin / low fire,None,1,0,0
+RaPICOpu_flp,4,9,A,B,Grow w/o fire,None,0,0,1
+RaPICOpu_flp,4,10,B,E,Grow w/o fire,None,0,0,1
+RaPICOpu_flp,4,11,C,B,Grow w/o fire,None,0,0,1
+RaPICOpu_flp,4,12,D,E,Grow w/o fire,None,0,0,1
+RaPICOpu_flp,4,13,A,C,Grow w/ fire,None,0,0,1
+RaPICOpu_flp,4,14,A,D,Grow w/ fire,None,0,0,1
+RaPICOpu_flp,4,15,B,D,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flp,4,16,C,D,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flp,4,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flp,4,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flp,4,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPICOpu_flp,4,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPICOpu_flw,4,1,B,A,Regen / high fire,None,1,0,0
+RaPICOpu_flw,4,2,C,A,Regen / high fire,None,1,0,0
+RaPICOpu_flw,4,3,D,A,Regen / high fire,None,1,0,0
+RaPICOpu_flw,4,4,E,A,Regen / high fire,None,1,0,0
+RaPICOpu_flw,4,5,D,C,Overstory removal,None,1,0,0
+RaPICOpu_flw,4,6,E,C,Overstory removal,None,1,0,0
+RaPICOpu_flw,4,7,B,C,Thin / low fire,None,1,0,0
+RaPICOpu_flw,4,8,E,D,Thin / low fire,None,1,0,0
+RaPICOpu_flw,4,9,A,B,Grow w/o fire,None,0,0,1
+RaPICOpu_flw,4,10,B,E,Grow w/o fire,None,0,0,1
+RaPICOpu_flw,4,11,C,B,Grow w/o fire,None,0,0,1
+RaPICOpu_flw,4,12,D,E,Grow w/o fire,None,0,0,1
+RaPICOpu_flw,4,13,A,C,Grow w/ fire,None,0,0,1
+RaPICOpu_flw,4,14,A,D,Grow w/ fire,None,0,0,1
+RaPICOpu_flw,4,15,B,D,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flw,4,16,C,D,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flw,4,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flw,4,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPICOpu_flw,4,19,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPICOpu_flw,4,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIJEsp_fjp,1,1,B,C,Thin / low fire,None,1,0,0
+RaPIJEsp_fjp,1,2,E,D,Thin / low fire,None,1,0,0
+RaPIJEsp_fjp,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaPIJEsp_fjp,1,4,D,C,Overstory removal,None,1,0,0
+RaPIJEsp_fjp,1,5,E,C,Overstory removal,None,1,0,0
+RaPIJEsp_fjp,1,6,B,A,Regen / high fire,None,1,0,0
+RaPIJEsp_fjp,1,7,C,A,Regen / high fire,None,1,0,0
+RaPIJEsp_fjp,1,8,D,A,Regen / high fire,None,1,0,0
+RaPIJEsp_fjp,1,9,E,A,Regen / high fire,None,1,0,0
+RaPIJEsp_fjp,1,10,A,C,Grow w/ fire,None,0,0,1
+RaPIJEsp_fjp,1,11,C,D,Grow w/ fire,None,0,0,1
+RaPIJEsp_fjp,1,12,A,B,Grow w/o fire,None,0,0,1
+RaPIJEsp_fjp,1,13,B,E,Grow w/o fire,None,0,0,1
+RaPIJEsp_fjp,1,14,C,B,Grow w/o fire,None,0,0,1
+RaPIJEsp_fjp,1,15,D,E,Grow w/o fire,None,0,0,1
+RaPIJEsp_fjp,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIJEsp_fjp,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIJEsp_fjp,1,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaPIJEsp_fjp,1,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIJEsp_fjp,1,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOm_fdp,1,1,B,C,Thin / low fire,None,1,0,0
+RaPIPOm_fdp,1,2,E,D,Thin / low fire,None,1,0,0
+RaPIPOm_fdp,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaPIPOm_fdp,1,4,D,C,Overstory removal,None,1,0,0
+RaPIPOm_fdp,1,5,E,C,Overstory removal,None,1,0,0
+RaPIPOm_fdp,1,6,B,A,Regen / high fire,None,1,0,0
+RaPIPOm_fdp,1,7,C,A,Regen / high fire,None,1,0,0
+RaPIPOm_fdp,1,8,D,A,Regen / high fire,None,1,0,0
+RaPIPOm_fdp,1,9,E,A,Regen / high fire,None,1,0,0
+RaPIPOm_fdp,1,10,A,C,Grow w/ fire,None,0,0,1
+RaPIPOm_fdp,1,11,C,D,Grow w/ fire,None,0,0,1
+RaPIPOm_fdp,1,12,A,B,Grow w/o fire,None,0,0,1
+RaPIPOm_fdp,1,13,B,E,Grow w/o fire,None,0,0,1
+RaPIPOm_fdp,1,14,C,B,Grow w/o fire,None,0,0,1
+RaPIPOm_fdp,1,15,D,E,Grow w/o fire,None,0,0,1
+RaPIPOm_fdp,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOm_fdp,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOm_fdp,1,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaPIPOm_fdp,1,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOm_fdp,1,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOm_fpd,1,1,B,C,Thin / low fire,None,1,0,0
+RaPIPOm_fpd,1,2,E,D,Thin / low fire,None,1,0,0
+RaPIPOm_fpd,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaPIPOm_fpd,1,4,D,C,Overstory removal,None,1,0,0
+RaPIPOm_fpd,1,5,E,C,Overstory removal,None,1,0,0
+RaPIPOm_fpd,1,6,B,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpd,1,7,C,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpd,1,8,D,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpd,1,9,E,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpd,1,10,A,C,Grow w/ fire,None,0,0,1
+RaPIPOm_fpd,1,11,C,D,Grow w/ fire,None,0,0,1
+RaPIPOm_fpd,1,12,A,B,Grow w/o fire,None,0,0,1
+RaPIPOm_fpd,1,13,B,E,Grow w/o fire,None,0,0,1
+RaPIPOm_fpd,1,14,C,B,Grow w/o fire,None,0,0,1
+RaPIPOm_fpd,1,15,D,E,Grow w/o fire,None,0,0,1
+RaPIPOm_fpd,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOm_fpd,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOm_fpd,1,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaPIPOm_fpd,1,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOm_fpd,1,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOm_fpl,1,1,B,C,Thin / low fire,None,1,0,0
+RaPIPOm_fpl,1,2,E,D,Thin / low fire,None,1,0,0
+RaPIPOm_fpl,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaPIPOm_fpl,1,4,D,C,Overstory removal,None,1,0,0
+RaPIPOm_fpl,1,5,E,C,Overstory removal,None,1,0,0
+RaPIPOm_fpl,1,6,B,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpl,1,7,C,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpl,1,8,D,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpl,1,9,E,A,Regen / high fire,None,1,0,0
+RaPIPOm_fpl,1,10,A,C,Grow w/ fire,None,0,0,1
+RaPIPOm_fpl,1,11,C,D,Grow w/ fire,None,0,0,1
+RaPIPOm_fpl,1,12,A,B,Grow w/o fire,None,0,0,1
+RaPIPOm_fpl,1,13,B,E,Grow w/o fire,None,0,0,1
+RaPIPOm_fpl,1,14,C,B,Grow w/o fire,None,0,0,1
+RaPIPOm_fpl,1,15,D,E,Grow w/o fire,None,0,0,1
+RaPIPOm_fpl,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOm_fpl,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOm_fpl,1,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaPIPOm_fpl,1,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOm_fpl,1,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOxe_fdp,3,1,B,C,Thin / low fire,None,1,0,0
+RaPIPOxe_fdp,3,2,E,D,Thin / low fire,None,1,0,0
+RaPIPOxe_fdp,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaPIPOxe_fdp,3,4,D,C,Overstory removal,None,1,0,0
+RaPIPOxe_fdp,3,5,E,C,Overstory removal,None,1,0,0
+RaPIPOxe_fdp,3,6,B,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fdp,3,7,C,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fdp,3,8,D,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fdp,3,9,E,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fdp,3,10,A,C,Grow w/ fire,None,0,0,1
+RaPIPOxe_fdp,3,11,C,D,Grow w/ fire,None,0,0,1
+RaPIPOxe_fdp,3,12,A,B,Grow w/o fire,None,0,0,1
+RaPIPOxe_fdp,3,13,B,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fdp,3,14,C,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fdp,3,15,D,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fdp,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fdp,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fdp,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fdp,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaPIPOxe_fdp,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOxe_fpd,3,1,B,C,Thin / low fire,None,1,0,0
+RaPIPOxe_fpd,3,2,E,D,Thin / low fire,None,1,0,0
+RaPIPOxe_fpd,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaPIPOxe_fpd,3,4,D,C,Overstory removal,None,1,0,0
+RaPIPOxe_fpd,3,5,E,C,Overstory removal,None,1,0,0
+RaPIPOxe_fpd,3,6,B,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fpd,3,7,C,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fpd,3,8,D,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fpd,3,9,E,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fpd,3,10,A,C,Grow w/ fire,None,0,0,1
+RaPIPOxe_fpd,3,11,C,D,Grow w/ fire,None,0,0,1
+RaPIPOxe_fpd,3,12,A,B,Grow w/o fire,None,0,0,1
+RaPIPOxe_fpd,3,13,B,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fpd,3,14,C,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fpd,3,15,D,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fpd,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fpd,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fpd,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fpd,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaPIPOxe_fpd,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaPIPOxe_fxp,3,1,B,C,Thin / low fire,None,1,0,0
+RaPIPOxe_fxp,3,2,E,D,Thin / low fire,None,1,0,0
+RaPIPOxe_fxp,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaPIPOxe_fxp,3,4,D,C,Overstory removal,None,1,0,0
+RaPIPOxe_fxp,3,5,E,C,Overstory removal,None,1,0,0
+RaPIPOxe_fxp,3,6,B,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fxp,3,7,C,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fxp,3,8,D,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fxp,3,9,E,A,Regen / high fire,None,1,0,0
+RaPIPOxe_fxp,3,10,A,C,Grow w/ fire,None,0,0,1
+RaPIPOxe_fxp,3,11,C,D,Grow w/ fire,None,0,0,1
+RaPIPOxe_fxp,3,12,A,B,Grow w/o fire,None,0,0,1
+RaPIPOxe_fxp,3,13,B,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fxp,3,14,C,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fxp,3,15,D,E,Grow w/o fire,None,0,0,1
+RaPIPOxe_fxp,3,16,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fxp,3,17,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fxp,3,18,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaPIPOxe_fxp,3,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaPIPOxe_fxp,3,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaREFI_fcw,3,1,B,C,Thin / low fire,None,1,0,0
+RaREFI_fcw,3,2,E,D,Thin / low fire,None,1,0,0
+RaREFI_fcw,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaREFI_fcw,3,4,D,C,Overstory removal,None,1,0,0
+RaREFI_fcw,3,5,E,C,Overstory removal,None,1,0,0
+RaREFI_fcw,3,6,B,A,Regen / high fire,None,1,0,0
+RaREFI_fcw,3,7,C,A,Regen / high fire,None,1,0,0
+RaREFI_fcw,3,8,D,A,Regen / high fire,None,1,0,0
+RaREFI_fcw,3,9,E,A,Regen / high fire,None,1,0,0
+RaREFI_fcw,3,10,A,C,Grow w/ fire,None,0,0,1
+RaREFI_fcw,3,11,C,D,Grow w/ fire,None,0,0,1
+RaREFI_fcw,3,12,A,B,Grow w/o fire,None,0,0,1
+RaREFI_fcw,3,13,B,E,Grow w/o fire,None,0,0,1
+RaREFI_fcw,3,14,C,B,Grow w/o fire,None,0,0,1
+RaREFI_fcw,3,15,D,E,Grow w/o fire,None,0,0,1
+RaREFI_fcw,3,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaREFI_fcw,3,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaREFI_fcw,3,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaREFI_fcw,3,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaREFI_fcw,3,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaREFI_frf,3,1,B,C,Thin / low fire,None,1,0,0
+RaREFI_frf,3,2,E,D,Thin / low fire,None,1,0,0
+RaREFI_frf,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaREFI_frf,3,4,D,C,Overstory removal,None,1,0,0
+RaREFI_frf,3,5,E,C,Overstory removal,None,1,0,0
+RaREFI_frf,3,6,B,A,Regen / high fire,None,1,0,0
+RaREFI_frf,3,7,C,A,Regen / high fire,None,1,0,0
+RaREFI_frf,3,8,D,A,Regen / high fire,None,1,0,0
+RaREFI_frf,3,9,E,A,Regen / high fire,None,1,0,0
+RaREFI_frf,3,10,A,C,Grow w/ fire,None,0,0,1
+RaREFI_frf,3,11,C,D,Grow w/ fire,None,0,0,1
+RaREFI_frf,3,12,A,B,Grow w/o fire,None,0,0,1
+RaREFI_frf,3,13,B,E,Grow w/o fire,None,0,0,1
+RaREFI_frf,3,14,C,B,Grow w/o fire,None,0,0,1
+RaREFI_frf,3,15,D,E,Grow w/o fire,None,0,0,1
+RaREFI_frf,3,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaREFI_frf,3,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaREFI_frf,3,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaREFI_frf,3,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaREFI_frf,3,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaREFI_frm,3,1,B,C,Thin / low fire,None,1,0,0
+RaREFI_frm,3,2,E,D,Thin / low fire,None,1,0,0
+RaREFI_frm,3,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaREFI_frm,3,4,D,C,Overstory removal,None,1,0,0
+RaREFI_frm,3,5,E,C,Overstory removal,None,1,0,0
+RaREFI_frm,3,6,B,A,Regen / high fire,None,1,0,0
+RaREFI_frm,3,7,C,A,Regen / high fire,None,1,0,0
+RaREFI_frm,3,8,D,A,Regen / high fire,None,1,0,0
+RaREFI_frm,3,9,E,A,Regen / high fire,None,1,0,0
+RaREFI_frm,3,10,A,C,Grow w/ fire,None,0,0,1
+RaREFI_frm,3,11,C,D,Grow w/ fire,None,0,0,1
+RaREFI_frm,3,12,A,B,Grow w/o fire,None,0,0,1
+RaREFI_frm,3,13,B,E,Grow w/o fire,None,0,0,1
+RaREFI_frm,3,14,C,B,Grow w/o fire,None,0,0,1
+RaREFI_frm,3,15,D,E,Grow w/o fire,None,0,0,1
+RaREFI_frm,3,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaREFI_frm,3,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaREFI_frm,3,18,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaREFI_frm,3,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaREFI_frm,3,20,C,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaSAWD_fal,3,1,B,C,Thin / low fire,None,1,0,0
+RaSAWD_fal,3,2,B,A,Regen / high fire,None,1,0,0
+RaSAWD_fal,3,3,A,C,Grow w/ fire,None,0,0,1
+RaSAWD_fal,3,4,C,B,Grow w/o fire,None,0,0,1
+RaSAWD_fal,3,5,C,A,Regen / high fire,None,1,0,0
+RaSAWD_fal,3,6,A,B,Grow w/o fire,Grow w/o fire,0,0,1
+RaSAWD_fsw,3,1,B,C,Thin / low fire,None,1,0,0
+RaSAWD_fsw,3,2,B,A,Regen / high fire,None,1,0,0
+RaSAWD_fsw,3,3,A,C,Grow w/ fire,None,0,0,1
+RaSAWD_fsw,3,4,C,B,Grow w/o fire,None,0,0,1
+RaSAWD_fsw,3,5,C,A,Regen / high fire,None,1,0,0
+RaSAWD_fsw,3,6,A,B,Grow w/o fire,Grow w/o fire,0,0,1
+RaSPFI_fcd,4,1,A,B,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,2,B,A,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,3,C,A,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,4,C,B,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,5,D,A,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,6,D,B,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,7,E,A,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,8,E,B,Regen / high fire,None,1,0,0
+RaSPFI_fcd,4,9,E,D,Overstory removal,None,1,0,0
+RaSPFI_fcd,4,10,A,D,Grow w/o fire,None,0,0,1
+RaSPFI_fcd,4,11,B,C,Grow w/o fire,None,0,0,1
+RaSPFI_fcd,4,12,B,D,Grow w/o fire,None,0,0,1
+RaSPFI_fcd,4,13,C,D,Grow w/o fire,None,0,0,1
+RaSPFI_fcd,4,14,C,E,Grow w/o fire,None,0,0,1
+RaSPFI_fcd,4,15,D,C,Grow w/o fire,None,0,0,1
+RaSPFI_fcd,4,16,D,E,Grow w/o fire,None,0,0,1
+RaSPFI_fcd,4,17,A,C,Grow w/o fire,Grow w/o fire,0,0,1
+RaSPFI_fcd,4,18,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaSPFI_fcd,4,19,B,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaSPFI_fcd,4,20,E,C,Regen / high fire,Grow w/o fire,0,1,0
+RaSPFI_fmz,4,1,A,B,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,2,B,A,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,3,C,A,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,4,C,B,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,5,D,A,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,6,D,B,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,7,E,A,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,8,E,B,Regen / high fire,None,1,0,0
+RaSPFI_fmz,4,9,E,D,Overstory removal,None,1,0,0
+RaSPFI_fmz,4,10,A,D,Grow w/o fire,None,0,0,1
+RaSPFI_fmz,4,11,B,C,Grow w/o fire,None,0,0,1
+RaSPFI_fmz,4,12,B,D,Grow w/o fire,None,0,0,1
+RaSPFI_fmz,4,13,C,D,Grow w/o fire,None,0,0,1
+RaSPFI_fmz,4,14,C,E,Grow w/o fire,None,0,0,1
+RaSPFI_fmz,4,15,D,C,Grow w/o fire,None,0,0,1
+RaSPFI_fmz,4,16,D,E,Grow w/o fire,None,0,0,1
+RaSPFI_fmz,4,17,A,C,Grow w/o fire,Grow w/o fire,0,0,1
+RaSPFI_fmz,4,18,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaSPFI_fmz,4,19,B,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaSPFI_fmz,4,20,E,C,Regen / high fire,Grow w/o fire,0,1,0
+RaSSHE_fss,5,1,B,A,Regen / high fire,None,1,0,0
+RaSSHE_fss,5,2,C,A,Regen / high fire,None,1,0,0
+RaSSHE_fss,5,3,D,A,Regen / high fire,None,1,0,0
+RaSSHE_fss,5,4,E,A,Regen / high fire,None,1,0,0
+RaSSHE_fss,5,5,E,D,Thin / low fire,None,1,0,0
+RaSSHE_fss,5,6,A,B,Grow w/o fire,None,0,0,1
+RaSSHE_fss,5,7,A,C,Grow w/o fire,None,0,0,1
+RaSSHE_fss,5,8,B,E,Grow w/o fire,None,0,0,1
+RaSSHE_fss,5,9,C,E,Grow w/o fire,None,0,0,1
+RaSSHE_fss,5,10,D,E,Grow w/o fire,None,0,0,1
+RaSSHE_fss,5,11,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaSSHE_fss,5,12,B,C,Regen / high fire,Grow w/o fire,0,1,0
+RaSSHE_fss,5,13,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaSSHE_fss,5,14,C,D,Regen / high fire,Grow w/o fire,0,1,0
+RaSSHE_fss,5,15,D,C,Regen / high fire,Grow w/o fire,0,1,0
+RaSSHE_fss,5,16,E,C,Regen / high fire,Grow w/o fire,0,1,0
+RaSSHE_fss,5,17,D,B,Overstory removal,Grow w/o fire,0,1,0
+RaSSHE_fss,5,18,A,D,Grow w/o fire,Thin / low fire,0,1,0
+RaSSHE_fss,5,19,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaSSHE_fss,5,20,B,D,Grow w/o fire,Overstory removal,0,1,0
+RaTAOAco_ftm,1,1,B,C,Thin / low fire,None,1,0,0
+RaTAOAco_ftm,1,2,E,D,Thin / low fire,None,1,0,0
+RaTAOAco_ftm,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaTAOAco_ftm,1,4,D,C,Overstory removal,None,1,0,0
+RaTAOAco_ftm,1,5,E,C,Overstory removal,None,1,0,0
+RaTAOAco_ftm,1,6,B,A,Regen / high fire,None,1,0,0
+RaTAOAco_ftm,1,7,C,A,Regen / high fire,None,1,0,0
+RaTAOAco_ftm,1,8,D,A,Regen / high fire,None,1,0,0
+RaTAOAco_ftm,1,9,E,A,Regen / high fire,None,1,0,0
+RaTAOAco_ftm,1,10,A,C,Grow w/ fire,None,0,0,1
+RaTAOAco_ftm,1,11,A,B,Grow w/o fire,None,0,0,1
+RaTAOAco_ftm,1,12,B,E,Grow w/o fire,None,0,0,1
+RaTAOAco_ftm,1,13,C,E,Grow w/o fire,None,0,0,1
+RaTAOAco_ftm,1,14,D,E,Grow w/o fire,None,0,0,1
+RaTAOAco_ftm,1,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaTAOAco_ftm,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaTAOAco_ftm,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaTAOAco_ftm,1,18,C,D,Grow w/ fire,Thin / low fire,0,1,0
+RaTAOAco_ftm,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaTAOAco_ftm,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1
+RaTAOAco_fto,1,1,B,C,Thin / low fire,None,1,0,0
+RaTAOAco_fto,1,2,E,D,Thin / low fire,None,1,0,0
+RaTAOAco_fto,1,3,B,D,Thin / low fire,Grow w/ fire,0,1,0
+RaTAOAco_fto,1,4,D,C,Overstory removal,None,1,0,0
+RaTAOAco_fto,1,5,E,C,Overstory removal,None,1,0,0
+RaTAOAco_fto,1,6,B,A,Regen / high fire,None,1,0,0
+RaTAOAco_fto,1,7,C,A,Regen / high fire,None,1,0,0
+RaTAOAco_fto,1,8,D,A,Regen / high fire,None,1,0,0
+RaTAOAco_fto,1,9,E,A,Regen / high fire,None,1,0,0
+RaTAOAco_fto,1,10,A,C,Grow w/ fire,None,0,0,1
+RaTAOAco_fto,1,11,A,B,Grow w/o fire,None,0,0,1
+RaTAOAco_fto,1,12,B,E,Grow w/o fire,None,0,0,1
+RaTAOAco_fto,1,13,C,E,Grow w/o fire,None,0,0,1
+RaTAOAco_fto,1,14,D,E,Grow w/o fire,None,0,0,1
+RaTAOAco_fto,1,15,C,B,Regen / high fire,Grow w/o fire,0,1,0
+RaTAOAco_fto,1,16,D,B,Regen / high fire,Grow w/o fire,0,1,0
+RaTAOAco_fto,1,17,E,B,Regen / high fire,Grow w/o fire,0,1,0
+RaTAOAco_fto,1,18,C,D,Grow w/ fire,Thin / low fire,0,1,0
+RaTAOAco_fto,1,19,A,D,Grow w/ fire,Grow w/ fire,0,0,1
+RaTAOAco_fto,1,20,A,E,Grow w/o fire,Grow w/o fire,0,0,1

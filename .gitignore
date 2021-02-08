@@ -2,3 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+/data/FIA/*
+/data/GIS/*
+/talks/*
+/markdown/*

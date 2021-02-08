@@ -29,17 +29,18 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   pnw <- rFIA::readFIA(dirFIA, states = c('OR', 'WA'), nCores = cores)
   
   # plot-level structure classifications
-  sclass <- read.csv(paste0(dirResults, 'prep/plt_sclass.csv'))
+  sclass <- read.csv(paste0(dirResults, '/prep/plt_sclass.csv'))
   
   # Landscape unit attributes
-  bpsAtt <- read.csv(paste0(dirResults, 'prep/fiaPlts_attributes.csv')) %>%
-    dplyr::left_join(read.csv(paste0(dirResults, 'prep/fiaPlts.csv')), by = 'pltID') %>%
+  bpsAtt <- read.csv(paste0(dirResults, '/prep/fiaPlts_attributes.csv')) %>%
+    dplyr::left_join(read.csv(paste0(dirResults, '/prep/fiaPlts.csv')), by = 'pltID') %>%
     dplyr::select(PLT_CN, pltID, BPS_LLID, BpS, BpS_Code, 
                   BpS_Name, FRG, HUC10, HUC8, MAP_ZONE)
   
   ## Need to use S-class codes (i.e, 'A', 'B', etc.), appending to PLOT table
+  pnw$COND <- pnw$COND %>%  
+    dplyr::left_join(sclass, by = c('PLT_CN', 'CONDID'))
   pnw$PLOT <- pnw$PLOT %>%
-    dplyr::left_join(sclass, by = c('CN' = 'PLT_CN')) %>%
     ## Add other plot attributes
     dplyr::left_join(bpsAtt, by = c('CN' = 'PLT_CN'))
   
@@ -50,7 +51,7 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   full <- rFIA::area(pnw, 
                      grpBy = sclass,
                      nCores = cores,
-                     areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                     areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                      variance = TRUE,
                      method = 'annual') %>%
     dplyr::filter(YEAR > 2001) # Only in OR
@@ -59,7 +60,7 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   bps <- rFIA::area(pnw, 
                     grpBy = c(BpS_Code, sclass),
                     nCores = cores,
-                    areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                    areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                     variance = TRUE,
                     method = 'annual') %>%
     dplyr::filter(YEAR > 2001) # Only in OR
@@ -69,7 +70,7 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   bpsLLID <- rFIA::area(pnw, 
                         grpBy = c(BpS_Code, BPS_LLID, sclass),
                         nCores = cores,
-                        areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                        areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                         variance = TRUE,
                         method = 'annual') %>%
     dplyr::filter(YEAR > 2001) # Only in OR
@@ -78,16 +79,16 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   bpsMZ <- rFIA::area(pnw, 
                       grpBy = c(BpS_Code, MAP_ZONE, sclass),
                       nCores = cores,
-                      areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                      areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                       variance = TRUE,
                       method = 'annual') %>%
     dplyr::filter(YEAR > 2001) # Only in OR
   
   ## Save results --------------------------------------------------------------
-  write.csv(full, paste0(dirResults, 'sclass/ORWA_annual.csv'), row.names = FALSE)
-  write.csv(bps, paste0(dirResults, 'sclass/BPS_annual.csv'), row.names = FALSE)
-  write.csv(bpsLLID, paste0(dirResults, 'sclass/BPS_LLID_annual.csv'), row.names = FALSE)
-  write.csv(bpsMZ, paste0(dirResults, 'sclass/BPS_MAPZONE_annual.csv'), row.names = FALSE)
+  write.csv(full, paste0(dirResults, '/sclass/ORWA_annual.csv'), row.names = FALSE)
+  write.csv(bps, paste0(dirResults, '/sclass/BPS_annual.csv'), row.names = FALSE)
+  write.csv(bpsLLID, paste0(dirResults, '/sclass/BPS_LLID_annual.csv'), row.names = FALSE)
+  write.csv(bpsMZ, paste0(dirResults, '/sclass/BPS_MAPZONE_annual.csv'), row.names = FALSE)
   
   
   
@@ -105,7 +106,7 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   full <- rFIA::area(pnw, 
                      grpBy = sclass,
                      nCores = cores,
-                     areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                     areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                      variance = TRUE,
                      method = 'ti') 
   
@@ -113,7 +114,7 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   bps <- rFIA::area(pnw, 
                     grpBy = c(BpS_Code, sclass),
                     nCores = cores,
-                    areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                    areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                     variance = TRUE,
                     method = 'ti')
   
@@ -122,7 +123,7 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   bpsLLID <- rFIA::area(pnw, 
                         grpBy = c(BpS_Code, BPS_LLID, sclass),
                         nCores = cores,
-                        areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                        areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                         variance = TRUE,
                         method = 'ti')
   
@@ -130,15 +131,15 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   bpsMZ <- rFIA::area(pnw, 
                       grpBy = c(BpS_Code, MAP_ZONE, sclass),
                       nCores = cores,
-                      areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')),
+                      areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
                       variance = TRUE,
                       method = 'ti')
   
   ## Save results --------------------------------------------------------------
-  write.csv(full, paste0(dirResults, 'sclass/ORWA_ti.csv'), row.names = FALSE)
-  write.csv(bps, paste0(dirResults, 'sclass/BPS_ti.csv'), row.names = FALSE)
-  write.csv(bpsLLID, paste0(dirResults, 'sclass/BPS_LLID_ti.csv'), row.names = FALSE)
-  write.csv(bpsMZ, paste0(dirResults, 'sclass/BPS_MAPZONE_ti.csv'), row.names = FALSE)
+  write.csv(full, paste0(dirResults, '/sclass/ORWA_ti.csv'), row.names = FALSE)
+  write.csv(bps, paste0(dirResults, '/sclass/BPS_ti.csv'), row.names = FALSE)
+  write.csv(bpsLLID, paste0(dirResults, '/sclass/BPS_LLID_ti.csv'), row.names = FALSE)
+  write.csv(bpsMZ, paste0(dirResults, '/sclass/BPS_MAPZONE_ti.csv'), row.names = FALSE)
   
   cat('Area estimates complete ...\n')
 }

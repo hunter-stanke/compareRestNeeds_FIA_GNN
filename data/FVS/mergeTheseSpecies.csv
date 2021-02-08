@@ -1,0 +1,134 @@
+SPCD,FVS_VARIANT,NEW_SPCD,NEW_FVS_VARIANT,Note
+11,BM,11,EC,All identical
+11,CA,11,EC,All identical
+11,IE,11,EC,All identical
+15,BM,15,EC,All identical
+17,NC,17,WC,All identical
+17,CA,17,WC,All identical
+20,EC,20,CA,All identical
+20,BM,20,CA,All identical
+20,SO,20,CA,All identical
+21,WC,21,CA,All identical
+22,BM,22,EC,All identical
+22,CA,22,EC,All identical
+22,IE,22,EC,All identical
+41,WC,41,CA,All identical
+41,NC,41,CA,All identical
+41,PN,41,CA,All identical
+64,IE,64,CA,All identical
+66,BM,66,IE,All identical
+73,WC,73,BM,All identical
+81,EC,81,CA,All identical
+98,NC,98,PN,All identical
+98,WC,98,PN,All identical
+98,EC,98,PN,All identical
+98,BM,98,PN,All identical
+98,IE,98,PN,All identical
+103,NC,103,CA,All identical
+108,NC,108,CA,Nearest
+116,NC,116,CA,All identical
+117,BM,117,CA,All identical
+119,NC,119,CA,Nearest
+120,WC,127,CA,Same model for bishop pine as gray pine
+130,PN,108,CA,scotch to lodgepole
+130,CA,108,CA,scotch to lodgepole
+211,NC,211,CA,All identical
+212,PN,211,CA,seqoia to coast redwood
+231,NC,231,CA,All identical
+242,NC,242,CA,Nearest
+263,NC,263,CA,Nearest
+312,NC,312,WC,All identical
+313,PN,312,WC,boxelder to bigleaf maple
+320,WC,312,WC,norway maple to bigleaf maple
+321,WC,321,EC,All identical
+321,BM,321,EC,All identical
+321,CA,321,EC,All identical
+321,SO,321,EC,All identical
+321,PN,321,EC,All identical
+341,CA,351,CA,tree of heaven to red alder
+341,PN,351,CA,tree of heaven to red alder
+351,NC,351,CA,All identical
+351,BM,351,CA,All identical
+351,IE,351,CA,All identical
+352,WC,361,CA,white alder to madrone
+352,PN,361,CA,white alder to madrone
+352,NC,361,CA,white alder to madrone
+352,CA,361,CA,white alder to madrone
+352,EC,361,CA,white alder to madrone
+352,IE,361,CA,white alder to madrone
+361,PN,361,CA,All identical
+361,WC,361,CA,All identical
+361,SO,361,CA,All identical
+374,EC,375,EC,Water birch to paper birch
+374,BM,375,EC,Water birch to paper birch
+374,IE,375,EC,Water birch to paper birch
+374,WC,375,EC,Water birch to paper birch
+374,PN,375,EC,Water birch to paper birch
+375,BM,375,EC,All identical
+431,WC,631,CA,Same model for chinkapin and tanoak
+431,PN,631,CA,Same model for chinkapin and tanoak
+431,NC,631,CA,Same model for chinkapin and tanoak
+431,CA,631,CA,Same model for chinkapin and tanoak
+431,SO,631,CA,Same model for chinkapin and tanoak
+431,EC,631,CA,Same model for chinkapin and tanoak
+475,BM,475,SO,All identical
+475,WC,475,SO,All identical
+475,EC,475,SO,All identical
+492,WC,351,CA,Same model for pacific dogwood and red alder
+492,NC,351,CA,Same model for pacific dogwood and red alder
+492,PN,351,CA,Same model for pacific dogwood and red alder
+492,CA,351,CA,Same model for pacific dogwood and red alder
+492,EC,351,CA,Same model for pacific dogwood and red alder
+542,PN,351,CA,oregon ash to red alder
+542,WC,351,CA,oregon ash to red alder
+542,NC,351,CA,oregon ash to red alder
+542,CA,351,CA,oregon ash to red alder
+603,PN,818,CA,Cal black walnut to cal black oak
+603,EC,818,CA,Cal black walnut to cal black oak
+661,PN,312,WC,crabapple same model as bigleaf
+661,CA,312,WC,crabapple same model as bigleaf
+661,NC,312,WC,crabapple same model as bigleaf
+661,WC,312,WC,crabapple same model as bigleaf
+747,IE,747,BM,All identical
+760,WC,351,CA,All cherry same model as red alder
+760,PN,351,CA,All cherry same model as red alder
+760,SO,351,CA,All cherry same model as red alder
+760,BM,351,CA,All cherry same model as red alder
+760,EC,351,CA,All cherry same model as red alder
+763,EC,351,CA,All cherry same model as red alder
+763,PN,351,CA,All cherry same model as red alder
+763,BM,351,CA,All cherry same model as red alder
+763,WC,351,CA,All cherry same model as red alder
+763,SO,351,CA,All cherry same model as red alder
+763,NC,351,CA,All cherry same model as red alder
+763,IE,351,CA,All cherry same model as red alder
+768,PN,351,CA,All cherry same model as red alder
+768,BM,351,CA,All cherry same model as red alder
+768,WC,351,CA,All cherry same model as red alder
+768,NC,351,CA,All cherry same model as red alder
+768,EC,351,CA,All cherry same model as red alder
+768,CA,351,CA,All cherry same model as red alder
+768,SO,351,CA,All cherry same model as red alder
+768,IE,351,CA,All cherry same model as red alder
+771,WC,351,CA,All cherry same model as red alder
+771,PN,351,CA,All cherry same model as red alder
+771,EC,351,CA,All cherry same model as red alder
+805,NC,805,CA,All identical
+805,WC,805,CA,All identical
+805,PN,805,CA,All identical
+815,NC,815,CA,All identical
+818,PN,818,CA,All identical
+818,WC,818,CA,All identical
+818,SO,818,CA,All identical
+901,PN,351,CA,locust to red alder
+901,EC,351,CA,locust to red alder
+901,WC,351,CA,locust to red alder
+920,WC,312,WC,All willow same model as bigleaf
+920,BM,312,WC,All willow same model as bigleaf
+920,PN,312,WC,All willow same model as bigleaf
+922,EC,312,WC,All willow same model as bigleaf
+922,PN,312,WC,All willow same model as bigleaf
+926,WC,312,WC,All willow same model as bigleaf
+927,PN,312,WC,All willow same model as bigleaf
+981,PN,981,CA,All identical
+981,NC,981,CA,All identical
