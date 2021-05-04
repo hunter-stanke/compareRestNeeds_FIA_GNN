@@ -53,16 +53,19 @@ rasterize_plot_buffers <- function(dirGIS = here::here('data/GIS/'),
   ## Make the buffers
   pltBuffer <- sf::st_buffer(pltSF, dist = bufferRadius)
 
-  ## rasterize the buffers
-  buffR <- stars::st_rasterize(dplyr::select(pltBuffer, OBJECTID), 
-                               template = ref)
-  
-  ## Save the newly rasterized buffers
+  ## Make it a home if it needs one
   outdir <- paste0(dirGIS, 'plts_', bufferRadius / 1000, 'km/')
   dir.create(file.path(outdir), showWarnings = FALSE) # make the directory
-  stars::write_stars(buffR, 
-                     paste0(outdir, 'plts_', bufferRadius / 1000, 'km.tif'),
-                     driver = 'GTiff')
+  
+  ## If anything lives there already, delete it
+  existing.files <- list.files(outdir, full.names = TRUE)
+  noprint <- file.remove(existing.files) 
+  
+  ## rasterize and save the buffers
+  buffR <- stars::st_rasterize(dplyr::select(pltBuffer, OBJECTID), 
+                               template = ref,
+                               file = paste0(outdir, 'plts_', bufferRadius / 1000, 'km.tif'),
+                               driver = 'GTiff')
   
   ## Save the "attribute table"
   write.csv(dplyr::select(as.data.frame(pltBuffer), OBJECTID, pltID), # drop geometry

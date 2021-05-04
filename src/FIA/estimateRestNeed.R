@@ -36,69 +36,91 @@ estimate_rest_needs <- function(dirResults = here::here('results/FIA/'),
   
   ## Annual BPS
   processStrata(dirResults = dirResults,
-                dat = read.csv(paste0(dirResults, '/sclass/BPS_annual.csv')),
+                dat = read.csv(paste0(dirResults, '/sclass/ORWA_BPS_annual.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
                 bps = BpS_Code,
-                prefix = 'BPS_annual',
+                prefix = 'ORWA_BPS_annual',
                 cores = cores,
                 YEAR, BpS_Code)
   
-  ## Annual BPS  MAPZONE
+  ## Annual BPS x state
   processStrata(dirResults = dirResults,
-                dat = read.csv(paste0(dirResults, '/sclass/BPS_MAPZONE_annual.csv')),
+                dat = read.csv(paste0(dirResults, '/sclass/STATE_BPS_annual.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
                 bps = BpS_Code,
-                prefix = 'BPS_MAPZONE_annual',
+                prefix = 'STATE_BPS_annual',
                 cores = cores,
-                YEAR, BpS_Code, MAP_ZONE)
+                YEAR, STATE, BpS_Code)
   
   ## Annual BPS LLID
   processStrata(dirResults = dirResults,
-                dat = read.csv(paste0(dirResults, '/sclass/BPS_LLID_annual.csv')),
+                dat = read.csv(paste0(dirResults, '/sclass/ORWA_BPS_LLID_annual.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
                 bps = BpS_Code,
-                prefix = 'BPS_LLID_annual',
+                prefix = 'ORWA_BPS_LLID_annual',
                 cores = cores,
                 YEAR, BpS_Code, BPS_LLID)
+  
+  ## Annual BPS x LLID x state
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/STATE_BPS_LLID_annual.csv')),
+                refcon = refCon,
+                rules = rules,
+                sclass = sclass,
+                bps = BpS_Code,
+                prefix = 'STATE_BPS_LLID_annual',
+                cores = cores,
+                YEAR, STATE, BpS_Code, BPS_LLID)
   
   ## TI BPS
   processStrata(dirResults = dirResults,
-                dat = read.csv(paste0(dirResults, '/sclass/BPS_ti.csv')),
+                dat = read.csv(paste0(dirResults, '/sclass/ORWA_BPS_ti.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
                 bps = BpS_Code,
-                prefix = 'BPS_ti',
+                prefix = 'ORWA_BPS_ti',
                 cores = cores,
                 YEAR, BpS_Code)
   
-  ## Annual BPS  MAPZONE
+  ## TI BPS
   processStrata(dirResults = dirResults,
-                dat = read.csv(paste0(dirResults, '/sclass/BPS_MAPZONE_ti.csv')),
+                dat = read.csv(paste0(dirResults, '/sclass/STATE_BPS_ti.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
                 bps = BpS_Code,
-                prefix = 'BPS_MAPZONE_ti',
+                prefix = 'STATE_BPS_ti',
                 cores = cores,
-                YEAR, BpS_Code, MAP_ZONE)
+                YEAR, STATE, BpS_Code)
   
   ## Annual BPS LLID
   processStrata(dirResults = dirResults,
-                dat = read.csv(paste0(dirResults, '/sclass/BPS_LLID_ti.csv')),
+                dat = read.csv(paste0(dirResults, '/sclass/ORWA_BPS_LLID_ti.csv')),
                 refcon = refCon,
                 rules = rules,
                 sclass = sclass,
                 bps = BpS_Code,
-                prefix = 'BPS_LLID_ti',
+                prefix = 'ORWA_BPS_LLID_ti',
                 cores = cores,
                 YEAR, BpS_Code, BPS_LLID)
+  
+  ## Annual BPS LLID
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/STATE_BPS_LLID_ti.csv')),
+                refcon = refCon,
+                rules = rules,
+                sclass = sclass,
+                bps = BpS_Code,
+                prefix = 'STATE_BPS_LLID_ti',
+                cores = cores,
+                YEAR, STATE, BpS_Code, BPS_LLID)
   
   
   cat('Restoration need estimates complete ...\n')

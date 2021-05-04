@@ -28,8 +28,9 @@ select_FIA_area_plots <- function(dirFIA = here::here('data/FIA/'),
                       nCores = cores)
   
   ## Current area plots
-  aPlts <- rFIA::area(db, grpBy = PREV_PLT_CN, byPlot = TRUE, nCores = cores)
-  
+  aPlts <- rFIA::area(db, byPlot = TRUE, nCores = cores) %>%
+    dplyr::left_join(dplyr::select(db$PLOT, PREV_PLT_CN, CN), by= c('PLT_CN' = 'CN'))
+
   ## Area Change plots
   acPlts <- rFIA::areaChange(db, byPlot = TRUE, nCores = cores) %>%
     dplyr::left_join(dplyr::select(db$PLOT, PREV_PLT_CN, CN), by= c('PLT_CN' = 'CN'))

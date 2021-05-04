@@ -4,7 +4,7 @@
 ##
 ## Determine "forest structural class" following the Haugo et
 ## al classification scheme. We first predict crown
-## width from allometric equations implemented in FVS.
+## width from allometric equations implemented by GNN.
 ## We then determine percent crown cover and live tree
 ## density by DBH classes on each FIA plot. Once we
 ## have the same variables as GNN, we can classify
@@ -27,7 +27,7 @@
 ## Function to predict stand structural classifications on FIA plots
 ## -----------------------------------------------------------------------------
 classify_plot_structure <- function(dirFIA = here::here('data/FIA/'),
-                                    dirFVS = here::here('data/FVS/'),
+                                    dirCW = here::here('data/CW/'),
                                     dirRefCon = here::here('data/refCon/'),
                                     dirResults = here::here('results/FIA/'), 
                                     mapStems = FALSE,
@@ -47,7 +47,7 @@ classify_plot_structure <- function(dirFIA = here::here('data/FIA/'),
   keepPlts <- read.csv(paste0(dirResults, '/prep/fiaPlts.csv')) 
   
   ## Predict crown area of live trees from FVS allometrics
-  tree <- predictCrownWidth(pnw, dirFVS, keepPlts, mapStems)
+  tree <- predictCrownWidth(pnw, dirCW, keepPlts, mapStems)
   
   ## Summarize into GNN variables
   gnnVars <- makeGNNvars(tree)
@@ -82,23 +82,43 @@ classify_plot_structure <- function(dirFIA = here::here('data/FIA/'),
 
 
 ## Predict crown area of live trees from FVS allometrics
-predictCrownWidth <- function(db, dirFVS, keepPlts, mapStems) {
+predictCrownWidth <- function(db, dirCW, keepPlts, mapStems) {
+  
+  ## Read coefficients used in allometric equations below, from Hann 1997
+  ## This method is extremely simplistic, but is what is used by GNN, so 
+  ## use it here to match. See bottom of this script for a more contemporary
+  ## approach, using FVS allometrics
   
   ## Read FVS coefficients
-  coefFVS <- read.csv(paste0(dirFVS, '/coef.csv')) %>%
-    dplyr::distinct(SPCD, variant, .keep_all = TRUE)
-  boundsFVS <- read.csv(paste0(dirFVS, '/bounds.csv')) %>%
-    dplyr::distinct(SPCD, variant, minD) %>%
-    dplyr::filter(minD > 1) # All else assumed 1 inch
-  bfFVS <- read.csv(paste0(dirFVS, '/bf.csv')) %>%
-    dplyr::distinct(SPCD, variant, location, BF) %>%
-    dplyr::filter(BF != 1)
-  mergeCoefs <- read.csv(paste0(dirFVS, '/mergeTheseSpecies.csv'))
+  coefCW <- read.csv(paste0(dirCW, '/canopy_cover_coeff.csv')) 
   
+  ## Check if we have FIA's reference table already so we can link NRCS SYMBOL
+  ## to FIA SPCD
+  if (!any(stringr::str_detect('REF_SPECIES.csv', list.files(dirCW)))) {
+    ## Download the reference table if we don't have it already
+    rFIA::getFIA('REF', dir = dirCW, tables = 'SPECIES', load = FALSE)
+  }
+  
+  ## Get NRCS PLANT Dictionary symbols and join onto coefficient table
+  plantDict <- read.csv(paste0(dirCW, '/REF_SPECIES.csv')) %>%
+    dplyr::mutate(SPECIES_SYMBOL = stringr::str_trim (SPECIES_SYMBOL)) %>% # Remove whitespace
+    dplyr::select(SPCD, SPP_SYMBOL = SPECIES_SYMBOL)
+  coefCW <- coefCW %>%
+    mutate(SPP_SYMBOL = stringr::str_trim (SPP_SYMBOL)) %>% # Remove whitespace
+    dplyr::left_join(plantDict, by = c('SPP_SYMBOL'))
+  
+  ## Norway maple and giant chinkapin are present in the FIA Database, but
+  ## not in the coefficient list. In FVS norway is treated the same as bigleaf
+  ## and chinkapin the same as tanoak. Doing the same here - only affects (0.5% of trees)
+  nm <- dplyr::filter(coefCW, SPCD == 312) %>% dplyr::mutate(SPCD = 320)
+  gc <- dplyr::filter(coefCW, SPCD == 631) %>% dplyr::mutate(SPCD = 431)
+  coefCW <- coefCW %>%
+    dplyr::bind_rows(nm) %>%
+    dplyr::bind_rows(gc)
   
   ## Estimate crown width/area for every live tree that we can
   tree <- db$COND %>%
-    filter(PLT_CN %in% keepPlts$PLT_CN) %>%
+    dplyr::filter(PLT_CN %in% keepPlts$PLT_CN) %>%
     dplyr::filter(COND_STATUS_CD == 1) %>%
     dplyr::select(PLT_CN, CONDID) %>%
     dplyr::left_join(db$TREE, by = c('PLT_CN', 'CONDID')) %>%
@@ -110,83 +130,47 @@ predictCrownWidth <- function(db, dirFVS, keepPlts, mapStems) {
     dplyr::group_by(PLT_CN, CONDID) %>%
     dplyr::mutate(BAA_STAND = sum(BAA, na.rm = TRUE)) %>% 
     dplyr::ungroup() %>%
+    ## Is the tree dominant, codominant or open grown?
+    dplyr::mutate(DOM = case_when(CCLCD %in% 1:3 ~ 1,
+                                  TRUE ~ 0)) %>%
     ## Here PLT_CN is a unique plot visit ID, TRE_CN is a unique tree visit ID,
     ## DIA is dbh, SPCD is a species code, HT is total tree height,
-    ## CR is compacted crown ratio, and TPA_UNAJD is TPA each tree represents
+    ## CR is compacted crown ratio, and TPA_UNADJ is TPA each tree represents
     ## UNADJ refers to non-response bias, which is handled later. Think of it 
     ## as just standard TPA
-    dplyr::select(PLT_CN, TRE_CN=CN, CONDID, SPCD, DIA, HT, CR, BAA_STAND, TPA_UNADJ) %>%
+    dplyr::select(PLT_CN, TRE_CN=CN, CONDID, SPCD, DIA, HT, CR, DOM, BAA_STAND, TPA_UNADJ) %>%
     ## Join on plot attributes
     dplyr::left_join(dplyr::select(db$PLOT, CN, LAT, LON, ELEV, STATECD, UNITCD, COUNTYCD, PLOT), 
                      by = c('PLT_CN' = 'CN')) %>%
-    dplyr::left_join(dplyr::select(db$PLOTGEOM, CN, FVS_LOC_CD, FVS_VARIANT), 
-                     by = c('PLT_CN' = 'CN')) %>%
     dplyr::left_join(dplyr::select(db$COND, PLT_CN, CONDID, COND_STATUS_CD),
                      by = c('PLT_CN', 'CONDID')) %>%
-    filter(COND_STATUS_CD == 1) %>%
-    mutate(pltID = paste(UNITCD, STATECD, COUNTYCD, PLOT, sep = '_')) %>%
+    ## Join on coefficients
+    dplyr::left_join(dplyr::select(coefCW, CC_B0:SPCD), by = 'SPCD') %>%
+    dplyr::filter(COND_STATUS_CD == 1) %>%
+    dplyr::mutate(pltID = paste(UNITCD, STATECD, COUNTYCD, PLOT, sep = '_')) %>%
     ## We want to drop entire plots where any of these variables are NA
     ## i.e., don't want to compute plot-level canopy cover if individual trees
     ## are ommitted due to lack of allometrics. We will predict S-class of these
     ## plots based on a range of other variables later on.
     dplyr::mutate(cut = ifelse(is.na(SPCD) | SPCD %in% 998:999 |
-                                 is.na(DIA) | is.na(HT) | is.na(CR) | is.na(BAA_STAND) |
-                                 is.na(LAT) | is.na(LON) | is.na(ELEV) |
-                                 is.na(FVS_LOC_CD) | is.na(FVS_VARIANT), 1, 0)) %>%
+                                 is.na(DIA) | is.na(HT) | is.na(CR) | is.na(BAA_STAND), 
+                               1, 0)) %>%
     dplyr::group_by(PLT_CN, CONDID) %>%
     dplyr::mutate(cut = ifelse(sum(cut, na.rm = TRUE) > 0, 1, 0)) %>%
     dplyr::ungroup() %>%
     dplyr::filter(cut < 1) %>%
     tidyr::drop_na() %>%
-    ## Recode AK to Pacific coast
-    dplyr::mutate(FVS_VARIANT = dplyr::case_when(FVS_VARIANT == 'AK' ~ 'PN',
-                                                 FVS_VARIANT == 'CI' ~ 'IE',
-                                                 TRUE ~ FVS_VARIANT)) %>%
-    # Handle merged species -- most species share allometric equations
-    dplyr::left_join(dplyr::select(mergeCoefs, -c(Note)),
-                     by = c('SPCD', 'FVS_VARIANT')) %>%
-    dplyr::mutate(SPCD = dplyr::case_when(is.na(NEW_SPCD) ~ SPCD, 
-                                          TRUE ~ NEW_SPCD),
-                  FVS_VARIANT = dplyr::case_when(is.na(NEW_FVS_VARIANT) ~ as.character(FVS_VARIANT),
-                                                 TRUE ~ as.character(NEW_FVS_VARIANT))) %>%
-    # Add coefficients
-    dplyr::left_join(coefFVS, by = c('SPCD', 'FVS_VARIANT' = 'variant')) %>%
-    dplyr::left_join(boundsFVS, by = c('SPCD', 'FVS_VARIANT' = 'variant')) %>%
-    dplyr::left_join(bfFVS, by = c('SPCD', 'FVS_LOC_CD' = 'location', 'FVS_VARIANT' = 'variant')) %>%
-    ## If not listed, set equal to one
-    dplyr::mutate(BF = dplyr::case_when(is.na(BF) ~ 1.0,
-                                        TRUE ~ BF),
-                  minD = dplyr::case_when(is.na(minD) ~ 1.0,
-                                          TRUE ~ minD))  %>%
-    ## Prep our variables for allometric equations
-    dplyr::mutate(CL = HT * CR / 100, # Crown length
-                  EL100 = ELEV / 100, # Wierd ass parameterization, but that's what FIA does
-                  HI = ((ELEV - 5449) / 100) + 4*(LAT - 42.16) + 1.25*(-116.39 - LON), # Hopkins index - I think it's called hopkins
-                  BA = BAA_STAND,
-                  a1 = dplyr::case_when(is.na(a1) ~ 0, TRUE ~ a1),
-                  a2 = dplyr::case_when(is.na(a2) ~ 0, TRUE ~ a2),
-                  a3 = dplyr::case_when(is.na(a3) ~ 0, TRUE ~ a3),
-                  a4 = dplyr::case_when(is.na(a4) ~ 0, TRUE ~ a4),
-                  a5 = dplyr::case_when(is.na(a5) ~ 0, TRUE ~ a5),
-                  a6 = dplyr::case_when(is.na(a6) ~ 0, TRUE ~ a6)) %>%
-    ## Predict crown width
-    dplyr::mutate(cw = dplyr::case_when(
-      eq == 1 & DIA >= minD ~ a1 + (a2*DIA) + (a3*(DIA^2)),
-      eq == 1 & DIA < minD ~ (a1 + (a2*minD) * (a3 * (minD^2))) * (DIA / minD),
-      eq == 2 & DIA >= minD ~ a1 + (a2 * DIA) + (a3 * (DIA^2)) + (a4 * CR) + (a5 * BA) + (a6 *HI),
-      eq == 2 & DIA < minD ~ (a1 + (a2 * minD) + (a3 * (minD^2)) + (a4 * CR) + (a5 * BA) + (a6 *HI)) * (DIA / minD),
-      eq == 3 & HT >= 15 & SPCD == 264 ~ a1 * (DIA^a2) * (HT^a3) * (CL^a4),
-      eq == 3 & HT < 15 & HT >=5 & SPCD == 264 ~ 0.8 * HT * ifelse(CR * .01 > .5, .5, CR*.01),
-      eq == 3 & HT < 5 & SPCD == 264 ~ (0.8 * HT * ifelse(CR * .01 > .5, .5, CR*.01)) * (1 - ((HT - 5) * .1)) * a1 * (DIA^a2) * (HT^a3) * (CL^a4) * (HT - 5) * .1,
-      eq == 3 & DIA >= minD ~ a1 * exp(a2 + (a3 * log(CL)) + (a4 * log(DIA)) + (a5 * log(HT)) + (a6 * log(BA))),
-      eq == 3 & DIA < minD ~ (a1 * exp(a2 + (a3 * log(CL)) + (a4 * log(minD)) + (a5 * log(HT)) + (a6 * log(BA)))) * (DIA / minD),
-      eq %in% c(4,6) & DIA >= minD ~ a1 * (DIA^a2),
-      eq %in% c(4,6) & DIA < minD ~ a1 * (minD^a2) * (DIA / minD),
-      eq == 5 & DIA >= minD ~ (a1 * BF) * (DIA ^ a2) * (HT^a3) * (CL^a4) * ((BA + 1)^a5) * (exp(EL100)^a6),
-      eq == 5 & DIA < minD ~ (a1 * BF) * (minD ^ a2) * (HT^a3) * (CL^a4) * ((BA + 1)^a5) * (exp(EL100)^a6) * (DIA / minD))) %>%
+    ## Predict maximum crown width per Hann 1997 Eq 3
+    mutate(mcw = CC_C0 + (CC_C1 * DIA) + (CC_C2 * DIA * DIA)) %>%
+    ## Observed compacted crown length
+    mutate(crown_length = (CR/100) * HT) %>%
+    # Calculate largest crown width for tree (Hann - equation 2)
+    mutate(exponent = CC_B0 + (CC_B1 * crown_length) + (CC_B2 * (DIA / HT)),
+           cr = CR ** exponent,
+           cw = mcw * cr) %>%
     ## Convert to crown area, assuming circular crowns
     dplyr::mutate(crownArea = pi * (cw/2)^2) %>%
-    dplyr::select(PLT_CN, pltID, CONDID, TRE_CN, BAA_STAND, TPA_UNADJ, DIA, crownWidth = cw, crownArea)
+    dplyr::select(PLT_CN, pltID, CONDID, TRE_CN, DOM, BAA_STAND, TPA_UNADJ, DIA, crownWidth = cw, crownArea)
   
   return(tree)
 }
@@ -228,15 +212,16 @@ makeGNNvars <- function(tree) {
       CC_GE_15 = sum(TPA_UNADJ[DIA >= 15] * crownArea[DIA >= 15], na.rm = TRUE) * 100 / 43560,
       CC_GE_30 = sum(TPA_UNADJ[DIA >= 30] * crownArea[DIA >= 30], na.rm = TRUE) * 100 / 43560,
       CC_ALL = sum(TPA_UNADJ * crownArea, na.rm = TRUE) * 100 / 43560,
-      QMD_20 = 4/pi * sum(rFIA:::basalArea(DIA[DIA_PERC >=.8]) * TPA_UNADJ[DIA_PERC >=.8], na.rm = TRUE) / sum(TPA_UNADJ[DIA_PERC >=.8], na.rm = TRUE)
+      QMD_20 = sqrt(sum(rFIA:::basalArea(DIA[DIA_PERC >=.8]) * TPA_UNADJ[DIA_PERC >=.8], na.rm = TRUE) / (0.005454 * sum(TPA_UNADJ[DIA_PERC >=.8], na.rm = TRUE))),
+      QMD_DOM = sqrt(sum(rFIA:::basalArea(DIA[DOM == 1]) * TPA_UNADJ[DOM == 1], na.rm = TRUE) / (0.005454 * sum(TPA_UNADJ[DOM == 1], na.rm = TRUE))),
     ) %>%
     ## Correct for canopy overlap, bogus, but how FVS does it
     dplyr::mutate_at(.vars = dplyr::vars(CC_0_5:CC_ALL), function(x) {100 * (1- exp(-.01 * x))}) %>%
     ## If QMD is NA, then all DIA were the same and PERC_RANK flagged all as 0
     ## So, we say they are all in the top 20
     dplyr::mutate(QMD_20 = dplyr::case_when(
-      is.na(QMD_20) ~ sqrt(4/ pi * BAA_STAND / TPA_ALL) * 12,
-      TRUE ~ sqrt(QMD_20) * 12)
+      is.na(QMD_20) ~ sqrt(BAA_STAND / (0.005454 * TPA_ALL)),
+      TRUE ~ QMD_20)
     ) %>%
     as.data.frame() #%>% # Force data.table eval via dtplyr
     
@@ -275,9 +260,11 @@ classifyPlots <- function(gnnVars, dirRefCon, dirResults, cores) {
   gnnVars <- gnnVars %>%
     dplyr::left_join(pltAtt, by = 'pltID') %>%
     dplyr::mutate(PVTCode = paste(MAP_ZONE, PVT, sep = '_')) %>%
-    dplyr::left_join(dplyr::select(th_size, PVTCode, Size_TH), by = 'PVTCode') %>%
+    dplyr::left_join(dplyr::select(th_size, PVTCode, Size_TH, QMD_TH), by = 'PVTCode') %>%
     dplyr::mutate(Size_TH = dplyr::case_when(is.na(Size_TH) ~  integer(1), 
                                              TRUE ~ Size_TH)) %>%
+    dplyr::mutate(QMD_TH = dplyr::case_when(is.na(QMD_TH) ~  integer(1), 
+                                             TRUE ~ QMD_TH)) %>%
     ## Dropping forested locations when they fall in "non-forest" strata
     ## Update once we have real plot locations
     dplyr::filter(PLOT_STATUS_CD == 1 & !is.na(BPS_LLID))
@@ -287,6 +274,8 @@ classifyPlots <- function(gnnVars, dirRefCon, dirResults, cores) {
   pltSC <- gnnVars %>%
     dplyr::mutate(sizeClass = dplyr::case_when(
       CC_ALL < 10 ~ 1.0,
+      Size_TH == 0 & QMD_DOM > QMD_TH & CC_GE_30 > 10 ~ 7.0,
+      Size_TH == 0 & QMD_DOM > QMD_TH & CC_20_30 > 10 ~ 6.0,
       TPA_GE_30 > Size_TH & CC_GE_30 > 10 ~ 7.0,
       TPA_20_30 > Size_TH & CC_20_30 > 10 ~ 6.0,
       TPA_20_30 + TPA_GE_30 > Size_TH & CC_20_30 + CC_GE_30 > 10 ~ 6.0,
@@ -451,7 +440,7 @@ predictMissing <- function(dirFIA, dirResults, pltSC, keepPlts, cores) {
       if (nrow(y) < 1) next
       
       ## Need at least two groups to do classification
-      if (length(unique(y$sclass)) > 2){
+      if (length(unique(y$sclass)) > 1){
         
         ## Find nearest neighbors
         rf <- yaImpute::yai(x = x, y = y,
@@ -473,7 +462,7 @@ predictMissing <- function(dirFIA, dirResults, pltSC, keepPlts, cores) {
         
         ## if only one class observed in biophysical setting, predict that class everywhere
         preds <- pltTPA %>%
-          dplyr::filter(BpS_Code == miss$BpS_Code[i] & is.na(sclass)) %>%
+          dplyr::filter(BpS_Code == miss$BpS_Code[i] & is.na(sclass))
           preds$sclass.pred <- unique(y$sclass)
           preds <- preds[,c('cond', 'sclass.pred')]
       }
@@ -526,3 +515,114 @@ predictMissing <- function(dirFIA, dirResults, pltSC, keepPlts, cores) {
 
 
 
+# 
+# ## Predict crown area of live trees from FVS allometrics
+# predictCrownWidth_fvs <- function(db, dirFVS, keepPlts, mapStems) {
+#   
+#   ## Read FVS coefficients
+#   coefFVS <- read.csv(paste0(dirFVS, '/coef.csv')) %>%
+#     dplyr::distinct(SPCD, variant, .keep_all = TRUE)
+#   boundsFVS <- read.csv(paste0(dirFVS, '/bounds.csv')) %>%
+#     dplyr::distinct(SPCD, variant, minD) %>%
+#     dplyr::filter(minD > 1) # All else assumed 1 inch
+#   bfFVS <- read.csv(paste0(dirFVS, '/bf.csv')) %>%
+#     dplyr::distinct(SPCD, variant, location, BF) %>%
+#     dplyr::filter(BF != 1)
+#   mergeCoefs <- read.csv(paste0(dirFVS, '/mergeTheseSpecies.csv'))
+#   
+#   
+#   ## Estimate crown width/area for every live tree that we can
+#   tree <- db$COND %>%
+#     filter(PLT_CN %in% keepPlts$PLT_CN) %>%
+#     dplyr::filter(COND_STATUS_CD == 1) %>%
+#     dplyr::select(PLT_CN, CONDID) %>%
+#     dplyr::left_join(db$TREE, by = c('PLT_CN', 'CONDID')) %>%
+#     ## Drop all dead trees
+#     dplyr::filter(STATUSCD == 1) %>%
+#     ## Basal area per acre (BAA) of each tree 
+#     dplyr::mutate(BAA = rFIA:::basalArea(DIA) * TPA_UNADJ) %>% 
+#     ## Stand-level BAA
+#     dplyr::group_by(PLT_CN, CONDID) %>%
+#     dplyr::mutate(BAA_STAND = sum(BAA, na.rm = TRUE)) %>% 
+#     dplyr::ungroup() %>%
+#     ## Here PLT_CN is a unique plot visit ID, TRE_CN is a unique tree visit ID,
+#     ## DIA is dbh, SPCD is a species code, HT is total tree height,
+#     ## CR is compacted crown ratio, and TPA_UNAJD is TPA each tree represents
+#     ## UNADJ refers to non-response bias, which is handled later. Think of it 
+#     ## as just standard TPA
+#     dplyr::select(PLT_CN, TRE_CN=CN, CONDID, SPCD, DIA, HT, CR, BAA_STAND, TPA_UNADJ) %>%
+#     ## Join on plot attributes
+#     dplyr::left_join(dplyr::select(db$PLOT, CN, LAT, LON, ELEV, STATECD, UNITCD, COUNTYCD, PLOT), 
+#                      by = c('PLT_CN' = 'CN')) %>%
+#     dplyr::left_join(dplyr::select(db$PLOTGEOM, CN, FVS_LOC_CD, FVS_VARIANT), 
+#                      by = c('PLT_CN' = 'CN')) %>%
+#     dplyr::left_join(dplyr::select(db$COND, PLT_CN, CONDID, COND_STATUS_CD),
+#                      by = c('PLT_CN', 'CONDID')) %>%
+#     filter(COND_STATUS_CD == 1) %>%
+#     mutate(pltID = paste(UNITCD, STATECD, COUNTYCD, PLOT, sep = '_')) %>%
+#     ## We want to drop entire plots where any of these variables are NA
+#     ## i.e., don't want to compute plot-level canopy cover if individual trees
+#     ## are ommitted due to lack of allometrics. We will predict S-class of these
+#     ## plots based on a range of other variables later on.
+#     dplyr::mutate(cut = ifelse(is.na(SPCD) | SPCD %in% 998:999 |
+#                                  is.na(DIA) | is.na(HT) | is.na(CR) | is.na(BAA_STAND) |
+#                                  is.na(LAT) | is.na(LON) | is.na(ELEV) |
+#                                  is.na(FVS_LOC_CD) | is.na(FVS_VARIANT), 1, 0)) %>%
+#     dplyr::group_by(PLT_CN, CONDID) %>%
+#     dplyr::mutate(cut = ifelse(sum(cut, na.rm = TRUE) > 0, 1, 0)) %>%
+#     dplyr::ungroup() %>%
+#     dplyr::filter(cut < 1) %>%
+#     tidyr::drop_na() %>%
+#     ## Recode AK to Pacific coast
+#     dplyr::mutate(FVS_VARIANT = dplyr::case_when(FVS_VARIANT == 'AK' ~ 'PN',
+#                                                  FVS_VARIANT == 'CI' ~ 'IE',
+#                                                  TRUE ~ FVS_VARIANT)) %>%
+#     # Handle merged species -- most species share allometric equations
+#     dplyr::left_join(dplyr::select(mergeCoefs, -c(Note)),
+#                      by = c('SPCD', 'FVS_VARIANT')) %>%
+#     dplyr::mutate(SPCD = dplyr::case_when(is.na(NEW_SPCD) ~ SPCD, 
+#                                           TRUE ~ NEW_SPCD),
+#                   FVS_VARIANT = dplyr::case_when(is.na(NEW_FVS_VARIANT) ~ as.character(FVS_VARIANT),
+#                                                  TRUE ~ as.character(NEW_FVS_VARIANT))) %>%
+#     # Add coefficients
+#     dplyr::left_join(coefFVS, by = c('SPCD', 'FVS_VARIANT' = 'variant')) %>%
+#     dplyr::left_join(boundsFVS, by = c('SPCD', 'FVS_VARIANT' = 'variant')) %>%
+#     dplyr::left_join(bfFVS, by = c('SPCD', 'FVS_LOC_CD' = 'location', 'FVS_VARIANT' = 'variant')) %>%
+#     ## If not listed, set equal to one
+#     dplyr::mutate(BF = dplyr::case_when(is.na(BF) ~ 1.0,
+#                                         TRUE ~ BF),
+#                   minD = dplyr::case_when(is.na(minD) ~ 1.0,
+#                                           TRUE ~ minD))  %>%
+#     ## Prep our variables for allometric equations
+#     dplyr::mutate(CL = HT * CR / 100, # Crown length
+#                   EL100 = ELEV / 100, # Wierd ass parameterization, but that's what FIA does
+#                   HI = ((ELEV - 5449) / 100) + 4*(LAT - 42.16) + 1.25*(-116.39 - LON), # Hopkins index - I think it's called hopkins
+#                   BA = BAA_STAND,
+#                   a1 = dplyr::case_when(is.na(a1) ~ 0, TRUE ~ a1),
+#                   a2 = dplyr::case_when(is.na(a2) ~ 0, TRUE ~ a2),
+#                   a3 = dplyr::case_when(is.na(a3) ~ 0, TRUE ~ a3),
+#                   a4 = dplyr::case_when(is.na(a4) ~ 0, TRUE ~ a4),
+#                   a5 = dplyr::case_when(is.na(a5) ~ 0, TRUE ~ a5),
+#                   a6 = dplyr::case_when(is.na(a6) ~ 0, TRUE ~ a6)) %>%
+#     ## Predict crown width
+#     dplyr::mutate(cw = dplyr::case_when(
+#       eq == 1 & DIA >= minD ~ a1 + (a2*DIA) + (a3*(DIA^2)),
+#       eq == 1 & DIA < minD ~ (a1 + (a2*minD) * (a3 * (minD^2))) * (DIA / minD),
+#       eq == 2 & DIA >= minD ~ a1 + (a2 * DIA) + (a3 * (DIA^2)) + (a4 * CR) + (a5 * BA) + (a6 *HI),
+#       eq == 2 & DIA < minD ~ (a1 + (a2 * minD) + (a3 * (minD^2)) + (a4 * CR) + (a5 * BA) + (a6 *HI)) * (DIA / minD),
+#       eq == 3 & HT >= 15 & SPCD == 264 ~ a1 * (DIA^a2) * (HT^a3) * (CL^a4),
+#       eq == 3 & HT < 15 & HT >=5 & SPCD == 264 ~ 0.8 * HT * ifelse(CR * .01 > .5, .5, CR*.01),
+#       eq == 3 & HT < 5 & SPCD == 264 ~ (0.8 * HT * ifelse(CR * .01 > .5, .5, CR*.01)) * (1 - ((HT - 5) * .1)) * a1 * (DIA^a2) * (HT^a3) * (CL^a4) * (HT - 5) * .1,
+#       eq == 3 & DIA >= minD ~ a1 * exp(a2 + (a3 * log(CL)) + (a4 * log(DIA)) + (a5 * log(HT)) + (a6 * log(BA))),
+#       eq == 3 & DIA < minD ~ (a1 * exp(a2 + (a3 * log(CL)) + (a4 * log(minD)) + (a5 * log(HT)) + (a6 * log(BA)))) * (DIA / minD),
+#       eq %in% c(4,6) & DIA >= minD ~ a1 * (DIA^a2),
+#       eq %in% c(4,6) & DIA < minD ~ a1 * (minD^a2) * (DIA / minD),
+#       eq == 5 & DIA >= minD ~ (a1 * BF) * (DIA ^ a2) * (HT^a3) * (CL^a4) * ((BA + 1)^a5) * (exp(EL100)^a6),
+#       eq == 5 & DIA < minD ~ (a1 * BF) * (minD ^ a2) * (HT^a3) * (CL^a4) * ((BA + 1)^a5) * (exp(EL100)^a6) * (DIA / minD))) %>%
+#     ## Convert to crown area, assuming circular crowns
+#     dplyr::mutate(crownArea = pi * (cw/2)^2) %>%
+#     dplyr::select(PLT_CN, pltID, CONDID, TRE_CN, BAA_STAND, TPA_UNADJ, DIA, crownWidth = cw, crownArea)
+#   
+#   return(tree)
+# }
+# 

@@ -35,37 +35,46 @@ estimate_rest_needs_chng <- function(dirResults = here::here('results/FIA/'),
   ## Now process results for each of our 'strata' and estimation types
   ## BPS
   diff_rn_strata(dirResults = dirResults,
-                 dat = read.csv(paste0(dirResults, '/sclassChng/BPS_net.csv')),
+                 dat = read.csv(paste0(dirResults, '/sclassChng/ORWA_BPS_net.csv')),
                  refcon = refCon,
                  rules = rules,
                  sclass = sclass,
                  bps = BpS_Code,
-                 prefix = 'BPS',
+                 prefix = 'ORWA_BPS',
                  cores = cores,
                  YEAR, BpS_Code)
   
   ## BPS x LLID
   diff_rn_strata(dirResults = dirResults,
-                 dat = read.csv(paste0(dirResults, '/sclassChng/BPS_LLID_net.csv')),
+                 dat = read.csv(paste0(dirResults, '/sclassChng/ORWA_BPS_LLID_net.csv')),
                  refcon = refCon,
                  rules = rules,
                  sclass = sclass,
                  bps = BpS_Code,
-                 prefix = 'BPS_LLID',
+                 prefix = 'ORWA_BPS_LLID',
                  cores = cores,
                  YEAR, BpS_Code, BPS_LLID)
-  
-  ## BPS x map zone
+  ## BPS x state
   diff_rn_strata(dirResults = dirResults,
-                 dat = read.csv(paste0(dirResults, '/sclassChng/BPS_MAPZONE_net.csv')),
+                 dat = read.csv(paste0(dirResults, '/sclassChng/STATE_BPS_net.csv')),
                  refcon = refCon,
                  rules = rules,
                  sclass = sclass,
                  bps = BpS_Code,
-                 prefix = 'BPS_MAPZONE',
+                 prefix = 'STATE_BPS',
                  cores = cores,
-                 YEAR, BpS_Code, MAP_ZONE)
+                 YEAR, STATE, BpS_Code)
   
+  ## BPS x LLID x state
+  diff_rn_strata(dirResults = dirResults,
+                 dat = read.csv(paste0(dirResults, '/sclassChng/STATE_BPS_LLID_net.csv')),
+                 refcon = refCon,
+                 rules = rules,
+                 sclass = sclass,
+                 bps = BpS_Code,
+                 prefix = 'STATE_BPS_LLID',
+                 cores = cores,
+                 YEAR, STATE, BpS_Code, BPS_LLID)
 
   
   

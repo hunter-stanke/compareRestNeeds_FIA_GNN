@@ -35,8 +35,11 @@ estimate_sclass_area_change <- function(dirFIA = here::here('data/FIA/'),
   # Landscape unit attributes
   bpsAtt <- read.csv(paste0(dirResults, '/prep/fiaPlts_attributes.csv')) %>%
     dplyr::select(pltID, BPS_LLID, BpS, BpS_Code, 
-                  BpS_Name, FRG, HUC10, HUC8, MAP_ZONE) %>%
-    distinct()
+                  BpS_Name, FRG, MAP_ZONE) %>%
+    distinct() %>%
+    mutate(ew = case_when(is.na(MAP_ZONE) ~ NA_character_,
+                          MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC') ~ 'westside',
+                          TRUE ~ 'eastside'))
   
   ## Need to use S-class codes (i.e, 'A', 'B', etc.), appending to PLOT table
   pnw$COND <- pnw$COND %>%  
@@ -44,7 +47,10 @@ estimate_sclass_area_change <- function(dirFIA = here::here('data/FIA/'),
   pnw$PLOT <- pnw$PLOT %>%
     dplyr::mutate(pltID = paste(UNITCD, STATECD, COUNTYCD, PLOT, sep = '_')) %>%
     ## Add other plot attributes
-    dplyr::left_join(bpsAtt, by = c('pltID'))
+    dplyr::left_join(bpsAtt, by = c('pltID'))  %>%
+    dplyr::mutate(STATE = case_when(STATECD == 53 ~ 'Washington',
+                                    STATECD == 41 ~ 'Oregon',
+                                    TRUE ~ NA_character_))
   
   
   
@@ -60,56 +66,129 @@ estimate_sclass_area_change <- function(dirFIA = here::here('data/FIA/'),
   
   # Across entire region
   full <- rFIA::areaChange(pnw, 
-                           grpBy = sclass,
+                           grpBy = c(sclass),
                            nCores = cores,
-                           areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'ti',
+                           chngType = 'net') 
+  
+  # By state
+  state <- rFIA::areaChange(pnw, 
+                           grpBy = c(STATE, sclass),
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'ti',
+                           chngType = 'net') 
+  # Eastside/ westside
+  ew <- rFIA::areaChange(pnw, 
+                           grpBy = c(ew, sclass),
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'ti',
+                           chngType = 'net') 
+  
+  # Eastside/ westside + state
+  ewState <- rFIA::areaChange(pnw, 
+                           grpBy = c(STATE, ew, sclass),
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
                            variance = TRUE,
                            method = 'ti',
                            chngType = 'net') 
   
   # Within BpS
   bps <- rFIA::areaChange(pnw, 
-                          grpBy = c(BpS_Code, sclass),
+                          grpBy = c(ew, BpS_Code, sclass),
                           nCores = cores,
-                          areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
+                          areaDomain = !is.na(BpS_Code),
                           variance = TRUE,
                           method = 'ti',
                           chngType = 'net')
   
+  # Within BpS + state
+  bpsState <- rFIA::areaChange(pnw, 
+                          grpBy = c(STATE, ew, BpS_Code, sclass),
+                          nCores = cores,
+                          areaDomain = !is.na(BpS_Code),
+                          variance = TRUE,
+                          method = 'ti',
+                          chngType = 'net')
   
   # Within BPS_LLID
   bpsLLID <- rFIA::areaChange(pnw, 
-                              grpBy = c(BpS_Code, BPS_LLID, sclass),
+                              grpBy = c(ew, BpS_Code, BPS_LLID, sclass),
                               nCores = cores,
-                              areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
+                              areaDomain = !is.na(BpS_Code),
                               variance = TRUE,
                               method = 'ti',
                               chngType = 'net')
   
-  # Within BPS & map zone
-  bpsMZ <- rFIA::areaChange(pnw, 
-                            grpBy = c(BpS_Code, MAP_ZONE, sclass),
-                            nCores = cores,
-                            areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
-                            variance = TRUE,
-                            method = 'ti',
-                            chngType = 'net')
+  # Within BPS_LLID + STATE
+  bpsLLIDState <- rFIA::areaChange(pnw, 
+                              grpBy = c(STATE, ew, BpS_Code, BPS_LLID, sclass),
+                              nCores = cores,
+                              areaDomain = !is.na(BpS_Code),
+                              variance = TRUE,
+                              method = 'ti',
+                              chngType = 'net')
   
   ## Save results --------------------------------------------------------------
   write.csv(full, paste0(dirResults, '/sclassChng/ORWA_net.csv'), row.names = FALSE)
-  write.csv(bps, paste0(dirResults, '/sclassChng/BPS_net.csv'), row.names = FALSE)
-  write.csv(bpsLLID, paste0(dirResults, '/sclassChng/BPS_LLID_net.csv'), row.names = FALSE)
-  write.csv(bpsMZ, paste0(dirResults, '/sclassChng/BPS_MAPZONE_net.csv'), row.names = FALSE)
-  
+  write.csv(state, paste0(dirResults, '/sclassChng/STATE_net.csv'), row.names = FALSE)
+  write.csv(ew, paste0(dirResults, '/sclassChng/ORWA_EW_net.csv'), row.names = FALSE)
+  write.csv(ewState, paste0(dirResults, '/sclassChng/STATE_EW_net.csv'), row.names = FALSE)
+  write.csv(bps, paste0(dirResults, '/sclassChng/ORWA_BPS_net.csv'), row.names = FALSE)
+  write.csv(bpsState, paste0(dirResults, '/sclassChng/STATE_BPS_net.csv'), row.names = FALSE)
+  write.csv(bpsLLID, paste0(dirResults, '/sclassChng/ORWA_BPS_LLID_net.csv'), row.names = FALSE)
+  write.csv(bpsLLIDState, paste0(dirResults, '/sclassChng/STATE_BPS_LLID_net.csv'), row.names = FALSE)
   
   
   ## Component change ------------------------------------------------
   
   # Across entire region
   full <- rFIA::areaChange(pnw, 
-                           grpBy = sclass,
+                           grpBy = c(sclass),
                            nCores = cores,
-                           areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'ti',
+                           chngType = 'component') %>%
+    ## Dropping components that were outside domain of interest at both measurements
+    dplyr::filter(AREA_DOMAIN1 + AREA_DOMAIN2 > 0) %>%
+    dplyr::filter(!is.na(AREA_DOMAIN1))
+  
+  # By state
+  state <- rFIA::areaChange(pnw, 
+                           grpBy = c(STATE, sclass),
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'ti',
+                           chngType = 'component') %>%
+    ## Dropping components that were outside domain of interest at both measurements
+    dplyr::filter(AREA_DOMAIN1 + AREA_DOMAIN2 > 0) %>%
+    dplyr::filter(!is.na(AREA_DOMAIN1))
+  
+  # Eastside/ westside
+  ew <- rFIA::areaChange(pnw, 
+                           grpBy = c(ew, sclass),
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'ti',
+                           chngType = 'component') %>%
+    ## Dropping components that were outside domain of interest at both measurements
+    dplyr::filter(AREA_DOMAIN1 + AREA_DOMAIN2 > 0) %>%
+    dplyr::filter(!is.na(AREA_DOMAIN1))
+  
+  # Eastside/ westside + state
+  ewState <- rFIA::areaChange(pnw, 
+                           grpBy = c(STATE, ew, sclass),
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
                            variance = TRUE,
                            method = 'ti',
                            chngType = 'component') %>%
@@ -119,9 +198,9 @@ estimate_sclass_area_change <- function(dirFIA = here::here('data/FIA/'),
   
   # Within BpS
   bps <- rFIA::areaChange(pnw, 
-                          grpBy = c(BpS_Code, sclass),
+                          grpBy = c(ew, BpS_Code, sclass),
                           nCores = cores,
-                          areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
+                          areaDomain = !is.na(BpS_Code),
                           variance = TRUE,
                           method = 'ti',
                           chngType = 'component') %>%
@@ -129,13 +208,35 @@ estimate_sclass_area_change <- function(dirFIA = here::here('data/FIA/'),
     dplyr::filter(AREA_DOMAIN1 + AREA_DOMAIN2 > 0) %>%
     dplyr::filter(!is.na(AREA_DOMAIN1))
   
-  
+  # Within BpS + state
+  bpsState <- rFIA::areaChange(pnw, 
+                          grpBy = c(STATE, ew, BpS_Code, sclass),
+                          nCores = cores,
+                          areaDomain = !is.na(BpS_Code),
+                          variance = TRUE,
+                          method = 'ti',
+                          chngType = 'component') %>%
+    ## Dropping components that were outside domain of interest at both measurements
+    dplyr::filter(AREA_DOMAIN1 + AREA_DOMAIN2 > 0) %>%
+    dplyr::filter(!is.na(AREA_DOMAIN1))
   
   # Within BPS_LLID
   bpsLLID <- rFIA::areaChange(pnw, 
-                              grpBy = c(BpS_Code, BPS_LLID, sclass),
+                              grpBy = c(ew, BpS_Code, BPS_LLID, sclass),
                               nCores = cores,
-                              areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
+                              areaDomain = !is.na(BpS_Code),
+                              variance = TRUE,
+                              method = 'ti',
+                              chngType = 'component') %>%
+    ## Dropping components that were outside domain of interest at both measurements
+    dplyr::filter(AREA_DOMAIN1 + AREA_DOMAIN2 > 0) %>%
+    dplyr::filter(!is.na(AREA_DOMAIN1))
+  
+  # Within BPS_LLID + state
+  bpsLLIDState <- rFIA::areaChange(pnw, 
+                              grpBy = c(STATE, ew, BpS_Code, BPS_LLID, sclass),
+                              nCores = cores,
+                              areaDomain = !is.na(BpS_Code),
                               variance = TRUE,
                               method = 'ti',
                               chngType = 'component') %>%
@@ -144,25 +245,18 @@ estimate_sclass_area_change <- function(dirFIA = here::here('data/FIA/'),
     dplyr::filter(!is.na(AREA_DOMAIN1))
   
   
-  # Within BPS & map zone
-  bpsMZ <- rFIA::areaChange(pnw, 
-                            grpBy = c(BpS_Code, MAP_ZONE, sclass),
-                            nCores = cores,
-                            areaDomain = !c(MAP_ZONE %in% c('WCR', 'WWC', 'WNC', 'OCR', 'OWC')) & !is.na(BpS_Code),
-                            variance = TRUE,
-                            method = 'ti',
-                            chngType = 'component') %>%
-    ## Dropping components that were outside domain of interest at both measurements
-    dplyr::filter(AREA_DOMAIN1 + AREA_DOMAIN2 > 0) %>%
-    dplyr::filter(!is.na(AREA_DOMAIN1))
-  
   
   ## Save results --------------------------------------------------------------
   write.csv(full, paste0(dirResults, '/sclassChng/ORWA_comp.csv'), row.names = FALSE)
-  write.csv(bps, paste0(dirResults, '/sclassChng/BPS_comp.csv'), row.names = FALSE)
-  write.csv(bpsLLID, paste0(dirResults, '/sclassChng/BPS_LLID_comp.csv'), row.names = FALSE)
-  write.csv(bpsMZ, paste0(dirResults, '/sclassChng/BPS_MAPZONE_comp.csv'), row.names = FALSE)
+  write.csv(state, paste0(dirResults, '/sclassChng/STATE_comp.csv'), row.names = FALSE)
+  write.csv(ew, paste0(dirResults, '/sclassChng/ORWA_EW_comp.csv'), row.names = FALSE)
+  write.csv(ewState, paste0(dirResults, '/sclassChng/STATE_EW_comp.csv'), row.names = FALSE)
+  write.csv(bps, paste0(dirResults, '/sclassChng/ORWA_BPS_comp.csv'), row.names = FALSE)
+  write.csv(bpsState, paste0(dirResults, '/sclassChng/STATE_BPS_comp.csv'), row.names = FALSE)
+  write.csv(bpsLLID, paste0(dirResults, '/sclassChng/ORWA_BPS_LLID_comp.csv'), row.names = FALSE)
+  write.csv(bpsLLIDState, paste0(dirResults, '/sclassChng/STATE_BPS_LLID_comp.csv'), row.names = FALSE)
   
   cat('Area estimates complete ...\n')
 }
 
+                                                                                                                                                     

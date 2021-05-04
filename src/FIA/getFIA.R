@@ -4,6 +4,7 @@
 ## Function to download FIA data for Oregon and 
 ## Washington if they are not already present in the 
 ## .data/FIA/ directory. Simply a wrapper around 
+## getFIA as implemented in rFIA.
 ##
 ## Created:       15 October 2020 - Hunter Stanke
 ## Last modified: 27 October 2020 - Hunter Stanke
@@ -34,7 +35,10 @@ download_FIA <- function(states, dirFIA, force = FALSE) {
   
   ## Download FIA data w/ getFIA
   if (length(states) > 0) {
+    ## Common tables
     rFIA::getFIA(states, dirFIA, load = FALSE)
+    ## CWD table, required for OGSI
+    rFIA::getFIA(states, dirFIA, load = FALSE, tables = 'DWM_COARSE_WOODY_DEBRIS')
   }
   
   

@@ -58,7 +58,7 @@ fuzzy_plot_intersection(dirGIS = here('data/GIS/'),
 
 ## Assign FIA plots to structural classes
 classify_plot_structure(dirFIA = here::here('data/FIA/'),
-                        dirFVS = here::here('data/FVS/'),
+                        dirCW = here::here('data/CW/'),
                         dirRefCon = here::here('data/refCon/'),
                         dirResults = here::here('results/FIA/'), 
                         mapStems = FALSE,
@@ -90,9 +90,9 @@ estimate_rest_needs(dirResults = here::here('results/FIA/'),
 
 
 ## Estimate total and % land area in need of structural restoration
-estimate_rest_needs_change(dirResults = here::here('results/FIA/'),
-                           dirRefCon = here::here('data/refCon/'),
-                           cores = cores)
+estimate_rest_needs_chng(dirResults = here::here('results/FIA/'),
+                         dirRefCon = here::here('data/refCon/'),
+                         cores = cores)
 
 
 

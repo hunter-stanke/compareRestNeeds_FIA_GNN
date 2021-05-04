@@ -77,7 +77,7 @@ fuzzy_plot_intersection <- function(dirGIS = here::here('data/GIS/'),
                               xstart, ystart, xmax, ymax, chunkSize,
                               dir = dirGIS, mc.cores = cores)
   }
-
+  
   
   ## Merge the results of each chunk
   out <- unlist(out, recursive = FALSE)
@@ -155,41 +155,33 @@ processChunk <- function(iter, index, xstart, ystart,
   ## Read the chunks
   strata <- stars::read_stars(paste0(dir, 'BPS_LLID/BPS_LLID.tif'), 
                               RasterIO = rasterio, proxy = FALSE)
-  huc10 <- stars::read_stars(paste0(dir, 'huc10/huc10.tif'), 
-                             RasterIO = rasterio, proxy = FALSE)
-  huc8 <- stars::read_stars(paste0(dir, 'huc8/huc8.tif'), 
-                            RasterIO = rasterio, proxy = FALSE)
-  mz <- stars::read_stars(paste0(dir, 'mapzones/mapzones.tif'), 
-                          RasterIO = rasterio, proxy = FALSE)
   plt1 <- stars::read_stars(paste0(dir, 'plts_1km/plts_1km.tif'), 
                             RasterIO = rasterio, proxy = FALSE)
   plt3 <- stars::read_stars(paste0(dir, 'plts_3km/plts_3km.tif'),
                             RasterIO = rasterio, proxy = FALSE)
+  mz <- stars::read_stars(paste0(dir, 'mapzones/mapzones.tif'), 
+                          RasterIO = rasterio, proxy = FALSE)
   
   ## Convert to data.frame and combine
   strata <- as.data.frame(strata)
-  huc10 <- as.data.frame(huc10)
-  huc8 <- as.data.frame(huc8)
-  mz <- as.data.frame(mz)
   plt1 <- as.data.frame(plt1)
   plt3 <- as.data.frame(plt3)
+  mz <- as.data.frame(mz)
   dat <- strata %>%
     dplyr::rename(strat = BPS_LLID.tif) %>%
-    dplyr::mutate(huc10 = huc10$huc10.tif,
-                  huc8 = huc8$huc8.tif,
-                  mapzone = mz$mapzones.tif,
-                  plt1 = plt1$plts_1km.tif,
-                  plt3 = plt3$plts_3km.tif)
+    dplyr::mutate(plt1 = plt1$plts_1km.tif,
+                  plt3 = plt3$plts_3km.tif,
+                  mapzone = mz$mapzones.tif)
   
   suppressMessages({
     totals1 <- dat %>%
       dplyr::filter(!is.na(plt1)) %>%
-      dplyr::group_by(plt1, mapzone, huc8, huc10, strat) %>%
+      dplyr::group_by(plt1, mapzone, strat) %>%
       dplyr::summarise(n = dplyr::n()) %>%
       data.table::as.data.table()
     totals3 <- dat %>%
       dplyr::filter(!is.na(plt3)) %>%
-      dplyr::group_by(plt3, mapzone, huc8, huc10, strat) %>%
+      dplyr::group_by(plt3, mapzone, strat) %>%
       dplyr::summarise(n = dplyr::n()) %>%
       data.table::as.data.table()
   })
@@ -208,27 +200,16 @@ joinAttributes <- function(plt, dirGIS) {
                         stringsAsFactors = FALSE) %>%
     dplyr::select(OBJECTID, BPS_LLID)
   
-  huc10Att <- read.csv(paste0(dirGIS, 'attributes/huc10.txt'),
-                       stringsAsFactors = FALSE) %>%
-    dplyr::select(OBJECTID, HUC10 = LLID)
-  
-  huc8Att <- read.csv(paste0(dirGIS, 'attributes/huc8.csv'),
-                      stringsAsFactors = FALSE) %>%
-    dplyr::select(OBJECTID, HUC8 = LLID)
+  bpsAtt <- read.csv(paste0(dirGIS, 'attributes/bps.txt'),
+                     stringsAsFactors = FALSE) %>%
+    dplyr::select(-c(Value, Count))
   
   mzAtt <- read.csv(paste0(dirGIS, 'attributes/mapzones.txt'),
                     stringsAsFactors = FALSE) %>%
     dplyr::select(OBJECTID, MAP_ZONE = LLID)
   
-  bpsAtt <- read.csv(paste0(dirGIS, 'attributes/bps.txt'),
-                     stringsAsFactors = FALSE) %>%
-    dplyr::select(-c(Value, Count))
-
-  
   ## Join attributes
   plt <- plt %>%
-    dplyr::left_join(huc10Att, by = c('huc10' = 'OBJECTID')) %>%
-    dplyr::left_join(huc8Att,  by = c('huc8' = 'OBJECTID')) %>%
     dplyr::left_join(mzAtt, by = c('mapzone' = 'OBJECTID')) %>%
     dplyr::left_join(strataAtt, by = c('strat' = 'OBJECTID')) %>%
     dplyr::mutate(BPS = stringr::str_split(BPS_LLID, '_', simplify = TRUE)[,1],
