@@ -10,7 +10,7 @@
 ##
 ##
 ## Created:       8 December 2020 - Hunter Stanke
-## Last modified: 15 January 2020 - Hunter Stanke
+## Last modified: 8 June 2021 - Hunter Stanke
 ##
 ##==============================================================================
 ##==============================================================================
@@ -21,6 +21,7 @@
 ## Load a handful of packages 
 library(here)
 library(dplyr)
+library(stars)
 
 ## Loading our functions that will be called below 
 invisible({
@@ -74,11 +75,6 @@ estimate_sclass_area(dirFIA = here::here('data/FIA/'),
                      dirResults = here::here('results/FIA/'),
                      cores = cores)
 
-## Annual change in total and % forest area by S-class within classified domains 
-estimate_sclass_area_change(dirFIA = here::here('data/FIA/'),
-                            dirResults = here::here('results/FIA/'),
-                            cores = cores)
-
 
 
 ## ESTIMATE RESTORATION NEED ---------------------------------------------------
@@ -87,12 +83,6 @@ estimate_sclass_area_change(dirFIA = here::here('data/FIA/'),
 estimate_rest_needs(dirResults = here::here('results/FIA/'),
                     dirRefCon = here::here('data/refCon/'),
                     cores = cores)
-
-
-## Estimate total and % land area in need of structural restoration
-estimate_rest_needs_chng(dirResults = here::here('results/FIA/'),
-                         dirRefCon = here::here('data/refCon/'),
-                         cores = cores)
 
 
 

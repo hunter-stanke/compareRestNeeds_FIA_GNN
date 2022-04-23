@@ -29,26 +29,14 @@ select_FIA_area_plots <- function(dirFIA = here::here('data/FIA/'),
   
   ## Current area plots
   aPlts <- rFIA::area(db, byPlot = TRUE, nCores = cores) %>%
-    dplyr::left_join(dplyr::select(db$PLOT, PREV_PLT_CN, CN), by= c('PLT_CN' = 'CN'))
-
-  ## Area Change plots
-  acPlts <- rFIA::areaChange(db, byPlot = TRUE, nCores = cores) %>%
-    dplyr::left_join(dplyr::select(db$PLOT, PREV_PLT_CN, CN), by= c('PLT_CN' = 'CN'))
-  
-  ## All unique plot IDs
-  allPlts <- unique(c(aPlts$PLT_CN, aPlts$PREV_PLT_CN, acPlts$PLT_CN, acPlts$PREV_PLT_CN))
-  
-  ## Convert back to dataframe and add some info
-  allPlts  <- data.frame(PLT_CN = allPlts) %>%
     dplyr::left_join(dplyr::select(db$PLOT, PLT_CN = CN, INVYR, STATECD, 
-                            LAT, LON, UNITCD, COUNTYCD, PLOT,
-                            PLOT_STATUS_CD), by = 'PLT_CN') %>%
+                                   LAT, LON, UNITCD, COUNTYCD, PLOT), by = 'PLT_CN') %>%
     dplyr::mutate(pltID = paste(UNITCD, STATECD, COUNTYCD, PLOT, sep = '_')) %>%
     dplyr::select(PLT_CN, pltID, INVYR, STATECD, LAT, LON, PLOT_STATUS_CD)
   
   
   ## Save results
-  write.csv(allPlts, paste0(dirResults, 'prep/fiaPlts.csv'), row.names = FALSE)
+  write.csv(aPlts, paste0(dirResults, 'prep/fiaPlts.csv'), row.names = FALSE)
   
   ## Return message in run_this
   cat('FIA data subset complete ...\n')

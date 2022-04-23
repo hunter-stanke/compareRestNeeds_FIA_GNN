@@ -55,17 +55,42 @@ classify_plot_structure <- function(dirFIA = here::here('data/FIA/'),
   ## Classify plots into S-classes, if we can predict canopy cover
   pltSC <- classifyPlots(gnnVars, dirRefCon, dirResults, cores)
   
-  ## If canopy cover is missing, but the plot is in sample, 
-  ## predict its sclass (includes non-treed, forested plots)
-  suppressMessages ({
-    preds <- predictMissing(dirFIA, dirResults, pltSC, keepPlts, cores)
-  })
-
+  ## Get a plot/condition list for all plots in the current area inventory, 
+  ## and join on sclass, and live tree TPA/BAA
+  a.plts <- rFIA::area(pnw,
+                 grpBy = CONDID,
+                 byPlot = TRUE,
+                 nCores = 10) 
+  t.plts <- rFIA::tpa(pnw, 
+                grpBy = CONDID,
+                byPlot = TRUE,
+                nCores = 10)
   
-  ## Join it all up on PLOT
-  sclassPlt <- pltSC %>%
-    select(PLT_CN, CONDID, sclass) %>%
-    bind_rows(rename(preds, sclass = sclass.pred))
+  ## Now adjust s-class assignments for slivers, and for non-treed forestland
+  ## 3 plots remaining that we can't make an assignment on, as crown ratio is 
+  ## missing for a few trees. 
+  sclassPlt  <- a.plts %>%
+    ## Cuts non-forest
+    dplyr::filter(PERC_AREA > 0) %>%
+    ## Join sclass from above
+    dplyr::left_join(select(pltSC, PLT_CN, CONDID, sclass), by = c('PLT_CN', 'CONDID')) %>%
+    dplyr::left_join(select(t.plts, PLT_CN, CONDID, BAA), by = c('PLT_CN', 'CONDID')) %>%
+    ## For conditions that are slivers (i.e., occupy less than 15% of plot area),
+    ## we won't be able to accurately assign an sclass. In these cases, assign the
+    ## dominant sclass on the plot, if there is another available
+    mutate(sliver = case_when(PERC_AREA < .15 ~ 1,
+                               TRUE ~ 0)) %>%
+    group_by(PLT_CN) %>%
+    mutate(n.cond = n()) %>%
+    # If no live trees, then early seral
+    mutate(sclass = case_when(is.na(BAA) ~ 'A', 
+                              BAA == 0 ~ 'A',
+                              TRUE ~ sclass)) %>%
+    # If sliver assign dominant alternative
+    mutate(sclass = case_when(sliver == 1 & n.cond > 1 ~ sclass[which.max(PERC_AREA)],
+                              TRUE ~ sclass)) %>%
+    ungroup() %>%
+    select(PLT_CN, CONDID, sclass)
   
   
   ## Save the results
@@ -166,7 +191,7 @@ predictCrownWidth <- function(db, dirCW, keepPlts, mapStems) {
     mutate(crown_length = (CR/100) * HT) %>%
     # Calculate largest crown width for tree (Hann - equation 2)
     mutate(exponent = CC_B0 + (CC_B1 * crown_length) + (CC_B2 * (DIA / HT)),
-           cr = CR ** exponent,
+           cr = (CR/100) ** exponent,
            cw = mcw * cr) %>%
     ## Convert to crown area, assuming circular crowns
     dplyr::mutate(crownArea = pi * (cw/2)^2) %>%
@@ -231,7 +256,7 @@ makeGNNvars <- function(tree) {
   #   dplyr::rowwise() %>%
   #   dplyr::mutate(MAX_CC = max(CC_0_5:CC_20_30, na.rm = TRUE),
   #                 MAX_CC2 = max(CC_0_5:CC_15_20, na.rm = TRUE))
-  gnnVars[, "MAX_CC"] <- apply(gnnVars[, 15:19], 1, max)
+  gnnVars[, "MAX_CC"] <- apply(gnnVars[, c(15:19, 23)], 1, max)
   gnnVars[, "MAX_CC2"] <- apply(gnnVars[, 15:18], 1, max)
   
 
@@ -239,37 +264,38 @@ makeGNNvars <- function(tree) {
 }
 
 
-## Classify plots into one of 7 size classes, then one of 5 structure classes
+
+# Classify plots into one of 7 size classes, then one of 5 structure classes
 classifyPlots <- function(gnnVars, dirRefCon, dirResults, cores) {
-  
+
   ## Plot attributes for strata assignments and PVT
   pltAtt <- read.csv(paste0(dirResults, '/prep/fiaPlts.csv')) %>%
     select(pltID, PLOT_STATUS_CD) %>%
     distinct() %>%
     left_join(read.csv(paste0(dirResults, '/prep/fiaPlts_attributes.csv')),
               by = 'pltID')
-  
+
   ## Get TPH thresholds for large size classes, thresholds vary by pvt
   th_size <- read.csv(paste0(dirRefCon, '/TH_Summary.csv'))
-  
+
   ## Get S-class thresholds, varies by BPS
   sclassRules <- read.csv(paste0(dirRefCon, '/sclass_thresholds.txt'))
-  
-  
+
+
   ## Join thresholds and plot attributes onto our GNN variables table
   gnnVars <- gnnVars %>%
     dplyr::left_join(pltAtt, by = 'pltID') %>%
     dplyr::mutate(PVTCode = paste(MAP_ZONE, PVT, sep = '_')) %>%
     dplyr::left_join(dplyr::select(th_size, PVTCode, Size_TH, QMD_TH), by = 'PVTCode') %>%
-    dplyr::mutate(Size_TH = dplyr::case_when(is.na(Size_TH) ~  integer(1), 
+    dplyr::mutate(Size_TH = dplyr::case_when(is.na(Size_TH) ~  integer(1),
                                              TRUE ~ Size_TH)) %>%
-    dplyr::mutate(QMD_TH = dplyr::case_when(is.na(QMD_TH) ~  integer(1), 
-                                             TRUE ~ QMD_TH)) %>%
+    dplyr::mutate(QMD_TH = dplyr::case_when(is.na(QMD_TH) ~  integer(1),
+                                            TRUE ~ QMD_TH)) %>%
     ## Dropping forested locations when they fall in "non-forest" strata
     ## Update once we have real plot locations
     dplyr::filter(PLOT_STATUS_CD == 1 & !is.na(BPS_LLID))
-  
-  
+
+
   ## Run the size-class classifier
   pltSC <- gnnVars %>%
     dplyr::mutate(sizeClass = dplyr::case_when(
@@ -294,222 +320,49 @@ classifyPlots <- function(gnnVars, dirRefCon, dirResults, cores) {
       CC_10_15 == MAX_CC ~ 4.0,
       CC_15_20 == MAX_CC ~ 5.0,
       TRUE ~ NA_real_)
-      )
-  
+    )
+
   ## Iterate over plots so we can parellize the classification
-  pltList <- split(pltSC, paste(pltSC$PLT_CN, pltSC$CONDID))
-  
-  
+  ruleList <- split(sclassRules, sclassRules$ID)
+
+
   ## Run in parallel - sorry for confusing if else here. Parallel is weird on Windows
   if (Sys.info()['sysname'] == 'Windows'){
     cl <- parallel::makeCluster(cores)
     parallel::clusterEvalQ(cl, {
       library(dplyr)
-      })
-    out <- parallel::parLapply(cl, X = names(pltList), fun = assignSClass, pltList,
-                    sclassRules)
+    })
+    out <- parallel::parLapply(cl, X = names(ruleList), fun = assignSClass, ruleList,
+                               pltSC)
     parallel::stopCluster(cl) # Kill the cluster
-    
+
   } else { # Multicore systems
-    out <- parallel::mclapply(X = names(pltList), FUN = assignSClass, pltList,
-                              sclassRules, mc.cores = cores)
+    out <- parallel::mclapply(X = names(ruleList), FUN = assignSClass, ruleList,
+                              pltSC, mc.cores = cores)
   }
-  
-  ## Rejoin
-  pltSC <- pltSC %>%
-    dplyr::left_join(dplyr::bind_rows(out), by = c('PLT_CN', 'CONDID')) %>%
-    dplyr::rename(sclass = SClass)
-  #pltSC$sclass <- dplyr::bind_rows(out)$SClass ## Assignment out of order
-  
+  ## Back to data.frame
+  pltSC <- bind_rows(out)
+
   return(pltSC)
 }
 
 ## Clunky as hell, but it works, so whatever
-assignSClass <- function(x, pltList, sclassRules) {
-  
+assignSClass <- function(x, ruleList, pltSC) {
+
   ## Literally just subset until we're down to one
-  dat <- sclassRules %>%
-    dplyr::filter(as.character(BPS_ID) == as.character(pltList[[x]]$BpS)) %>%
-    dplyr::filter(SizeClass_max >= pltList[[x]]$sizeClass) %>%
-    dplyr::filter(SizeClass_min <= pltList[[x]]$sizeClass) %>%
-    dplyr::filter(Cover_max >= round(pltList[[x]]$CC_ALL, 1)) %>%
-    dplyr::filter(Cover_min <= round(pltList[[x]]$CC_ALL, 1))
-  
-  dat$PLT_CN <- pltList[[x]]$PLT_CN
-  dat$CONDID <- pltList[[x]]$CONDID
-  
-  
+  dat <- pltSC %>%
+    dplyr::filter(as.character(ruleList[[x]]$BPS_ID) == as.character(BpS)) %>%
+    dplyr::filter(ruleList[[x]]$SizeClass_max >= sizeClass) %>%
+    dplyr::filter(ruleList[[x]]$SizeClass_min <= sizeClass) %>%
+    dplyr::filter(ruleList[[x]]$Cover_max >= round(CC_ALL, 1)) %>%
+    dplyr::filter(ruleList[[x]]$Cover_min <= round(CC_ALL, 1)) %>%
+    dplyr::mutate(sclass = ruleList[[x]]$SClass)
+
+
   return(dat)
 }
 
 
-## When we can't predict canopy cover at a plot, due to missing allometrics, 
-## or something else, predict S-class as a function of TPA, QMD of largest 20% 
-## of trees, and diameter class diversity (biomass)
-## Using knn as the predictive method, very efficient and excellent accuracy
-## in this case
-predictMissing <- function(dirFIA, dirResults, pltSC, keepPlts, cores) {
-  
-  ## Set up remote FIA database to compute predictors
-  db <- rFIA::readFIA(dirFIA, states = c('OR', 'WA'), 
-                      nCores = cores)
-  
-  ## Setting up some predictors -------------
-  pltTPA <- db$PLOT %>%
-    dplyr::filter(CN %in% keepPlts$PLT_CN) %>%
-    dplyr::mutate(pltID = paste(UNITCD, STATECD, COUNTYCD, PLOT, sep = '_')) %>%
-    dplyr::select(PLT_CN = CN, pltID) %>%
-    dplyr::left_join(db$COND, by = 'PLT_CN') %>%
-    dplyr::filter(COND_STATUS_CD == 1) %>%
-    dplyr::select(PLT_CN, pltID, CONDID, COND_STATUS_CD) %>%
-    dplyr::left_join(select(db$TREE, PLT_CN, CONDID, DIA, STATUSCD, TPA_UNADJ), by = c('PLT_CN', 'CONDID')) %>%
-    dplyr::group_by(PLT_CN, CONDID) %>%
-    dplyr::mutate(DIA_PERC = dplyr::percent_rank(DIA),
-                  n = dplyr::n(),
-                  DIA_PERC = dplyr::case_when(n > 1 ~ DIA_PERC,
-                                              TRUE ~ 1.0),
-                  live = dplyr::case_when(STATUSCD == 1 ~ 1,
-                                          TRUE ~ 0),
-                  ba = rFIA:::basalArea(DIA)) %>%
-    dplyr::ungroup() %>%
-    dplyr::group_by(PLT_CN, pltID, CONDID) %>%
-    dplyr::summarise(TPA = sum(TPA_UNADJ, na.rm = TRUE),
-                     BAA = sum(TPA_UNADJ * ba, na.rm = TRUE),
-                     TPA20 = sum(TPA_UNADJ[DIA_PERC > .8], na.rm = TRUE),
-                     BAA20 = sum(TPA_UNADJ[DIA_PERC > .8] * ba[DIA_PERC > .8], na.rm = TRUE)) %>%
-    dplyr::ungroup() %>%
-    dplyr::mutate(QMD = sqrt(BAA / TPA * 4 / pi) * 12,
-           QMD = dplyr::case_when(is.na(QMD) ~ 0, TRUE ~ QMD),
-           QMD20 = sqrt(BAA20 / TPA20 * 4 / pi) * 12,
-           QMD20 = dplyr::case_when(is.na(QMD20) ~ 0, TRUE ~ QMD20)) %>%
-    ## Join on s-class
-    dplyr::left_join(select(pltSC, PLT_CN, CONDID, sclass), by = c('PLT_CN', 'CONDID')) %>%
-    dplyr::mutate(sclass = as.factor(sclass)) %>%
-    dplyr::select(-c(BAA, BAA20)) %>%
-    dplyr::distinct() %>%
-    dplyr::left_join(read.csv(paste0(dirResults, '/prep/fiaPlts_attributes.csv')),
-                     by = 'pltID') %>%
-    dplyr::filter(!is.na(BpS_Code))
-  
-
-  
-  
-  
-  
-  ## Impute missing sclass by BPS -----------------------------------
-
-  ## Which BPSs have missing values?
-  miss <- pltTPA  %>%
-    dplyr::ungroup() %>%
-    dplyr::group_by(BpS_Code) %>%
-    dplyr::summarize(n = dplyr::n(),
-                     nna = length(which(is.na(sclass) & TPA > 0))) %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(nna > 0) %>%
-    tidyr::drop_na()
-  
-
-  
-  if (nrow(miss) > 0) { 
-    
-    ## A new id column for conditions
-    pltTPA$cond <- paste(pltTPA$PLT_CN, pltTPA$CONDID, sep = '_')
-  
-    predList <- list()
-    ## Building a seperate "model" for each forest type group
-    for (i in 1:nrow(miss)){
-      
-      ## Break into reference and target set and predict
-      ## sclass with knn, distance defined by trees in random forest algorithm
-      x <- pltTPA %>%
-        dplyr::filter(BpS_Code == miss$BpS_Code[i]) %>%
-        ## yaImpute references observations based on row names.
-        ## tibble hates that idea, so we have to watch really closely when
-        ## we use yaImpute and dplyr/tibble together
-        tibble::column_to_rownames('cond') %>%
-        dplyr::select(TPA, QMD, TPA20, QMD20)
-      y <- pltTPA %>%
-        dplyr::filter(BpS_Code == miss$BpS_Code[i]) %>%
-        dplyr::filter(!is.na(sclass)) %>%
-        ## Resetting levels
-        dplyr::mutate(sclass = factor(sclass)) %>%
-        tibble::column_to_rownames('cond') %>%
-        dplyr::select(sclass)
-      
-      ## If we've got nothing, skip it
-      if (nrow(y) < 1) next
-      
-      ## Need at least two groups to do classification
-      if (length(unique(y$sclass)) > 1){
-        
-        ## Find nearest neighbors
-        rf <- yaImpute::yai(x = x, y = y,
-                            method = 'randomForest',
-                            k =  ifelse(miss$n[i] < 15, miss$n[i]-1, 15))
-        
-        newdata = pltTPA %>%
-          dplyr::filter(BpS_Code == miss$BpS_Code[i] & is.na(sclass) & TPA > 0) %>%
-          tibble::column_to_rownames('cond')
-        
-        ## Predict s-class at forested plots where we couldn't calculate it
-        preds <- yaImpute::predict.yai(rf, newdata,
-                                       method.factor = 'median')
-        preds <- preds %>%
-          dplyr::mutate(cond = as.character(row.names(.))) %>%
-          tibble::as_tibble() %>%
-          dplyr::select(cond, sclass.pred = sclass)
-      } else {
-        
-        ## if only one class observed in biophysical setting, predict that class everywhere
-        preds <- pltTPA %>%
-          dplyr::filter(BpS_Code == miss$BpS_Code[i] & is.na(sclass))
-          preds$sclass.pred <- unique(y$sclass)
-          preds <- preds[,c('cond', 'sclass.pred')]
-      }
-      
-      
-      ## Handle factor/ double/ levels issues
-      preds$sclass.pred <- as.character(preds$sclass.pred)
-      
-      predList[[i]] <- preds
-      
-    }
-    
-    
-    ## Combine and handle factors
-    preds <- dplyr::bind_rows(predList) %>%
-      dplyr::select(cond, sclass.pred) %>%
-      dplyr::mutate(sclass.pred = factor(sclass.pred)) %>%
-      dplyr::mutate(PLT_CN = as.numeric(stringr::str_split(cond, '_', simplify = TRUE)[,1]),
-                    CONDID = as.numeric(stringr::str_split(cond, '_', simplify = TRUE)[,2])) %>%
-      select(c(PLT_CN, CONDID, sclass.pred))
-    
-    ## Early seral, no TPA plots
-    early <- pltTPA %>%
-      filter(is.na(sclass) & TPA < 0.01) %>%
-      mutate(sclass.pred = 'A') %>%
-      mutate(sclass.pred = factor(sclass.pred, 
-                                  levels = c('A', 'B', 'C', 'D', 'E'))) %>%
-      select(PLT_CN, CONDID, sclass.pred)
-    
-    ## Join them on and force sclass to be early seral (A
-    preds <- preds %>%
-      bind_rows(early)  
-  } else {
-    
-    ## Only non-treed forestland that causes issues - always early seral
-    preds <- pltTPA %>%
-      filter(is.na(sclass) & TPA < 0.01) %>%
-      mutate(sclass.pred = 'A') %>%
-      mutate(sclass.pred = factor(sclass.pred, 
-                                  levels = c('A', 'B', 'C', 'D', 'E'))) %>%
-      select(PLT_CN, CONDID, sclass.pred)
-    
-  }
-  
-  return(preds)
-  
-}
 
 
 

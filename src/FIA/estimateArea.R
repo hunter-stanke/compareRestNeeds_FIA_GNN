@@ -7,7 +7,7 @@
 ## associated variances. 
 ##
 ## Created:       30 October 2020 - Hunter Stanke
-## Last modified: 9 December 2020 - Hunter Stanke
+## Last modified: 8 June 2021 - Hunter Stanke
 ##
 ##====================================================
 ##====================================================
@@ -54,88 +54,73 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
   
   ## Use annual estimator first ------------------------------------------------
   # Across entire region
-  full <- rFIA::area(pnw, 
+  full <- rFIA::area(pnw,
                      grpBy = c(sclass),
                      nCores = cores,
                      areaDomain = !is.na(BpS_Code),
                      variance = TRUE,
                      method = 'annual') %>%
     dplyr::filter(YEAR > 2001) # Only in OR
-  
-  # By state
-  state <- rFIA::area(pnw, 
-                     grpBy = c(STATE, sclass),
-                     nCores = cores,
-                     areaDomain = !is.na(BpS_Code),
-                     variance = TRUE,
-                     method = 'annual') %>%
-    dplyr::filter(YEAR > 2001) # Only in OR
-  
+
   # Eastside/ westside
-  ew <- rFIA::area(pnw, 
+  ew <- rFIA::area(pnw,
                      grpBy = c(ew, sclass),
                      nCores = cores,
                      areaDomain = !is.na(BpS_Code),
                      variance = TRUE,
                      method = 'annual') %>%
     dplyr::filter(YEAR > 2001) # Only in OR
-  
-  # Eastside/ westside + state
-  ewState <- rFIA::area(pnw, 
-                   grpBy = c(STATE, ew, sclass),
-                   nCores = cores,
-                   areaDomain = !is.na(BpS_Code),
-                   variance = TRUE,
-                   method = 'annual') %>%
-    dplyr::filter(YEAR > 2001) # Only in OR
-  
-  # Within BpS
-  bps <- rFIA::area(pnw, 
-                    grpBy = c(ew, BpS_Code, sclass),
-                    nCores = cores,
-                    areaDomain = !is.na(BpS_Code),
-                    variance = TRUE,
-                    method = 'annual') %>%
-    dplyr::filter(YEAR > 2001) # Only in OR
 
-  # Within BpS + state
-  bpsState <- rFIA::area(pnw, 
-                    grpBy = c(STATE, ew, BpS_Code, sclass),
-                    nCores = cores,
-                    areaDomain = !is.na(BpS_Code),
-                    variance = TRUE,
-                    method = 'annual') %>%
+
+  # Within EW + BpS
+  bpsEw <- rFIA::area(pnw,
+                           grpBy = c(ew, BpS_Code, sclass),
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'annual') %>%
     dplyr::filter(YEAR > 2001) # Only in OR
-  
-  # Within BPS_LLID
-  bpsLLID <- rFIA::area(pnw, 
-                        grpBy = c(ew, BpS_Code, BPS_LLID, sclass),
-                        nCores = cores,
-                        areaDomain = !is.na(BpS_Code),
-                        variance = TRUE,
-                        method = 'annual') %>%
-    dplyr::filter(YEAR > 2001) # Only in OR
-  
-  # Within BPS_LLID + state
-  bpsLLIDState <- rFIA::area(pnw, 
-                        grpBy = c(STATE, ew, BpS_Code, BPS_LLID, sclass),
-                        nCores = cores,
-                        areaDomain = !is.na(BpS_Code),
-                        variance = TRUE,
-                        method = 'annual') %>%
-    dplyr::filter(YEAR > 2001) # Only in OR
-  
 
   
   ## Save results --------------------------------------------------------------
   write.csv(full, paste0(dirResults, '/sclass/ORWA_annual.csv'), row.names = FALSE)
-  write.csv(state, paste0(dirResults, '/sclass/STATE_annual.csv'), row.names = FALSE)
   write.csv(ew, paste0(dirResults, '/sclass/ORWA_EW_annual.csv'), row.names = FALSE)
-  write.csv(ewState, paste0(dirResults, '/sclass/STATE_EW_annual.csv'), row.names = FALSE)
-  write.csv(bps, paste0(dirResults, '/sclass/ORWA_BPS_annual.csv'), row.names = FALSE)
-  write.csv(bpsState, paste0(dirResults, '/sclass/STATE_BPS_annual.csv'), row.names = FALSE)
-  write.csv(bpsLLID, paste0(dirResults, '/sclass/ORWA_BPS_LLID_annual.csv'), row.names = FALSE)
-  write.csv(bpsLLIDState, paste0(dirResults, '/sclass/STATE_BPS_LLID_annual.csv'), row.names = FALSE)
+  write.csv(bpsEw, paste0(dirResults, '/sclass/ORWA_EW_BPS_annual.csv'), row.names = FALSE)
+
+  
+  
+  
+  ## Total forestland, i.e., not by sclass
+  # Across entire region
+  full.total <- rFIA::area(pnw,
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'annual') %>%
+    dplyr::filter(YEAR > 2001) # Only in OR
+  
+  
+  # Eastside/ westside
+  ew.total <- rFIA::area(pnw,
+                         grpBy = c(ew),
+                         nCores = cores,
+                         areaDomain = !is.na(BpS_Code),
+                         variance = TRUE,
+                         method = 'annual') %>%
+    dplyr::filter(YEAR > 2001) # Only in OR
+  
+  # Within EW + BpS
+  bpsEw.total <- rFIA::area(pnw,
+                            grpBy = c(ew, BpS_Code),
+                            nCores = cores,
+                            areaDomain = !is.na(BpS_Code),
+                            variance = TRUE,
+                            method = 'annual') %>%
+    dplyr::filter(YEAR > 2001) # Only in OR
+  
+  write.csv(full.total, paste0(dirResults, '/totalForest/ORWA_annual.csv'), row.names = FALSE)
+  write.csv(ew.total, paste0(dirResults, '/totalForest/ORWA_EW_annual.csv'), row.names = FALSE)
+  write.csv(bpsEw.total, paste0(dirResults, '/totalForest/ORWA_EW_BPS_annual.csv'), row.names = FALSE)
   
   
   
@@ -157,14 +142,6 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
                      variance = TRUE,
                      method = 'ti') 
   
-  # By state
-  state <- rFIA::area(pnw, 
-                     grpBy = c(STATE, sclass),
-                     nCores = cores,
-                     areaDomain = !is.na(BpS_Code),
-                     variance = TRUE,
-                     method = 'ti') 
-  
   # Eastside/ westside
   ew <- rFIA::area(pnw, 
                    grpBy = c(ew, sclass),
@@ -173,55 +150,52 @@ estimate_sclass_area <- function(dirFIA = here::here('data/FIA/'),
                    variance = TRUE,
                    method = 'ti') 
   
-  # Eastside/ westside + state
-  ewState <- rFIA::area(pnw, 
-                        grpBy = c(STATE, ew, sclass),
-                        nCores = cores,
-                        areaDomain = !is.na(BpS_Code),
-                        variance = TRUE,
-                        method = 'ti') 
+  # Within EW + BpS
+  bpsEw <- rFIA::area(pnw, 
+                      grpBy = c(ew, BpS_Code, sclass),
+                      nCores = cores,
+                      areaDomain = !is.na(BpS_Code),
+                      variance = TRUE,
+                      method = 'ti') %>%
+    dplyr::filter(YEAR > 2001) # Only in OR
   
-  # Within BpS
-  bps <- rFIA::area(pnw, 
-                    grpBy = c(ew, BpS_Code, sclass),
-                    nCores = cores,
-                    areaDomain = !is.na(BpS_Code),
-                    variance = TRUE,
-                    method = 'ti')
   
-  # Within BpS + state
-  bpsState <- rFIA::area(pnw, 
-                    grpBy = c(STATE, ew, BpS_Code, sclass),
-                    nCores = cores,
-                    areaDomain = !is.na(BpS_Code),
-                    variance = TRUE,
-                    method = 'ti')
-  
-  # Within BPS_LLID
-  bpsLLID <- rFIA::area(pnw, 
-                        grpBy = c(ew, BpS_Code, BPS_LLID, sclass),
-                        nCores = cores,
-                        areaDomain = !is.na(BpS_Code),
-                        variance = TRUE,
-                        method = 'ti')
-  
-  # Within BPS_LLID + STATE
-  bpsLLIDState <- rFIA::area(pnw, 
-                        grpBy = c(STATE, ew, BpS_Code, BPS_LLID, sclass),
-                        nCores = cores,
-                        areaDomain = !is.na(BpS_Code),
-                        variance = TRUE,
-                        method = 'ti')
   
   ## Save results --------------------------------------------------------------
   write.csv(full, paste0(dirResults, '/sclass/ORWA_ti.csv'), row.names = FALSE)
-  write.csv(state, paste0(dirResults, '/sclass/STATE_ti.csv'), row.names = FALSE)
   write.csv(ew, paste0(dirResults, '/sclass/ORWA_EW_ti.csv'), row.names = FALSE)
-  write.csv(ewState, paste0(dirResults, '/sclass/STATE_EW_ti.csv'), row.names = FALSE)
-  write.csv(bps, paste0(dirResults, '/sclass/ORWA_BPS_ti.csv'), row.names = FALSE)
-  write.csv(bpsState, paste0(dirResults, '/sclass/STATE_BPS_ti.csv'), row.names = FALSE)
-  write.csv(bpsLLID, paste0(dirResults, '/sclass/ORWA_BPS_LLID_ti.csv'), row.names = FALSE)
-  write.csv(bpsLLIDState, paste0(dirResults, '/sclass/STATE_BPS_LLID_ti.csv'), row.names = FALSE)
+  write.csv(bpsEw, paste0(dirResults, '/sclass/ORWA_EW_BPS_ti.csv'), row.names = FALSE)
+  
+  
+  ## Total forestland, i.e., not by sclass
+  # Across entire region
+  full.total <- rFIA::area(pnw,
+                           nCores = cores,
+                           areaDomain = !is.na(BpS_Code),
+                           variance = TRUE,
+                           method = 'TI')
+  
+  
+  # Eastside/ westside
+  ew.total <- rFIA::area(pnw,
+                         grpBy = c(ew),
+                         nCores = cores,
+                         areaDomain = !is.na(BpS_Code),
+                         variance = TRUE,
+                         method = 'TI') 
+  
+  # Within EW + BpS
+  bpsEw.total <- rFIA::area(pnw,
+                            grpBy = c(ew, BpS_Code),
+                            nCores = cores,
+                            areaDomain = !is.na(BpS_Code),
+                            variance = TRUE,
+                            method = 'TI')
+  
+  write.csv(full.total, paste0(dirResults, '/totalForest/ORWA_ti.csv'), row.names = FALSE)
+  write.csv(ew.total, paste0(dirResults, '/totalForest/ORWA_EW_ti.csv'), row.names = FALSE)
+  write.csv(bpsEw.total, paste0(dirResults, '/totalForest/ORWA_EW_BPS_ti.csv'), row.names = FALSE)
+  
   
   cat('Area estimates complete ...\n')
 }

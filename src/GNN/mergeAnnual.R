@@ -37,8 +37,8 @@ merge_annual_files <- function(dirResults = here::here('results/GNN/')) {
   files <- list.files(here::here(paste0(dirResults, 'restNeed/annual/')))
 
   # All unique file prefixes
-  prefix <- c('ORWA_BPS', 'ORWA_BPS_LLID',
-              'STATE_BPS', 'STATE_BPS_LLID')
+  prefix <- c('ORWA_BPS', 'ORWA_EW_BPS', 'ORWA_BPS_LLID',
+              'STATE_BPS', 'STATE_EW_BPS', 'STATE_BPS_LLID')
   suffix <- c('_postRest.csv', '_restNeed.csv', '_transfers.csv')
   
   for (s in suffix) {

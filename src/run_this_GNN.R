@@ -35,7 +35,7 @@ check_dependencies()
 ## DO NOT USE everything you have, e.g., if you have 4, use 3
 ## If you run into memory issues (R crashes), try cores = 1
 parallel::detectCores(logical = TRUE) 
-cores = 10
+cores = 11
 
 
 

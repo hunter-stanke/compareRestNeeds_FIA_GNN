@@ -61,6 +61,28 @@ estimate_rest_needs <- function(dirResults = here::here('results/GNN/'),
                 cores = cores,
                 YEAR, STATE, BpS_Code)
   
+  ## BPS x EW
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/annual/ORWA_EW_BPS_', year, '.csv')),
+                refcon = refCon,
+                rules = rules,
+                sclass = sclass,
+                bps = BpS,
+                prefix = paste0('annual/ORWA_EW_BPS_', year),
+                cores = cores,
+                YEAR, ew, BpS_Code)
+  
+  ## BPS x EW x STATE
+  processStrata(dirResults = dirResults,
+                dat = read.csv(paste0(dirResults, '/sclass/annual/STATE_EW_BPS_', year, '.csv')),
+                refcon = refCon,
+                rules = rules,
+                sclass = sclass,
+                bps = BpS,
+                prefix = paste0('annual/STATE_EW_BPS_', year),
+                cores = cores,
+                YEAR, STATE, ew, BpS_Code)
+  
   ## BPS x LLID
   processStrata(dirResults = dirResults,
                 dat = read.csv(paste0(dirResults, '/sclass/annual/ORWA_BPS_LLID_', year, '.csv')),
@@ -83,6 +105,27 @@ estimate_rest_needs <- function(dirResults = here::here('results/GNN/'),
                 cores = cores,
                 YEAR, STATE, BpS_Code, BPS_LLID)
   
+  ## BPS x LLID x EW
+  # processStrata(dirResults = dirResults,
+  #               dat = read.csv(paste0(dirResults, '/sclass/annual/ORWA_EW_BPS_LLID', year, '.csv')),
+  #               refcon = refCon,
+  #               rules = rules,
+  #               sclass = sclass,
+  #               bps = BpS,
+  #               prefix = paste0('annual/ORWA_EW_BPS_LLID', year),
+  #               cores = cores,
+  #               YEAR, ew, BpS_Code, BPS_LLID)
+  # 
+  # ## BPS x LLID x EW x STATE
+  # processStrata(dirResults = dirResults,
+  #               dat = read.csv(paste0(dirResults, '/sclass/annual/STATE_EW_BPS_LLID', year, '.csv')),
+  #               refcon = refCon,
+  #               rules = rules,
+  #               sclass = sclass,
+  #               bps = BpS,
+  #               prefix = paste0('annual/STATE_EW_BPS_LLID', year),
+  #               cores = cores,
+  #               YEAR, STATE, ew, BpS_Code, BPS_LLID)
   
   
   

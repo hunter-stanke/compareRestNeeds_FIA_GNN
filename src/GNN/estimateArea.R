@@ -30,11 +30,9 @@ estimate_sclass_area <- function(dirResults = here::here('results/GNN/'),
   sclassFile <- list.files(sclassDir, full.names = TRUE)[stringr::str_sub(list.files(sclassDir), -4, -1) == '.tif']
   sclassFile <- stringr::str_replace(sclassFile, '//', '/')
   
-  ## BPS x LLID x state
+  ## BPS x LLID
   bpsllid <- sum_sclass_by_strata(strata = here::here('data/GIS/BPS_LLID/BPS_LLID.tif'),
                                   strataRef = here::here('data/GIS/attributes/BPS_LLID.csv'),
-                                  state = here::here('data/GIS/ORWA/ORWA.tif'),
-                                  stateRef = here::here('data/GIS/attributes/ORWA.csv'),
                                   sclass = sclassFile,
                                   sclassRef = here::here('data/GIS/attributes/sClass.txt'),
                                   mz = here::here('data/GIS/mapzones/mapzones.tif'),
@@ -42,73 +40,46 @@ estimate_sclass_area <- function(dirResults = here::here('results/GNN/'),
                                   dirResults = dirResults,
                                   cores = cores)
   suppressMessages({
-    ## Clean up the names of BPS x LLID x state summary
-    bpsllid.state <- bpsllid %>% 
+    ## Clean up the names of BPS x LLID summary
+    bpsllid <- bpsllid %>% 
       dplyr::mutate(YEAR = year,
                     BpS = stringr::str_split(BPS_LLID, '_', simplify = TRUE)[,1],
                     PVT = stringr::str_split(BPS_LLID, '_', simplify = TRUE)[,2],
                     LLID = stringr::str_split(BPS_LLID, '_', simplify = TRUE)[,3],
                     BpS_Code = paste(BpS, PVT, sep = '_')) %>%
-      dplyr::select(YEAR, STATE,ew, MAP_ZONE, BpS, PVT, BpS_Code, BPS_LLID, sclass, AREA_TOTAL) %>%
-      ungroup()
-    
-    ## Sum across state
-    bpsllid <- bpsllid.state %>%
-      group_by(YEAR, ew, MAP_ZONE, BpS, PVT, BpS_Code, BPS_LLID, sclass)%>%
-      dplyr::summarise(AREA_TOTAL = sum(AREA_TOTAL, na.rm = TRUE)) %>%
+      dplyr::select(YEAR, ew, BpS, PVT, BpS_Code, BPS_LLID, sclass, AREA_TOTAL) %>%
       ungroup()
     
     
-    ## Now rather than re-run with BPS as strata, just sum up the BPS x LLID x state
+    ## Now rather than re-run with BPS as strata, just sum up the BPS x LLID
     ## estimates within BPS and up to region-wide totals
     
-    ## BPS totals
-    bps <- bpsllid %>%
-      dplyr::group_by(YEAR, ew, MAP_ZONE, BpS, PVT, BpS_Code, sclass) %>%
-      dplyr::summarise(AREA_TOTAL = sum(AREA_TOTAL, na.rm = TRUE)) %>%
-      ungroup()
-    
-    ## BPS x state totals
-    bps.state <- bpsllid.state %>%
-      dplyr::group_by(YEAR, STATE, ew, MAP_ZONE, BpS, PVT, BpS_Code, sclass) %>%
+    ## BPS x EW  totals
+    bps.ew <- bpsllid %>%
+      dplyr::group_by(YEAR, ew, BpS, PVT, BpS_Code, sclass) %>%
       dplyr::summarise(AREA_TOTAL = sum(AREA_TOTAL, na.rm = TRUE)) %>%
       ungroup()
     
     ## Eastside / westside totals
-    ew <- bps %>%
+    ew <- bpsllid %>%
       dplyr::group_by(YEAR, ew, sclass) %>%
       dplyr::summarise(AREA_TOTAL = sum(AREA_TOTAL, na.rm = TRUE))%>%
       ungroup()
-    
-    ## Eastside / westside x state totals
-    ew.state <- bps.state %>%
-      dplyr::group_by(YEAR, STATE, ew, sclass) %>%
-      dplyr::summarise(AREA_TOTAL = sum(AREA_TOTAL, na.rm = TRUE))%>%
-      ungroup()
-    
+  
     ## Regional totals
     orwa <- ew %>%
       dplyr::group_by(YEAR, sclass) %>%
       dplyr::summarise(AREA_TOTAL = sum(AREA_TOTAL, na.rm = TRUE))%>%
       ungroup()
     
-    ## Regional totals x state
-    orwa.state <- ew.state %>%
-      dplyr::group_by(YEAR, STATE, sclass) %>%
-      dplyr::summarise(AREA_TOTAL = sum(AREA_TOTAL, na.rm = TRUE))%>%
-      ungroup()
   })
   
   
   ## save results
-  write.csv(bpsllid, paste0(dirResults, 'sclass/annual/ORWA_BPS_LLID_', year, '.csv'), row.names = FALSE)
-  write.csv(bps, paste0(dirResults, 'sclass/annual/ORWA_BPS_', year, '.csv'), row.names = FALSE)
+  write.csv(bps.ew, paste0(dirResults, 'sclass/annual/ORWA_EW_BPS_', year, '.csv'), row.names = FALSE)
   write.csv(ew, paste0(dirResults, 'sclass/annual/ORWA_EW_', year, '.csv'), row.names = FALSE)
   write.csv(orwa, paste0(dirResults, 'sclass/annual/ORWA_', year, '.csv'), row.names = FALSE)
-  write.csv(bpsllid.state, paste0(dirResults, 'sclass/annual/STATE_BPS_LLID_', year, '.csv'), row.names = FALSE)
-  write.csv(bps.state, paste0(dirResults, 'sclass/annual/STATE_BPS_', year, '.csv'), row.names = FALSE)
-  write.csv(ew.state, paste0(dirResults, 'sclass/annual/STATE_EW_', year, '.csv'), row.names = FALSE)
-  write.csv(orwa.state, paste0(dirResults, 'sclass/annual/STATE_', year, '.csv'), row.names = FALSE)
+  
 }
 
 
@@ -124,8 +95,6 @@ estimate_sclass_area <- function(dirResults = here::here('results/GNN/'),
 ## cores (numeric) :       number of physical cores to use
 sum_sclass_by_strata <- function(strata,
                                  strataRef,
-                                 state, 
-                                 stateRef,
                                  sclass,
                                  sclassRef,
                                  mz,
@@ -186,20 +155,20 @@ sum_sclass_by_strata <- function(strata,
       library(stars)})
     out <- parLapply(cl, X = names(index), fun = sum_chunk, index,
                      start, ystart, xmax, ymax, chunkSize, strata, 
-                     state, sclass, mz)
+                     sclass, mz)
     stopCluster(cl) # Kill the cluster
     
   } else { # Multicore systems
     out <- parallel::mclapply(X = names(index), FUN = sum_chunk, index,
                               xstart, ystart, xmax, ymax, chunkSize,
-                              strata, state, sclass, mz, mc.cores = cores)
+                              strata, sclass, mz, mc.cores = cores)
   }
   
   suppressMessages({
     ## Merge the results & summarize over the chunk-level sums----------------------
     totals <- data.table::rbindlist(out) %>%
       as.data.frame() %>%
-      dplyr::group_by(state, mz, strat, sc) %>%
+      dplyr::group_by(mz, strat, sc) %>%
       dplyr::summarise(n = sum(n, na.rm = TRUE)) %>%
       dplyr::ungroup() %>%
       ## Convert cell count to acres
@@ -222,11 +191,7 @@ sum_sclass_by_strata <- function(strata,
                                        sc == 3 ~ 'C',
                                        sc == 4 ~ 'D',
                                        sc == 5 ~ 'E')) %>%
-      # Also hard coding states
-      dplyr::mutate(STATE = case_when(state == 2 ~ 'Oregon',
-                                      state == 7926 ~ 'Washington',
-                                      TRUE ~ NA_character_)) %>%
-      dplyr::select(-c(any_of(c('n', 'sc', 'strat', 'state', 'mz')))) ## Still ugly, clean up on the top end
+      dplyr::select(-c(any_of(c('n', 'sc', 'strat', 'mz')))) ## Still ugly, clean up on the top end
   })
 
     
@@ -239,7 +204,7 @@ sum_sclass_by_strata <- function(strata,
 ## Define a function to process chunks
 sum_chunk <- function(iter, index, xstart, ystart,
                       xmax, ymax, chunkSize,
-                      strata, state, sclass, mz){
+                      strata, sclass, mz){
   
   ## Pull the index info
   i = index[[iter]]
@@ -255,7 +220,6 @@ sum_chunk <- function(iter, index, xstart, ystart,
   ## Read the chunks
   strataR <- stars::read_stars(strata, RasterIO = rasterio, proxy = FALSE)
   sclassR <- stars::read_stars(sclass, RasterIO = rasterio, proxy = FALSE)
-  stateR <- stars::read_stars(state, RasterIO = rasterio, proxy = FALSE)
   mzR <- stars::read_stars(mz, RasterIO = rasterio, proxy = FALSE)
   
   ## Makes naming easier
@@ -265,15 +229,14 @@ sum_chunk <- function(iter, index, xstart, ystart,
   dat <- as.data.frame(strataR) %>%
     dplyr::rename(strat = !! stratName) %>%
     dplyr::mutate(sc = as.data.frame(sclassR)[,3],
-                  state = as.data.frame(stateR)[,3],
                   mz = as.data.frame(mzR)[,3])
   
   suppressMessages({
     ## Sum up total area in each S-class, this is additive and internally consistent
     totals <- dat %>%
-      dplyr::group_by(state, mz, strat, sc) %>%
+      dplyr::group_by(mz, strat, sc) %>%
       dplyr::summarise(n = n()) %>%
-      dplyr::filter( !is.na(state) & !is.na(strat) & !is.na(sc)) %>%
+      dplyr::filter(!is.na(strat) & !is.na(sc)) %>%
       dplyr::ungroup()
   })
   
